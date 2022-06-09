@@ -1,0 +1,632 @@
+30064ae161de1e9a96992be108c195796f13e72a	Hennig86 program	hennig86 program	2	1	0.00019790223629527012	1	\N
+30064ae161de1e9a96992be108c195796f13e72a	routine in the Hennig86	routine in the hennig86	4	1	0.00019790223629527012	1	\N
+30064ae161de1e9a96992be108c195796f13e72a	routine in the Hennig86 program	routine in the hennig86 program	5	1	0.00019790223629527012	1	\N
+30064ae161de1e9a96992be108c195796f13e72a	Hennig86	hennig86	1	1	0.00019790223629527012	1	\N
+3108567f95b96b499da30a90083582127d431805	Hennig86	hennig86	1	1	0.00020593080724876442	1	\N
+3108567f95b96b499da30a90083582127d431805	analyse with Hennig86	analyse with hennig86	3	1	0.00020593080724876442	1	\N
+3108567f95b96b499da30a90083582127d431805	taxa be analyse with Hennig86	taxa be analyse with hennig86	5	1	0.00020593080724876442	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	program Hennig86	program hennig86	2	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	Hennig86 version	hennig86 version	2	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	computer program Hennig86	computer program hennig86	3	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	program Hennig86 version	program hennig86 version	3	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	weighting in Hennig86	weighting in hennig86	3	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	computer program Hennig86 version	computer program hennig86 version	4	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	program Hennig86 version 1.5	program hennig86 version 1.5	4	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	character weighting in Hennig86	character weighting in hennig86	4	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	computer program Hennig86 version 1.5	computer program hennig86 version 1.5	5	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	successive character weighting in Hennig86	successive character weighting in hennig86	5	1	0.00019223375624759708	1	\N
+350f2e8d50c75254fb136fbe57f6b151edd9680c	Hennig86	hennig86	1	2	0.00038446751249519417	1	\N
+3703a2534779a3380c6649ef76a78aeabd9988e9	Hennig86 programm	hennig86 programm	2	3	0.0010626992561105207	1	\N
+3703a2534779a3380c6649ef76a78aeabd9988e9	Hennig86 programm base	hennig86 programm base	3	3	0.0010626992561105207	1	\N
+3703a2534779a3380c6649ef76a78aeabd9988e9	Hennig86 programm base on parsimony	hennig86 programm base on parsimony	5	3	0.0010626992561105207	1	\N
+3703a2534779a3380c6649ef76a78aeabd9988e9	Hennig86	hennig86	1	3	0.0010626992561105207	1	\N
+370bbe1a1009f6debbc4d665596b2869145a4275	Hennig86	hennig86	1	3	0.00023668639053254438	1	\N
+370bbe1a1009f6debbc4d665596b2869145a4275	analyze by Hennig86	analyze by hennig86	3	1	0.00007889546351084812	1	\N
+370bbe1a1009f6debbc4d665596b2869145a4275	analyze with Hennig86	analyze with hennig86	3	1	0.00007889546351084812	1	\N
+3a00553a8d436ed111b7fd61a1397d01982c36f4	Hennig86	hennig86	1	2	0.00004765308553728854	1	\N
+3a00553a8d436ed111b7fd61a1397d01982c36f4	program Hennig86	program hennig86	2	1	0.00002382654276864427	1	\N
+3a00553a8d436ed111b7fd61a1397d01982c36f4	run in Hennig86	run in hennig86	3	1	0.00002382654276864427	1	\N
+3a00553a8d436ed111b7fd61a1397d01982c36f4	Hennig86 use successive	hennig86 use successive	3	1	0.00002382654276864427	1	\N
+3a00553a8d436ed111b7fd61a1397d01982c36f4	Hennig86 use successive weighting	hennig86 use successive weighting	4	1	0.00002382654276864427	1	\N
+3a00553a8d436ed111b7fd61a1397d01982c36f4	Analyses use the program Hennig86	analyses use the program hennig86	5	1	0.00002382654276864427	1	\N
+3a00553a8d436ed111b7fd61a1397d01982c36f4	run in Hennig86 use successive	run in hennig86 use successive	5	1	0.00002382654276864427	1	\N
+3d0bded467a4732690b68bfd305172e0b2fa3bc2	Hennig86	hennig86	1	1	0.00004312761461163583	1	\N
+3d0bded467a4732690b68bfd305172e0b2fa3bc2	program Hennig86	program hennig86	2	1	0.00004312761461163583	1	\N
+3d0bded467a4732690b68bfd305172e0b2fa3bc2	Hennig86 version	hennig86 version	2	1	0.00004312761461163583	1	\N
+3d0bded467a4732690b68bfd305172e0b2fa3bc2	program Hennig86 version	program hennig86 version	3	1	0.00004312761461163583	1	\N
+3d0bded467a4732690b68bfd305172e0b2fa3bc2	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.00004312761461163583	1	\N
+3d0bded467a4732690b68bfd305172e0b2fa3bc2	program Hennig86 version 1.5	program hennig86 version 1.5	4	1	0.00004312761461163583	1	\N
+3e09dc9efa23b218b47ec47346f7520243e90eca	prepare use Hennig86	prepare use hennig86	3	1	0.00006659119664380368	1	\N
+3e09dc9efa23b218b47ec47346f7520243e90eca	Hennig86 and CLADOS	hennig86 and clados	3	1	0.00006659119664380368	1	\N
+3e09dc9efa23b218b47ec47346f7520243e90eca	Hennig86 and CLADOS version	hennig86 and clados version	4	1	0.00006659119664380368	1	\N
+3e09dc9efa23b218b47ec47346f7520243e90eca	tree be prepare use Hennig86	tree be prepare use hennig86	5	1	0.00006659119664380368	1	\N
+3e09dc9efa23b218b47ec47346f7520243e90eca	prepare use Hennig86 and CLADOS	prepare use hennig86 and clados	5	1	0.00006659119664380368	1	\N
+3e09dc9efa23b218b47ec47346f7520243e90eca	Hennig86 and CLADOS version 1.2	hennig86 and clados version 1.2	5	1	0.00006659119664380368	1	\N
+3e09dc9efa23b218b47ec47346f7520243e90eca	Hennig86	hennig86	1	1	0.00006659119664380368	1	\N
+3019508f871bb3d98962965a6479ea25c1c97004	Hennig86 software	hennig86 software	2	1	0.00008034064433196755	1	\N
+3019508f871bb3d98962965a6479ea25c1c97004	analyse use Hennig86	analyse use hennig86	3	1	0.00008034064433196755	1	\N
+3019508f871bb3d98962965a6479ea25c1c97004	analyse use Hennig86 software	analyse use hennig86 software	4	1	0.00008034064433196755	1	\N
+3019508f871bb3d98962965a6479ea25c1c97004	matrix be analyse use Hennig86	matrix be analyse use hennig86	5	1	0.00008034064433196755	1	\N
+3019508f871bb3d98962965a6479ea25c1c97004	Hennig86	hennig86	1	1	0.00008034064433196755	1	\N
+34172030571871243284cf9cabb9732e02097f93	Hennig86 program	hennig86 program	2	1	0.0001893222264293828	1	\N
+34172030571871243284cf9cabb9732e02097f93	Hennig86	hennig86	1	1	0.0001893222264293828	1	\N
+341924aefbedc082ce2e1de2d69df65844af965a	Hennig86	hennig86	1	1	0.0001807337791433219	1	\N
+341924aefbedc082ce2e1de2d69df65844af965a	analyze use Hennig86	analyze use hennig86	3	1	0.0001807337791433219	1	\N
+341924aefbedc082ce2e1de2d69df65844af965a	set be analyze use Hennig86	set be analyze use hennig86	5	1	0.0001807337791433219	1	\N
+371e7d72eb9ecc9216e5315988114784aa11cf5d	program Hennig86	program hennig86	2	1	0.00006020832078993317	1	\N
+371e7d72eb9ecc9216e5315988114784aa11cf5d	update program Hennig86	update program hennig86	3	1	0.00006020832078993317	1	\N
+371e7d72eb9ecc9216e5315988114784aa11cf5d	Hennig86 become available	hennig86 become available	3	1	0.00006020832078993317	1	\N
+371e7d72eb9ecc9216e5315988114784aa11cf5d	program Hennig86 become available	program hennig86 become available	4	1	0.00006020832078993317	1	\N
+371e7d72eb9ecc9216e5315988114784aa11cf5d	update program Hennig86 become available	update program hennig86 become available	5	1	0.00006020832078993317	1	\N
+371e7d72eb9ecc9216e5315988114784aa11cf5d	Hennig86 become available in 1989	hennig86 become available in 1989	5	1	0.00006020832078993317	1	\N
+371e7d72eb9ecc9216e5315988114784aa11cf5d	Hennig86	hennig86	1	1	0.00006020832078993317	1	\N
+3a1e7005e1c536ef86844d0f7cdaed7534b2d8cc	Hennig86	hennig86	1	2	0.00020080321285140563	1	\N
+3a1e7005e1c536ef86844d0f7cdaed7534b2d8cc	programme Hennig86	programme hennig86	2	1	0.00010040160642570282	1	\N
+3a1e7005e1c536ef86844d0f7cdaed7534b2d8cc	Hennig86 analysis	hennig86 analysis	2	1	0.00010040160642570282	1	\N
+3a1e7005e1c536ef86844d0f7cdaed7534b2d8cc	computer programme Hennig86	computer programme hennig86	3	1	0.00010040160642570282	1	\N
+3a1e7005e1c536ef86844d0f7cdaed7534b2d8cc	result of the Hennig86	result of the hennig86	4	1	0.00010040160642570282	1	\N
+3a1e7005e1c536ef86844d0f7cdaed7534b2d8cc	result of the Hennig86 analysis	result of the hennig86 analysis	5	1	0.00010040160642570282	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86	hennig86	1	4	0.002240896358543417	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	calculate with Hennig86	calculate with hennig86	3	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86 exclude autapomorphie	hennig86 exclude autapomorphie	3	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	separately with Hennig86	separately with hennig86	3	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86 and Pee	hennig86 and pee	3	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	analysis with Hennig86	analysis with hennig86	3	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86 use equal	hennig86 use equal	3	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86 exclude	hennig86 exclude	2	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	calculate with Hennig86 exclude	calculate with hennig86 exclude	4	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	analyse separately with Hennig86	analyse separately with hennig86	4	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	simultaneous analysis with Hennig86	simultaneous analysis with hennig86	4	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86 use equal weight	hennig86 use equal weight	4	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86 be use to find	hennig86 be use to find	5	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	index be calculate with Hennig86	index be calculate with hennig86	5	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	calculate with Hennig86 exclude autapomorphie	calculate with hennig86 exclude autapomorphie	5	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	separately with Hennig86 and Pee	separately with hennig86 and pee	5	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	analysis with Hennig86 use equal	analysis with hennig86 use equal	5	1	0.0005602240896358543	1	\N
+3b165c32fd5851d7df23a379d1ad3f6a5dde6f27	Hennig86 use equal weight yield	hennig86 use equal weight yield	5	1	0.0005602240896358543	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	Hennig86	hennig86	1	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	Hennig86 version	hennig86 version	2	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	ie in Hennig86	ie in hennig86	3	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	routine ie in Hennig86	routine ie in hennig86	4	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	ie in Hennig86 version	ie in hennig86 version	4	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	enumeration routine ie in Hennig86	enumeration routine ie in hennig86	5	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	routine ie in Hennig86 version	routine ie in hennig86 version	5	1	0.0001321178491214163	1	\N
+3c123f19728527ab02ad99b3aba178e632520601	ie in Hennig86 version 1.5	ie in hennig86 version 1.5	5	1	0.0001321178491214163	1	\N
+3c17286bf9622224e11876a77a4b18c096ee3275	Hennig86 program	hennig86 program	2	1	0.0001478633742422002	1	\N
+3c17286bf9622224e11876a77a4b18c096ee3275	option of the Hennig86	option of the hennig86	4	1	0.0001478633742422002	1	\N
+3c17286bf9622224e11876a77a4b18c096ee3275	heuristic option of the Hennig86	heuristic option of the hennig86	5	1	0.0001478633742422002	1	\N
+3c17286bf9622224e11876a77a4b18c096ee3275	option of the Hennig86 program	option of the hennig86 program	5	1	0.0001478633742422002	1	\N
+3c17286bf9622224e11876a77a4b18c096ee3275	Hennig86	hennig86	1	1	0.0001478633742422002	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	Hennig86	hennig86	1	3	0.0004956220056170494	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	program Hennig86	program hennig86	2	1	0.00016520733520568312	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	cladistic program Hennig86	cladistic program hennig86	3	1	0.00016520733520568312	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	command in Hennig86	command in hennig86	3	1	0.00016520733520568312	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	run on Hennig86	run on hennig86	3	1	0.00016520733520568312	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	xsteps command in Hennig86	xsteps command in hennig86	4	1	0.00016520733520568312	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	Hennig86 use the command	hennig86 use the command	4	1	0.00016520733520568312	1	\N
+332f84cafb8b1adec72ffde2c8db40001ba93071	Hennig86 use the command option	hennig86 use the command option	5	1	0.00016520733520568312	1	\N
+3a281ef69c799677e5dc9316e0ead73ffca4e304	Hennig86	hennig86	1	1	0.0004887585532746823	1	\N
+3e2b8cc4a596cbb0044816a86bdf400e5432c585	Hennig86	hennig86	1	2	0.00020659022828220226	1	\N
+3e2b8cc4a596cbb0044816a86bdf400e5432c585	Hennig86 ©	hennig86 ©	2	1	0.00010329511414110113	1	\N
+3e2b8cc4a596cbb0044816a86bdf400e5432c585	perform with Hennig86	perform with hennig86	3	1	0.00010329511414110113	1	\N
+3e2b8cc4a596cbb0044816a86bdf400e5432c585	option of Hennig86	option of hennig86	3	1	0.00010329511414110113	1	\N
+3e2b8cc4a596cbb0044816a86bdf400e5432c585	perform with Hennig86 ©	perform with hennig86 ©	4	1	0.00010329511414110113	1	\N
+3e2b8cc4a596cbb0044816a86bdf400e5432c585	analysis be perform with Hennig86	analysis be perform with hennig86	5	1	0.00010329511414110113	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86	hennig86	1	7	0.0004773595199127114	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 program	hennig86 program	2	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 analysis	hennig86 analysis	2	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 perform	hennig86 perform	2	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 produce	hennig86 produce	2	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 analysis find	hennig86 analysis find	3	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	input to Hennig86	input to hennig86	3	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 's mh	hennig86 's mh	3	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	command of Hennig86	command of hennig86	3	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	approach with Hennig86	approach with hennig86	3	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	datum use the Hennig86	datum use the hennig86	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 do not accept	hennig86 do not accept	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	matrix input to Hennig86	matrix input to hennig86	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 's mh command	hennig86 's mh command	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	w command of Hennig86	w command of hennig86	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	command of Hennig86 perform	command of hennig86 perform	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 perform this scaling	hennig86 perform this scaling	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	approximation approach with Hennig86	approximation approach with hennig86	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	approach with Hennig86 produce	approach with hennig86 produce	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 produce a stable	hennig86 produce a stable	4	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	datum use the Hennig86 program	datum use the hennig86 program	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 do not accept multistate	hennig86 do not accept multistate	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 analysis find only 1341	hennig86 analysis find only 1341	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	datum matrix input to Hennig86	datum matrix input to hennig86	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	xsteps w command of Hennig86	xsteps w command of hennig86	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	w command of Hennig86 perform	w command of hennig86 perform	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	successive approximation approach with Hennig86	successive approximation approach with hennig86	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	approximation approach with Hennig86 produce	approximation approach with hennig86 produce	5	1	0.00006819421713038734	1	\N
+343b6bed68f6007f8de1c07c1c0f66aadc890e0f	Hennig86 produce a stable set	hennig86 produce a stable set	5	1	0.00006819421713038734	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	Hennig86	hennig86	1	3	0.0005945303210463733	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	Hennig86 indicate	hennig86 indicate	2	2	0.00039635354736424893	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	program Hennig86	program hennig86	2	1	0.00019817677368212446	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	analysis use Hennig86	analysis use hennig86	3	2	0.00039635354736424893	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	preliminary analysis use Hennig86	preliminary analysis use hennig86	4	2	0.00039635354736424893	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	analysis use Hennig86 indicate	analysis use hennig86 indicate	4	2	0.00039635354736424893	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	preliminary analysis use Hennig86 indicate	preliminary analysis use hennig86 indicate	5	2	0.00039635354736424893	1	\N
+3734fbda95af492c36198697fb39fa5b6ce321b8	relationship use the program Hennig86	relationship use the program hennig86	5	1	0.00019817677368212446	1	\N
+3b3b7bc633e35a7a5d135358762d88709a853872	Hennig86	hennig86	1	1	0.00006712760958582265	1	\N
+3b3b7bc633e35a7a5d135358762d88709a853872	program Hennig86	program hennig86	2	1	0.00006712760958582265	1	\N
+3b3b7bc633e35a7a5d135358762d88709a853872	parsimony program Hennig86	parsimony program hennig86	3	1	0.00006712760958582265	1	\N
+3b3f7ff3a42c5d7a22746a5e41dc3c548a082d35	Hennig86	hennig86	1	1	0.00019406171162429653	1	\N
+3b3f7ff3a42c5d7a22746a5e41dc3c548a082d35	2.4 and Hennig86	2.4 and hennig86	3	1	0.00019406171162429653	1	\N
+3b3f7ff3a42c5d7a22746a5e41dc3c548a082d35	paup 2.4 and Hennig86	paup 2.4 and hennig86	4	1	0.00019406171162429653	1	\N
+3e3446338806525155d3b3f27af23ac3d9e53107	Hennig86 software	hennig86 software	2	1	0.00011732957878681215	1	\N
+3e3446338806525155d3b3f27af23ac3d9e53107	option of Hennig86	option of hennig86	3	1	0.00011732957878681215	1	\N
+3e3446338806525155d3b3f27af23ac3d9e53107	enumeration option of Hennig86	enumeration option of hennig86	4	1	0.00011732957878681215	1	\N
+3e3446338806525155d3b3f27af23ac3d9e53107	option of Hennig86 software	option of hennig86 software	4	1	0.00011732957878681215	1	\N
+3e3446338806525155d3b3f27af23ac3d9e53107	implicit enumeration option of Hennig86	implicit enumeration option of hennig86	5	1	0.00011732957878681215	1	\N
+3e3446338806525155d3b3f27af23ac3d9e53107	enumeration option of Hennig86 software	enumeration option of hennig86 software	5	1	0.00011732957878681215	1	\N
+3e3446338806525155d3b3f27af23ac3d9e53107	Hennig86	hennig86	1	1	0.00011732957878681215	1	\N
+3e3ab527f63fe9f75c138c7f41fde3d3d2859c01	Hennig86	hennig86	1	1	0.0003694126339120798	1	\N
+3e3ab527f63fe9f75c138c7f41fde3d3d2859c01	computer program Hennig86	computer program hennig86	3	1	0.0003694126339120798	1	\N
+3e3ab527f63fe9f75c138c7f41fde3d3d2859c01	program Hennig86	program hennig86	2	1	0.0003694126339120798	1	\N
+3e3bb22388273817b2de088ccf7036a8a1b9cd74	construction such as Hennig86	construction such as hennig86	4	1	0.0003325573661456601	1	\N
+3e3bb22388273817b2de088ccf7036a8a1b9cd74	cladogram construction such as Hennig86	cladogram construction such as hennig86	5	1	0.0003325573661456601	1	\N
+3e3bb22388273817b2de088ccf7036a8a1b9cd74	Hennig86	hennig86	1	1	0.0003325573661456601	1	\N
+33429778fd5cddb2d23f9e67ecc6cfbd1445868f	Hennig86 whilst	hennig86 whilst	2	1	0.0002109259649862898	1	\N
+33429778fd5cddb2d23f9e67ecc6cfbd1445868f	undertake use Hennig86	undertake use hennig86	3	1	0.0002109259649862898	1	\N
+33429778fd5cddb2d23f9e67ecc6cfbd1445868f	undertake use Hennig86 whilst	undertake use hennig86 whilst	4	1	0.0002109259649862898	1	\N
+33429778fd5cddb2d23f9e67ecc6cfbd1445868f	analysis be undertake use Hennig86	analysis be undertake use hennig86	5	1	0.0002109259649862898	1	\N
+33429778fd5cddb2d23f9e67ecc6cfbd1445868f	Hennig86 whilst at the University	hennig86 whilst at the university	5	1	0.0002109259649862898	1	\N
+33429778fd5cddb2d23f9e67ecc6cfbd1445868f	Hennig86	hennig86	1	1	0.0002109259649862898	1	\N
+3447dbad9f6426ae462641fef749c35e91306475	Hennig86	hennig86	1	1	0.000011525517495735558	1	\N
+364420178dc5ac1c30a239e082639aeae2f01f03	perform with Hennig86	perform with hennig86	3	1	0.00020968756552736424	1	\N
+364420178dc5ac1c30a239e082639aeae2f01f03	analysis be perform with Hennig86	analysis be perform with hennig86	5	1	0.00020968756552736424	1	\N
+364420178dc5ac1c30a239e082639aeae2f01f03	Hennig86	hennig86	1	1	0.00020968756552736424	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	Hennig86	hennig86	1	5	0.0003147623544224111	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	program Hennig86	program hennig86	2	2	0.00012590494176896444	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	Hennig86 analysis	hennig86 analysis	2	3	0.00018885741265344664	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	computer program Hennig86	computer program hennig86	3	2	0.00012590494176896444	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	taxa of the Hennig86	taxa of the hennig86	4	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	Hennig86 analysis be 27	hennig86 analysis be 27	4	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	Hennig86 analysis be carry	hennig86 analysis be carry	4	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	result of the Hennig86	result of the hennig86	4	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	Hennig86 analysis be log	hennig86 analysis be log	4	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	ingroup taxa of the Hennig86	ingroup taxa of the hennig86	5	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	taxa of the Hennig86 analysis	taxa of the hennig86 analysis	5	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	Hennig86 analysis be 27 specie	hennig86 analysis be 27 specie	5	1	0.00006295247088448222	1	\N
+39454a2651e2181a91e93944ba33c60b9dc7b2b3	result of the Hennig86 analysis	result of the hennig86 analysis	5	1	0.00006295247088448222	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86	hennig86	1	4	0.0003247807729782397	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86 version	hennig86 version	2	1	0.00008119519324455992	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86 yield	hennig86 yield	2	2	0.00016239038648911984	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.00008119519324455992	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	PAUP and Hennig86	paup and hennig86	3	2	0.00016239038648911984	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	PAUP and Hennig86 yield	paup and hennig86 yield	4	2	0.00016239038648911984	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86 yield a single	hennig86 yield a single	4	1	0.00008119519324455992	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86 yield three equally	hennig86 yield three equally	4	1	0.00008119519324455992	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86 version 1.5 and PeeWee	hennig86 version 1.5 and peewee	5	1	0.00008119519324455992	1	\N
+3d4a66a21da82a29aa00e167818e0b0f19d1c770	Hennig86 yield three equally parsimonious	hennig86 yield three equally parsimonious	5	1	0.00008119519324455992	1	\N
+345fbc6693fac3ef72df31243c9cb050b5c3296f	perform use Hennig86	perform use hennig86	3	1	0.0001834862385321101	1	\N
+345fbc6693fac3ef72df31243c9cb050b5c3296f	analysis be perform use Hennig86	analysis be perform use hennig86	5	1	0.0001834862385321101	1	\N
+345fbc6693fac3ef72df31243c9cb050b5c3296f	Hennig86	hennig86	1	1	0.0001834862385321101	1	\N
+355399477e6a9720ef3949df80afa2651e6779fe	Hennig86	hennig86	1	3	0.0003587229463111324	1	\N
+355399477e6a9720ef3949df80afa2651e6779fe	like Hennig86	like hennig86	2	1	0.00011957431543704412	1	\N
+355399477e6a9720ef3949df80afa2651e6779fe	Hennig86 's mh*bb	hennig86 's mh*bb	3	1	0.00011957431543704412	1	\N
+355399477e6a9720ef3949df80afa2651e6779fe	command of Hennig86	command of hennig86	3	1	0.00011957431543704412	1	\N
+355399477e6a9720ef3949df80afa2651e6779fe	branch be like Hennig86	branch be like hennig86	4	1	0.00011957431543704412	1	\N
+355399477e6a9720ef3949df80afa2651e6779fe	length branch be like Hennig86	length branch be like hennig86	5	1	0.00011957431543704412	1	\N
+355399477e6a9720ef3949df80afa2651e6779fe	hennig command of Hennig86	hennig command of hennig86	4	1	0.00011957431543704412	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	Hennig86	hennig86	1	3	0.00030753459764223473	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	Hennig86 datum	hennig86 datum	2	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	Hennig86 format	hennig86 format	2	2	0.00020502306509482317	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	Hennig86 datum set	hennig86 datum set	3	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	delta into Hennig86	delta into hennig86	3	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	Hennig86 datum set present	hennig86 datum set present	4	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	delta back to Hennig86	delta back to hennig86	4	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	translate delta into Hennig86	translate delta into hennig86	4	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	delta into Hennig86 format	delta into hennig86 format	4	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	delta back to Hennig86 format	delta back to hennig86 format	5	1	0.00010251153254741159	1	\N
+3b58740fa1fbeb59dc3b159a6a8a090e540872c0	translate delta into Hennig86 format	translate delta into hennig86 format	5	1	0.00010251153254741159	1	\N
+3c549bab4fd9cbc8f940ffdf8737f44a3d585739	generate use Hennig86	generate use hennig86	3	1	0.00006021557174685374	1	\N
+3c549bab4fd9cbc8f940ffdf8737f44a3d585739	cladograrn be generate use Hennig86	cladograrn be generate use hennig86	5	1	0.00006021557174685374	1	\N
+3c549bab4fd9cbc8f940ffdf8737f44a3d585739	Hennig86	hennig86	1	1	0.00006021557174685374	1	\N
+3f5a4cc21e7d48779d36aedcaf093825f6d08e62	matrix use Hennig86	matrix use hennig86	3	1	0.00001874098090294046	1	\N
+3f5a4cc21e7d48779d36aedcaf093825f6d08e62	character matrix use Hennig86	character matrix use hennig86	4	1	0.00001874098090294046	1	\N
+3f5a4cc21e7d48779d36aedcaf093825f6d08e62	Hennig86	hennig86	1	1	0.00001874098090294046	1	\N
+3069b10cf9213084aceff7414e1b5e12802bd59a	Hennig86	hennig86	1	2	0.0003884249368809478	1	\N
+3069b10cf9213084aceff7414e1b5e12802bd59a	lyze use Hennig86	lyze use hennig86	3	1	0.0001942124684404739	1	\N
+3069b10cf9213084aceff7414e1b5e12802bd59a	ana lyze use Hennig86	ana lyze use hennig86	4	1	0.0001942124684404739	1	\N
+316667490d8d9f66d41e55daab34ad1898cd28d6	construct with Hennig86	construct with hennig86	3	1	0.0001722356183258698	1	\N
+316667490d8d9f66d41e55daab34ad1898cd28d6	Hennig86	hennig86	1	1	0.0001722356183258698	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86	hennig86	1	10	0.0013175230566534915	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	calculate by Hennig86	calculate by hennig86	3	2	0.00026350461133069827	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86 and cladogram	hennig86 and cladogram	3	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	filter with Hennig86	filter with hennig86	3	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86 or NONA	hennig86 or nona	3	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	check with Hennig86	check with hennig86	3	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	place of Hennig86	place of hennig86	3	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86 in procedure	hennig86 in procedure	3	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Cladograms calculate by Hennig86	cladograms calculate by hennig86	4	2	0.00026350461133069827	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86 can be read	hennig86 can be read	4	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	read back into Hennig86	read back into hennig86	4	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86 and cladogram length	hennig86 and cladogram length	4	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	matrix two with Hennig86	matrix two with hennig86	4	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86 and cladogram length calculate	hennig86 and cladogram length calculate	5	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	calculate by Hennig86 or NONA	calculate by hennig86 or nona	5	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	Hennig86 or NONA be save	hennig86 or nona be save	5	1	0.00013175230566534913	1	\N
+3169480892a3acd7f8b1004b15b89637d1141f28	place of Hennig86 in procedure	place of hennig86 in procedure	5	1	0.00013175230566534913	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	software Hennig86	software hennig86	2	1	0.0004510599909788002	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	Hennig86 yield	hennig86 yield	2	1	0.0004510599909788002	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	analysis with Hennig86	analysis with hennig86	3	1	0.0004510599909788002	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	undertake with software Hennig86	undertake with software hennig86	4	1	0.0004510599909788002	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	analysis with Hennig86 yield	analysis with hennig86 yield	4	1	0.0004510599909788002	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	Hennig86 yield two cladogram	hennig86 yield two cladogram	4	1	0.0004510599909788002	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	discussion the analysis with Hennig86	discussion the analysis with hennig86	5	1	0.0004510599909788002	1	\N
+3b681e6e8e92f667dc043d899a933d5542f2e9ab	Hennig86	hennig86	1	2	0.0009021199819576004	1	\N
+3d67f37fb4b0862b128c8a3fc1aad98a1262d803	Hennig86	hennig86	1	1	0.00005845218611176058	1	\N
+3d67f37fb4b0862b128c8a3fc1aad98a1262d803	program Hennig86	program hennig86	2	1	0.00005845218611176058	1	\N
+3d67f37fb4b0862b128c8a3fc1aad98a1262d803	computer program Hennig86	computer program hennig86	3	1	0.00005845218611176058	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	Hennig86 provide	hennig86 provide	2	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	option of Hennig86	option of hennig86	3	2	0.0003147128245476003	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	enumeration option of Hennig86	enumeration option of hennig86	4	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	weight option of Hennig86	weight option of hennig86	4	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	option of Hennig86 provide	option of hennig86 provide	4	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	Hennig86 provide no basis	hennig86 provide no basis	4	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	implicit enumeration option of Hennig86	implicit enumeration option of hennig86	5	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	approximation weight option of Hennig86	approximation weight option of hennig86	5	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	weight option of Hennig86 provide	weight option of hennig86 provide	5	1	0.00015735641227380016	1	\N
+307fe72f2113e8ff2d6add1f9f1595f92ed52f8c	Hennig86	hennig86	1	2	0.0003147128245476003	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86	hennig86	1	10	0.00025608194622279127	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 result	hennig86 result	2	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 toe	hennig86 toe	2	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	analyse with Hennig86	analyse with hennig86	3	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 to find	hennig86 to find	3	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	matrix with Hennig86	matrix with hennig86	3	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	PAUP or Hennig86	paup or hennig86	3	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	paup or Hennig86	paup or hennig86	3	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	PAUP of Hennig86	paup of hennig86	3	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 toe te	hennig86 toe te	3	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	data matrix with Hennig86	data matrix with hennig86	4	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	matrix with Hennig86 result	matrix with hennig86 result	4	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	i.e. paup or Hennig86	i.e. paup or hennig86	4	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	PAUP of Hennig86 toe	paup of hennig86 toe	4	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 toe te passen	hennig86 toe te passen	4	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	matrix be analyse with Hennig86	matrix be analyse with hennig86	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	analyse with Hennig86 to find	analyse with hennig86 to find	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 to find most parsimonious	hennig86 to find most parsimonious	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	data matrix with Hennig86 result	data matrix with hennig86 result	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 result in a single	hennig86 result in a single	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	paup but not in Hennig86	paup but not in hennig86	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	application of PAUP or Hennig86	application of paup or hennig86	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	geïmplementeerd in PAUP of Hennig86	geïmplementeerd in paup of hennig86	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	PAUP of Hennig86 toe te	paup of hennig86 toe te	5	1	0.000025608194622279128	1	\N
+3278704e43b879fbab7aa9ef6bd1656269a48b12	Hennig86 toe te passen op	hennig86 toe te passen op	5	1	0.000025608194622279128	1	\N
+33706a0620037c96850d6a36aebfbc9faada5660	program Hennig86	program hennig86	2	1	0.00008448086508405846	1	\N
+33706a0620037c96850d6a36aebfbc9faada5660	computer program Hennig86	computer program hennig86	3	1	0.00008448086508405846	1	\N
+33706a0620037c96850d6a36aebfbc9faada5660	help of computer program Hennig86	help of computer program hennig86	5	1	0.00008448086508405846	1	\N
+33706a0620037c96850d6a36aebfbc9faada5660	Hennig86	hennig86	1	1	0.00008448086508405846	1	\N
+33701e4786d09f0bf33afb23bfeb5712b8b848af	Hennig86 format	hennig86 format	2	1	0.00012998830105290525	1	\N
+33701e4786d09f0bf33afb23bfeb5712b8b848af	Hennig86 file	hennig86 file	2	1	0.00012998830105290525	1	\N
+33701e4786d09f0bf33afb23bfeb5712b8b848af	generate in the Hennig86	generate in the hennig86	4	1	0.00012998830105290525	1	\N
+33701e4786d09f0bf33afb23bfeb5712b8b848af	Hennig86 file be read	hennig86 file be read	4	1	0.00012998830105290525	1	\N
+33701e4786d09f0bf33afb23bfeb5712b8b848af	generate in the Hennig86 format	generate in the hennig86 format	5	1	0.00012998830105290525	1	\N
+33701e4786d09f0bf33afb23bfeb5712b8b848af	Hennig86	hennig86	1	2	0.0002599766021058105	1	\N
+3a7439602638fb51e5724085e379ed430be2d778	Hennig86	hennig86	1	2	0.00023446658851113716	1	\N
+3a7439602638fb51e5724085e379ed430be2d778	Hennig86 version	hennig86 version	2	1	0.00011723329425556858	1	\N
+3a7439602638fb51e5724085e379ed430be2d778	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.00011723329425556858	1	\N
+3a7439602638fb51e5724085e379ed430be2d778	enumeration with Hennig86	enumeration with hennig86	3	1	0.00011723329425556858	1	\N
+3a7439602638fb51e5724085e379ed430be2d778	implicit enumeration with Hennig86	implicit enumeration with hennig86	4	1	0.00011723329425556858	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	Hennig86 phylogenetic	hennig86 phylogenetic	2	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	Hennig86 documentation	hennig86 documentation	2	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	Hennig86 phylogenetic analysis	hennig86 phylogenetic analysis	3	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	PAUP or Hennig86	paup or hennig86	3	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	cladogram by -PRON- Hennig86	cladogram by -pron- hennig86	4	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	Hennig86 phylogenetic analysis program	hennig86 phylogenetic analysis program	4	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	describe in the Hennig86	describe in the hennig86	4	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	cladogram by -PRON- Hennig86 phylogenetic	cladogram by -pron- hennig86 phylogenetic	5	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	describe in the Hennig86 documentation	describe in the hennig86 documentation	5	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	require by PAUP or Hennig86	require by paup or hennig86	5	1	0.00022737608003638017	1	\N
+3c7fcf7d5a519417c28a968c302081740e611164	Hennig86	hennig86	1	3	0.0006821282401091405	1	\N
+358cc5904646e0e5c59b453634643f915ad710d6	Hennig86	hennig86	1	1	0.0008389261744966443	1	\N
+398a4b1469a2a4fc5b7b35b32a1c18091ac2a9db	Hennig86	hennig86	1	1	0.000046893317702227434	1	\N
+398a4b1469a2a4fc5b7b35b32a1c18091ac2a9db	Hennig86 and NEXUS	hennig86 and nexus	3	1	0.000046893317702227434	1	\N
+3b88fd980ce4d29d0fab822033caef4a4a8906be	Hennig86	hennig86	1	1	0.00013723068478111705	1	\N
+3b88fd980ce4d29d0fab822033caef4a4a8906be	program Hennig86	program hennig86	2	1	0.00013723068478111705	1	\N
+3b88fd980ce4d29d0fab822033caef4a4a8906be	Hennig86 result	hennig86 result	2	1	0.00013723068478111705	1	\N
+3b88fd980ce4d29d0fab822033caef4a4a8906be	program Hennig86 result	program hennig86 result	3	1	0.00013723068478111705	1	\N
+3d8a3e75a676acb1abe81b2e4124b899c5290ccc	Hennig86 program	hennig86 program	2	1	0.00023747328425552126	1	\N
+3d8a3e75a676acb1abe81b2e4124b899c5290ccc	generate by the Hennig86	generate by the hennig86	4	1	0.00023747328425552126	1	\N
+3d8a3e75a676acb1abe81b2e4124b899c5290ccc	generate by the Hennig86 program	generate by the hennig86 program	5	1	0.00023747328425552126	1	\N
+3d8a3e75a676acb1abe81b2e4124b899c5290ccc	Hennig86	hennig86	1	1	0.00023747328425552126	1	\N
+3199b082faa940113b7a80d46184758cdafbac7d	search with Hennig86	search with hennig86	3	1	0.00012851818532322323	1	\N
+3199b082faa940113b7a80d46184758cdafbac7d	exhaustive search with Hennig86	exhaustive search with hennig86	4	1	0.00012851818532322323	1	\N
+3199b082faa940113b7a80d46184758cdafbac7d	Hennig86	hennig86	1	1	0.00012851818532322323	1	\N
+3399e99bfb96543f77ff0a81e321ee1bf463d292	1 with Hennig86	1 with hennig86	3	1	0.00013974287311347122	1	\N
+3399e99bfb96543f77ff0a81e321ee1bf463d292	table 1 with Hennig86	table 1 with hennig86	4	1	0.00013974287311347122	1	\N
+3399e99bfb96543f77ff0a81e321ee1bf463d292	1991 table 1 with Hennig86	1991 table 1 with hennig86	5	1	0.00013974287311347122	1	\N
+3399e99bfb96543f77ff0a81e321ee1bf463d292	Hennig86	hennig86	1	1	0.00013974287311347122	1	\N
+369cd12870ed415b89affca36180308577e3b70c	Hennig86	hennig86	1	2	0.00013632335900756593	1	\N
+369cd12870ed415b89affca36180308577e3b70c	Hennig86 with the command	hennig86 with the command	4	1	0.00006816167950378297	1	\N
+369cd12870ed415b89affca36180308577e3b70c	Hennig86 with the command mh	hennig86 with the command mh	5	1	0.00006816167950378297	1	\N
+3c968553aa3e2a42e1c11034b730eb0b9a7abc88	Hennig86	hennig86	1	2	0.00018547713994250208	1	\N
+3c968553aa3e2a42e1c11034b730eb0b9a7abc88	Hennig86 calculate	hennig86 calculate	2	1	0.00009273856997125104	1	\N
+3c968553aa3e2a42e1c11034b730eb0b9a7abc88	mean of Hennig86	mean of hennig86	3	1	0.00009273856997125104	1	\N
+3c968553aa3e2a42e1c11034b730eb0b9a7abc88	Hennig86 calculate nine equally	hennig86 calculate nine equally	4	1	0.00009273856997125104	1	\N
+3c968553aa3e2a42e1c11034b730eb0b9a7abc88	Hennig86 calculate nine equally parsimonious	hennig86 calculate nine equally parsimonious	5	1	0.00009273856997125104	1	\N
+3e9e6d7c048a4ce865901373f3baf3d6a117e6ed	Hennig86	hennig86	1	1	0.00008757334267448988	1	\N
+3e9e6d7c048a4ce865901373f3baf3d6a117e6ed	Hennig86 of 68	hennig86 of 68	3	1	0.00008757334267448988	1	\N
+3e9e6d7c048a4ce865901373f3baf3d6a117e6ed	Hennig86 of 68 per cent	hennig86 of 68 per cent	5	1	0.00008757334267448988	1	\N
+31ad6d8abe4bc0f5708538f646b8ebe6d18d4ab9	option in Hennig86	option in hennig86	3	1	0.00013798813302056022	1	\N
+31ad6d8abe4bc0f5708538f646b8ebe6d18d4ab9	Hennig86	hennig86	1	1	0.00013798813302056022	1	\N
+33ad2f36e694db445cf1012ce592d782f2a90534	Hennig86	hennig86	1	2	0.0003322259136212625	1	\N
+33ad2f36e694db445cf1012ce592d782f2a90534	program Hennig86	program hennig86	2	1	0.00016611295681063124	1	\N
+33ad2f36e694db445cf1012ce592d782f2a90534	computer program Hennig86	computer program hennig86	3	1	0.00016611295681063124	1	\N
+33ad2f36e694db445cf1012ce592d782f2a90534	Hennig86 and the ACCTRAN	hennig86 and the acctran	4	1	0.00016611295681063124	1	\N
+33ad2f36e694db445cf1012ce592d782f2a90534	Hennig86 and the ACCTRAN optimization	hennig86 and the acctran optimization	5	1	0.00016611295681063124	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	software Hennig86	software hennig86	2	1	0.0004730368968779565	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	Hennig86 yield	hennig86 yield	2	1	0.0004730368968779565	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	analysis with Hennig86	analysis with hennig86	3	1	0.0004730368968779565	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	undertake with software Hennig86	undertake with software hennig86	4	1	0.0004730368968779565	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	analysis with Hennig86 yield	analysis with hennig86 yield	4	1	0.0004730368968779565	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	Hennig86 yield two cladogram	hennig86 yield two cladogram	4	1	0.0004730368968779565	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	discussion the analysis with Hennig86	discussion the analysis with hennig86	5	1	0.0004730368968779565	1	\N
+34a82c04b5317aa0e547804790d7cead14762679	Hennig86	hennig86	1	2	0.000946073793755913	1	\N
+36abf78553c4cb355538e1bb06242d0b666fc202	Hennig86	hennig86	1	3	0.00020013342228152102	1	\N
+36abf78553c4cb355538e1bb06242d0b666fc202	option of Hennig86	option of hennig86	3	1	0.000066711140760507	1	\N
+36abf78553c4cb355538e1bb06242d0b666fc202	search option of Hennig86	search option of hennig86	4	1	0.000066711140760507	1	\N
+36abf78553c4cb355538e1bb06242d0b666fc202	Hennig86 with no upper	hennig86 with no upper	4	1	0.000066711140760507	1	\N
+36abf78553c4cb355538e1bb06242d0b666fc202	enumeration search option of Hennig86	enumeration search option of hennig86	5	1	0.000066711140760507	1	\N
+36abf78553c4cb355538e1bb06242d0b666fc202	Hennig86 with no upper boundary	hennig86 with no upper boundary	5	1	0.000066711140760507	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86	hennig86	1	19	0.0005241090146750524	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 format	hennig86 format	2	8	0.00022067747986317997	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 file	hennig86 file	2	4	0.00011033873993158998	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 example	hennig86 example	2	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	produce Hennig86	produce hennig86	2	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	matrix in Hennig86	matrix in hennig86	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datum in Hennig86	datum in hennig86	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 and Nexus	hennig86 and nexus	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Newick and Hennig86	newick and hennig86	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	read the Hennig86	read the hennig86	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 file hennig1.ss	hennig86 file hennig1.ss	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	suitable for Hennig86	suitable for hennig86	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	produce Hennig86 file	produce hennig86 file	3	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	morph.ss in Hennig86	morph.ss in hennig86	3	2	0.00005516936996579499	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datum matrix in Hennig86	datum matrix in hennig86	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	matrix in Hennig86 format	matrix in hennig86 format	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	morphological datum in Hennig86	morphological datum in hennig86	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 and Nexus format	hennig86 and nexus format	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	include Newick and Hennig86	include newick and hennig86	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	file in the Hennig86	file in the hennig86	4	3	0.00008275405494869249	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	read the Hennig86 file	read the hennig86 file	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 example in tutorial	hennig86 example in tutorial	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 format that contain	hennig86 format that contain	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	alignment as a Hennig86	alignment as a hennig86	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datafile morph.ss in Hennig86	datafile morph.ss in hennig86	4	2	0.00005516936996579499	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	morph.ss in Hennig86 format	morph.ss in hennig86 format	4	2	0.00005516936996579499	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datum in the Hennig86	datum in the hennig86	4	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	morphological datum matrix in Hennig86	morphological datum matrix in hennig86	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datum matrix in Hennig86 format	datum matrix in hennig86 format	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datum in Hennig86 and Nexus	datum in hennig86 and nexus	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	format include Newick and Hennig86	format include newick and hennig86	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	output file in the Hennig86	output file in the hennig86	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	file in the Hennig86 format	file in the hennig86 format	5	3	0.00008275405494869249	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 format can be generate	hennig86 format can be generate	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	read the Hennig86 file hennig1.ss	read the hennig86 file hennig1.ss	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	format be suitable for Hennig86	format be suitable for hennig86	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 example in tutorial 4.2	hennig86 example in tutorial 4.2	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	implied alignment as a Hennig86	implied alignment as a hennig86	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	alignment as a Hennig86 file	alignment as a hennig86 file	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	Hennig86 file only for fragment	hennig86 file only for fragment	5	1	0.000027584684982897496	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	morphological datafile morph.ss in Hennig86	morphological datafile morph.ss in hennig86	5	2	0.00005516936996579499	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datafile morph.ss in Hennig86 format	datafile morph.ss in hennig86 format	5	2	0.00005516936996579499	1	\N
+3bad1c0f3b983ab81ddff3f5e90e687310269d16	datum in the Hennig86 format	datum in the hennig86 format	5	1	0.000027584684982897496	1	\N
+33b4b9fe39932cbc3d1dfea36399cd3391cfd7c0	Hennig86	hennig86	1	1	0.000050632911392405066	1	\N
+33b4b9fe39932cbc3d1dfea36399cd3391cfd7c0	interface of the Hennig86	interface of the hennig86	4	1	0.000050632911392405066	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86	hennig86	1	13	0.000518341307814992	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 version	hennig86 version	2	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 tree	hennig86 tree	2	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 apply	hennig86 apply	2	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 find	hennig86 find	2	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	feature of Hennig86	feature of hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	slow than Hennig86	slow than hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	output by Hennig86	output by hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 and PAUP	hennig86 and paup	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	option the Hennig86	option the hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 tree buffer	hennig86 tree buffer	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 would ha\\'e	hennig86 would ha\\'e	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	ability of Hennig86	ability of hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	swapper of Hennig86	swapper of hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	routine in Hennig86	routine in hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	PAUP and Hennig86	paup and hennig86	3	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	analysis -PRON- use Hennig86	analysis -pron- use hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	irreplaceable feature of Hennig86	irreplaceable feature of hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 be -PRON- tolerance	hennig86 be -pron- tolerance	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	slightly slow than Hennig86	slightly slow than hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	treefile output by Hennig86	treefile output by hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	search option the Hennig86	search option the hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	option the Hennig86 tree	option the hennig86 tree	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 tree buffer overflow	hennig86 tree buffer overflow	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 would ha\\'e find	hennig86 would ha\\'e find	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	find ability of Hennig86	find ability of hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 alone be severely	hennig86 alone be severely	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	branch swapper of Hennig86	branch swapper of hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	swapper of Hennig86 apply	swapper of hennig86 apply	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	search routine in Hennig86	search routine in hennig86	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	routine in Hennig86 find	routine in hennig86 find	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 find these tree	hennig86 find these tree	4	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	analysis -PRON- use Hennig86 version	analysis -pron- use hennig86 version	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 be now the old	hennig86 be now the old	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 be often an essential	hennig86 be often an essential	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	output by Hennig86 and PAUP	output by hennig86 and paup	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 and PAUP be interpret	hennig86 and paup be interpret	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	search option the Hennig86 tree	search option the hennig86 tree	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	option the Hennig86 tree buffer	option the hennig86 tree buffer	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 alone be severely tax	hennig86 alone be severely tax	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	branch swapper of Hennig86 apply	branch swapper of hennig86 apply	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	Hennig86 apply to the PAUP	hennig86 apply to the paup	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	search routine in Hennig86 find	search routine in hennig86 find	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	find by PAUP and Hennig86	find by paup and hennig86	5	1	0.000039872408293460924	1	\N
+33bd04e11656366897c0f5f5651541d4f046e669	PAUP / Hennig86	paup / hennig86	3	1	0.000039872408293460924	1	\N
+33beb1dbfeafb2019a2197ab618b874c1ac67791	Hennig86	hennig86	1	2	0.0006561679790026247	1	\N
+33beb1dbfeafb2019a2197ab618b874c1ac67791	Hennig86 produce	hennig86 produce	2	1	0.00032808398950131233	1	\N
+33beb1dbfeafb2019a2197ab618b874c1ac67791	option of Hennig86	option of hennig86	3	1	0.00032808398950131233	1	\N
+33beb1dbfeafb2019a2197ab618b874c1ac67791	enumeration option of Hennig86	enumeration option of hennig86	4	1	0.00032808398950131233	1	\N
+33beb1dbfeafb2019a2197ab618b874c1ac67791	Hennig86 produce three cladogram	hennig86 produce three cladogram	4	1	0.00032808398950131233	1	\N
+33beb1dbfeafb2019a2197ab618b874c1ac67791	implicit enumeration option of Hennig86	implicit enumeration option of hennig86	5	1	0.00032808398950131233	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86	hennig86	1	7	0.0009765625	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	program Hennig86	program hennig86	2	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 calculate	hennig86 calculate	2	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 command	hennig86 command	2	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	computer program Hennig86	computer program hennig86	3	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	0 in Hennig86	0 in hennig86	3	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	command in Hennig86	command in hennig86	3	2	0.00027901785714285713	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 command ie	hennig86 command ie	3	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	function of Hennig86	function of hennig86	3	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	w command in Hennig86	w command in hennig86	4	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	command in Hennig86 calculate	command in hennig86 calculate	4	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 calculate each character	hennig86 calculate each character	4	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 do not allow	hennig86 do not allow	4	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	weight function of Hennig86	weight function of hennig86	4	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 be of great	hennig86 be of great	4	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	10 to 0 in Hennig86	10 to 0 in hennig86	5	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	xsteps w command in Hennig86	xsteps w command in hennig86	5	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	w command in Hennig86 calculate	w command in hennig86 calculate	5	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 do not allow polymorphism	hennig86 do not allow polymorphism	5	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	approximation weight function of Hennig86	approximation weight function of hennig86	5	1	0.00013950892857142856	1	\N
+38b57493d3b5f9de90ba978413964f19bb11514c	Hennig86 be of great utility	hennig86 be of great utility	5	1	0.00013950892857142856	1	\N
+3bbff359b0325fd40d9e6013acba5aa232515a5c	Hennig86	hennig86	1	2	0.0012836970474967907	1	\N
+3bbff359b0325fd40d9e6013acba5aa232515a5c	procedure in Hennig86	procedure in hennig86	3	1	0.0006418485237483953	1	\N
+3bbff359b0325fd40d9e6013acba5aa232515a5c	obtain use the Hennig86	obtain use the hennig86	4	1	0.0006418485237483953	1	\N
+3bbff359b0325fd40d9e6013acba5aa232515a5c	weighting procedure in Hennig86	weighting procedure in hennig86	4	1	0.0006418485237483953	1	\N
+3bbff359b0325fd40d9e6013acba5aa232515a5c	approximation weighting procedure in Hennig86	approximation weighting procedure in hennig86	5	1	0.0006418485237483953	1	\N
+3cbd0b44ab9238d1116ccf78d3bc73b29a787fce	Hennig86	hennig86	1	1	0.00002195437880085183	1	\N
+33cb2ea7bebc9ef9b581548d37183cb4b067a53b	carry out with Hennig86	carry out with hennig86	4	1	0.00036258158085569254	1	\N
+33cb2ea7bebc9ef9b581548d37183cb4b067a53b	Hennig86	hennig86	1	1	0.00036258158085569254	1	\N
+34c0fb0fe1bfff0ac83bb9774889b5ee2a9bf17c	program such as Hennig86	program such as hennig86	4	1	0.00019190174630589137	1	\N
+34c0fb0fe1bfff0ac83bb9774889b5ee2a9bf17c	Hennig86	hennig86	1	1	0.00019190174630589137	1	\N
+35c6b7a5b8f48718bca1ddeba76028afac7a5499	Hennig86	hennig86	1	1	0.00034626038781163435	1	\N
+35c6b7a5b8f48718bca1ddeba76028afac7a5499	Hennig86 1.5	hennig86 1.5	2	1	0.00034626038781163435	1	\N
+35c6b7a5b8f48718bca1ddeba76028afac7a5499	analysis be make use Hennig86	analysis be make use hennig86	5	1	0.00034626038781163435	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	Hennig86	hennig86	1	2	0.0003473428273706148	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	Hennig86 package	hennig86 package	2	1	0.0001736714136853074	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	Hennig86 produce	hennig86 produce	2	1	0.0001736714136853074	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	option from Hennig86	option from hennig86	3	1	0.0001736714136853074	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	option from Hennig86 produce	option from hennig86 produce	4	1	0.0001736714136853074	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	Hennig86 produce eight tree	hennig86 produce eight tree	4	1	0.0001736714136853074	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	algorithm in the Hennig86	algorithm in the hennig86	4	1	0.0001736714136853074	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	computer algorithm in the Hennig86	computer algorithm in the hennig86	5	1	0.0001736714136853074	1	\N
+37c90c81a1e01f6844c7a556dde53a376da67409	algorithm in the Hennig86 package	algorithm in the hennig86 package	5	1	0.0001736714136853074	1	\N
+3ac795dda450b244e0ef040912794f54663daf4c	Hennig86	hennig86	1	2	0.00013344008540165466	1	\N
+3ac795dda450b244e0ef040912794f54663daf4c	Hennig86 and PAUP	hennig86 and paup	3	1	0.00006672004270082733	1	\N
+3ac795dda450b244e0ef040912794f54663daf4c	program such as Hennig86	program such as hennig86	4	1	0.00006672004270082733	1	\N
+3ac795dda450b244e0ef040912794f54663daf4c	parsimony program such as Hennig86	parsimony program such as hennig86	5	1	0.00006672004270082733	1	\N
+3cc016df9897125e072e3a648973003461c7b567	program such as Hennig86	program such as hennig86	4	1	0.00015984654731457802	1	\N
+3cc016df9897125e072e3a648973003461c7b567	parsimony program such as Hennig86	parsimony program such as hennig86	5	1	0.00015984654731457802	1	\N
+3cc016df9897125e072e3a648973003461c7b567	Hennig86	hennig86	1	1	0.00015984654731457802	1	\N
+3cc9c080221e366fffe7ce88d4aa1793e5824c8f	Hennig86 phylogenetic	hennig86 phylogenetic	2	1	0.00004911591355599214	1	\N
+3cc9c080221e366fffe7ce88d4aa1793e5824c8f	Hennig86 phylogenetic program	hennig86 phylogenetic program	3	1	0.00004911591355599214	1	\N
+3cc9c080221e366fffe7ce88d4aa1793e5824c8f	command of the Hennig86	command of the hennig86	4	1	0.00004911591355599214	1	\N
+3cc9c080221e366fffe7ce88d4aa1793e5824c8f	command of the Hennig86 phylogenetic	command of the hennig86 phylogenetic	5	1	0.00004911591355599214	1	\N
+3cc9c080221e366fffe7ce88d4aa1793e5824c8f	Hennig86	hennig86	1	1	0.00004911591355599214	1	\N
+31da8975f68b472a33105e6d9e1878911c2ed0b5	Hennig86 and Phylip	hennig86 and phylip	3	1	0.0002678093197643278	1	\N
+31da8975f68b472a33105e6d9e1878911c2ed0b5	generation use the Hennig86	generation use the hennig86	4	1	0.0002678093197643278	1	\N
+31da8975f68b472a33105e6d9e1878911c2ed0b5	Hennig86 and Phylip software	hennig86 and phylip software	4	1	0.0002678093197643278	1	\N
+31da8975f68b472a33105e6d9e1878911c2ed0b5	Cladogram generation use the Hennig86	cladogram generation use the hennig86	5	1	0.0002678093197643278	1	\N
+31da8975f68b472a33105e6d9e1878911c2ed0b5	Hennig86	hennig86	1	1	0.0002678093197643278	1	\N
+33de82783ec3f5ccf59e1c8b02a5a138ad638b74	Hennig86 software	hennig86 software	2	1	0.0003929273084479371	1	\N
+33de82783ec3f5ccf59e1c8b02a5a138ad638b74	analyze with Hennig86	analyze with hennig86	3	1	0.0003929273084479371	1	\N
+33de82783ec3f5ccf59e1c8b02a5a138ad638b74	analyze with Hennig86 software	analyze with hennig86 software	4	1	0.0003929273084479371	1	\N
+33de82783ec3f5ccf59e1c8b02a5a138ad638b74	Hennig86	hennig86	1	1	0.0003929273084479371	1	\N
+34ddef8af9cbc4b417acbc3c7fc1ed2fec6eeaf2	Hennig86	hennig86	1	1	0.00032216494845360824	1	\N
+35da52cec58b21dc4ea2b4bd20bb41c60a83dc96	Hennig86 option	hennig86 option	2	1	0.00022331397945511388	1	\N
+35da52cec58b21dc4ea2b4bd20bb41c60a83dc96	parsimony use Hennig86	parsimony use hennig86	3	1	0.00022331397945511388	1	\N
+35da52cec58b21dc4ea2b4bd20bb41c60a83dc96	analyse under parsimony use Hennig86	analyse under parsimony use hennig86	5	1	0.00022331397945511388	1	\N
+35da52cec58b21dc4ea2b4bd20bb41c60a83dc96	Hennig86	hennig86	1	2	0.00044662795891022776	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	Hennig86	hennig86	1	4	0.0002853677677106371	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	Hennig86 Ver	hennig86 ver	2	1	0.00007134194192765928	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	obtain with Hennig86	obtain with hennig86	3	1	0.00007134194192765928	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	Hennig86 and NONA	hennig86 and nona	3	1	0.00007134194192765928	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	explore with Hennig86	explore with hennig86	3	1	0.00007134194192765928	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	tree obtain with Hennig86	tree obtain with hennig86	4	1	0.00007134194192765928	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	obtain with Hennig86 and NONA	obtain with hennig86 and nona	5	1	0.00007134194192765928	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	Hennig86 and NONA be submit	hennig86 and nona be submit	5	1	0.00007134194192765928	1	\N
+36d2054f29dced549cefb470004480de9ec3fa86	weighting be explore with Hennig86	weighting be explore with hennig86	5	1	0.00007134194192765928	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	Hennig86	hennig86	1	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	gram Hennig86	gram hennig86	2	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	Hennig86 version	hennig86 version	2	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	pro- gram Hennig86	pro- gram hennig86	3	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	gram Hennig86 version	gram hennig86 version	3	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	phylogenetic pro- gram Hennig86	phylogenetic pro- gram hennig86	4	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	pro- gram Hennig86 version	pro- gram hennig86 version	4	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	gram Hennig86 version 1.5	gram hennig86 version 1.5	4	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	phylogenetic pro- gram Hennig86 version	phylogenetic pro- gram hennig86 version	5	1	0.00011294330246216399	1	\N
+37d474d11ab8d203b7a6facf0bf1f604a176a081	pro- gram Hennig86 version 1.5	pro- gram hennig86 version 1.5	5	1	0.00011294330246216399	1	\N
+38ded4000a5b812ef143ad5ddd1e3ae06303305b	Hennig86	hennig86	1	1	0.00021781746896101068	1	\N
+38ded4000a5b812ef143ad5ddd1e3ae06303305b	program Hennig86	program hennig86	2	1	0.00021781746896101068	1	\N
+3bd8561f9a89591aa2b3b2aece4e28b3e3edb35e	Hennig86	hennig86	1	1	0.00009690861517588914	1	\N
+3bd8561f9a89591aa2b3b2aece4e28b3e3edb35e	program Hennig86	program hennig86	2	1	0.00009690861517588914	1	\N
+3bd8561f9a89591aa2b3b2aece4e28b3e3edb35e	Hennig86 or Nona	hennig86 or nona	3	1	0.00009690861517588914	1	\N
+3bd8561f9a89591aa2b3b2aece4e28b3e3edb35e	program Hennig86 or Nona	program hennig86 or nona	4	1	0.00009690861517588914	1	\N
+3cddc4c4a2902a4e6c957ea709c241c544f5181b	Hennig86	hennig86	1	1	0.00011275228323373548	1	\N
+35ef22dda5b115be9a7fc5da2adfa31c648130a1	Hennig86 program	hennig86 program	2	1	0.0003663003663003663	1	\N
+35ef22dda5b115be9a7fc5da2adfa31c648130a1	routine in the Hennig86	routine in the hennig86	4	1	0.0003663003663003663	1	\N
+35ef22dda5b115be9a7fc5da2adfa31c648130a1	routine in the Hennig86 program	routine in the hennig86 program	5	1	0.0003663003663003663	1	\N
+35ef22dda5b115be9a7fc5da2adfa31c648130a1	Hennig86	hennig86	1	1	0.0003663003663003663	1	\N
+37e4073c9d627c199cbac43a4ab153f819f30c8d	execute on Hennig86	execute on hennig86	3	1	0.0006693440428380187	1	\N
+37e4073c9d627c199cbac43a4ab153f819f30c8d	reanalysis be execute on Hennig86	reanalysis be execute on hennig86	5	1	0.0006693440428380187	1	\N
+37e4073c9d627c199cbac43a4ab153f819f30c8d	Hennig86	hennig86	1	1	0.0006693440428380187	1	\N
+38ee0981518ffecdc1a7676ed6caf6b7e1edf4fa	Nona and Hennig86	nona and hennig86	3	1	0.00012393109431156277	1	\N
+38ee0981518ffecdc1a7676ed6caf6b7e1edf4fa	program Nona and Hennig86	program nona and hennig86	4	1	0.00012393109431156277	1	\N
+38ee0981518ffecdc1a7676ed6caf6b7e1edf4fa	Hennig86	hennig86	1	2	0.00024786218862312553	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	Hennig86	hennig86	1	4	0.00022740193291642978	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	run Hennig86	run hennig86	2	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	treat by Hennig86	treat by hennig86	3	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	Hennig86 as ancestral	hennig86 as ancestral	3	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	Hennig86 also treat	hennig86 also treat	3	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	Hennig86 use the first taxon	hennig86 use the first taxon	5	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	group be treat by Hennig86	group be treat by hennig86	5	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	treat by Hennig86 as ancestral	treat by hennig86 as ancestral	5	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	Hennig86 as ancestral to Jaydia	hennig86 as ancestral to jaydia	5	1	0.000056850483229107444	1	\N
+3be2be3f604c69be3c43d8c41576abf63d64b7cc	Hennig86 also treat the position	hennig86 also treat the position	5	1	0.000056850483229107444	1	\N
+3eed9d51e1c21138fbb41f6e4650c4d547076d74	Hennig86	hennig86	1	4	0.00011223974409338346	1	\N
+3eed9d51e1c21138fbb41f6e4650c4d547076d74	Hennig86 start	hennig86 start	2	1	0.000028059936023345865	1	\N
+3eed9d51e1c21138fbb41f6e4650c4d547076d74	PAUP and Hennig86	paup and hennig86	3	1	0.000028059936023345865	1	\N
+3eed9d51e1c21138fbb41f6e4650c4d547076d74	PAUP and Hennig86 start	paup and hennig86 start	4	1	0.000028059936023345865	1	\N
+3eed9d51e1c21138fbb41f6e4650c4d547076d74	Hennig86 start from the parsimony	hennig86 start from the parsimony	5	1	0.000028059936023345865	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	Hennig86	hennig86	1	2	0.00014792899408284024	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	base Hennig86	base hennig86	2	1	0.00007396449704142012	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	base on Hennig86	base on hennig86	3	1	0.00007396449704142012	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	Winclada base Hennig86	winclada base hennig86	3	1	0.00007396449704142012	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	Hennig86 use 12character	hennig86 use 12character	3	1	0.00007396449704142012	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	Winclada base on Hennig86	winclada base on hennig86	4	1	0.00007396449704142012	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	base Hennig86 use 12character	base hennig86 use 12character	4	1	0.00007396449704142012	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	generate by Winclada base Hennig86	generate by winclada base hennig86	5	1	0.00007396449704142012	1	\N
+32f30a112f06a1b7580b7fdb3b6c2c6ef200cce6	Winclada base Hennig86 use 12character	winclada base hennig86 use 12character	5	1	0.00007396449704142012	1	\N
+35f56ea413326b3e4c0bb9b2ab300e9bc9682fc2	Hennig86	hennig86	1	2	0.00004505316273202379	1	\N
+35f56ea413326b3e4c0bb9b2ab300e9bc9682fc2	w in Hennig86	w in hennig86	3	1	0.000022526581366011895	1	\N
+35f56ea413326b3e4c0bb9b2ab300e9bc9682fc2	xs w in Hennig86	xs w in hennig86	4	1	0.000022526581366011895	1	\N
+3aff49df0482ad3c59230757cbe26f7fd2652cfa	Hennig86	hennig86	1	1	0.0003654970760233918	1	\N
+3df3fa3b4913550dcf486682b0efd38924ffcd9c	Hennig86	hennig86	1	1	0.00038299502106472615	1	\N
+3df3fa3b4913550dcf486682b0efd38924ffcd9c	Hennig86 version	hennig86 version	2	1	0.00038299502106472615	1	\N
+3df3fa3b4913550dcf486682b0efd38924ffcd9c	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.00038299502106472615	1	\N
+3df3fa3b4913550dcf486682b0efd38924ffcd9c	carry out with Hennig86	carry out with hennig86	4	1	0.00038299502106472615	1	\N
+3df3fa3b4913550dcf486682b0efd38924ffcd9c	carry out with Hennig86 version	carry out with hennig86 version	5	1	0.00038299502106472615	1	\N
+3b55af61d6a50c9cdde0f06898680fac2d55a259	Hennig86	hennig86	1	1	0.000039761431411530815	1	2021-09-03
+3b55af61d6a50c9cdde0f06898680fac2d55a259	PAUP and Hennig86	paup and hennig86	3	1	0.000039761431411530815	1	2021-09-03
+3b55af61d6a50c9cdde0f06898680fac2d55a259	notably PAUP and Hennig86	notably paup and hennig86	4	1	0.000039761431411530815	1	2021-09-03
+396bf235487d46247da9d7ca2f5aca0564c16ffd	Hennig86	hennig86	1	1	0.00004345747685889357	1	2021-09-03
+396bf235487d46247da9d7ca2f5aca0564c16ffd	Hennig86 version	hennig86 version	2	1	0.00004345747685889357	1	2021-09-03
+396bf235487d46247da9d7ca2f5aca0564c16ffd	Hennig86 version 1.5	hennig86 version 1.5	3	1	0.00004345747685889357	1	2021-09-03
+396bf235487d46247da9d7ca2f5aca0564c16ffd	analysis use the Hennig86	analysis use the hennig86	4	1	0.00004345747685889357	1	2021-09-03
+396bf235487d46247da9d7ca2f5aca0564c16ffd	parsimony analysis use the Hennig86	parsimony analysis use the hennig86	5	1	0.00004345747685889357	1	2021-09-03
+396bf235487d46247da9d7ca2f5aca0564c16ffd	analysis use the Hennig86 version	analysis use the hennig86 version	5	1	0.00004345747685889357	1	2021-09-03
+32838476838326c6228a06d20790368398a0bda1	Hennig86	hennig86	1	1	0.000039761431411530815	1	2021-09-03
+32838476838326c6228a06d20790368398a0bda1	PAUP and Hennig86	paup and hennig86	3	1	0.000039761431411530815	1	2021-09-03
+32838476838326c6228a06d20790368398a0bda1	notably PAUP and Hennig86	notably paup and hennig86	4	1	0.000039761431411530815	1	2021-09-03
+3b99a3f0181545e2e61f30300dd8f4ef6563d6e5	event use Hennig86	event use hennig86	3	3	0.0024193548387096775	1	2021-09-03
+3b99a3f0181545e2e61f30300dd8f4ef6563d6e5	speciation event use Hennig86	speciation event use hennig86	4	3	0.0024193548387096775	1	2021-09-03
+3b99a3f0181545e2e61f30300dd8f4ef6563d6e5	infer speciation event use Hennig86	infer speciation event use hennig86	5	3	0.0024193548387096775	1	2021-09-03
+3b99a3f0181545e2e61f30300dd8f4ef6563d6e5	Hennig86	hennig86	1	3	0.0024193548387096775	1	2021-09-03
+31baa39d3d5fa20ca996c10ae82157c9ccf94bb9	Hennig86	hennig86	1	1	0.00018102824040550325	1	2021-09-03
+35ea82343641330168c7b3d6268e89ceafe3ba08	Hennig86	hennig86	1	1	0.000039761431411530815	1	2021-09-03
+35ea82343641330168c7b3d6268e89ceafe3ba08	PAUP and Hennig86	paup and hennig86	3	1	0.000039761431411530815	1	2021-09-03
+35ea82343641330168c7b3d6268e89ceafe3ba08	notably PAUP and Hennig86	notably paup and hennig86	4	1	0.000039761431411530815	1	2021-09-03
