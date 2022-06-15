@@ -10,4 +10,4 @@ The testing data is located in the `data` directory, downloaded from: https://ia
 
 To view current visualizations, head over to the `visualizations` folder. You can open the `.html` graphs for interactive viewing in your browser (may take a minute to load), or open the `.jpg` images.
 
-Dependencies: [python 3.8+](https://www.python.org/downloads/release/python-380/), [pandas](https://pandas.pydata.org/), [numpy](https://numpy.org/), [networkx](https://networkx.org/), [pyvis](https://pyvis.readthedocs.io/en/latest/index.html), [SKLearn](https://scikit-learn.org/stable/index.html)
+Dependencies: [python 3.8+](https://www.python.org/downloads/release/python-380/), [pandas](https://pandas.pydata.org/), [numpy](https://numpy.org/), [networkx](https://networkx.org/), [pyvis](https://pyvis.readthedocs.io/en/latest/index.html), [scikit-learn](https://scikit-learn.org/stable/index.html)
