@@ -4,7 +4,7 @@ Created by Ian Hay
 
 A visualization project of the [General Index](https://archive.org/details/GeneralIndex), an aggregate dataset of hundreds of millions of publications by keyword. 
 
-To mess with the visualizations, head over to `test.ipynb` for a barebones network graph, or `test colors and labels.ipynb` for network partitioning and topic extraction.
+To start working with the General Index test data, head over to `test framework.ipynb` for a barebones notebook for importing and visualizing the data, or `test framework models.ipynb` for topic labeling model implementations.
 
 The testing data is located in the `data` directory, downloaded from: https://ia802307.us.archive.org/18/items/GeneralIndex/data/
 
