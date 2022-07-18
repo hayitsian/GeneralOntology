@@ -1,7 +1,0 @@
-To Do:
-
-- build a framework notebook for working with the General Index
-    - with annotations
-- extend model to use doc2vec vector spaces
-- plot cooccurrence matrix from cosine similarity
-- visualize and quantify results
