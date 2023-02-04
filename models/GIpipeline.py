@@ -3,7 +3,7 @@
 # Ian Hay - 2023-02-03
 
 import sys
-import subprocess
+import spacy
 
 import GIpreprocessing as GIpreprocessing
 
@@ -23,10 +23,21 @@ _delimiter = "\t"
 # open the data file
 print("Importing & preprocessing data...\n\n")
 
+
 _texts = GIpreprocessing.preprocess(_rawFilename, _columnListNGrams, _indexCol, _dataLabel, _delimiter, _uselessLabel)
 
 print(f"Number of manuscripts in opened from \'{_rawFilename}\': {_texts.shape[0]}")
 print("done\n")
+
+
+# load into spaCy generator object
+nlp = spacy.load("en_core_web_sm")
+nlp.max_length = 2000000
+nlp.remove_pipe("ner")
+nlp.remove_pipe("attribute_ruler")
+print(nlp.pipeline)
+
+textPipe = nlp.pipe(_texts, batch_size=10, n_process=4)
 
 
 
