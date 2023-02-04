@@ -4,7 +4,18 @@
 
 
 
-# This script takes in raw ngram data and preprocesses it.
+import sys
+import io
+import ssl
+import numpy as np
+import pandas as pd
+import nltk
+import spacy
+from nltk.corpus import stopwords
+from spacy.language import Language
+
+
+# This function takes in raw ngram data and preprocesses it.
 #
 # Pipeline:
 #  - load in ngrams by filename (parameter)
@@ -13,67 +24,62 @@
 #  - POS tagging by spacy's "en_core_web_sm" (library)
 #  - incorporates it into a spacy pipeline
 #  - returns the spacy generator object
+def preprocess(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLabel):
+
+    # load some libraries
+    try:
+        _create_unverified_https_context = ssl._create_unverified_context
+    except AttributeError:
+        pass
+    else:
+        ssl._create_default_https_context = _create_unverified_https_context
+
+    nltk.download('stopwords')
+    nlp = spacy.load("en_core_web_sm")
+    _stopWords = stopwords.words("english")
 
 
-
-import sys
-import ssl
-import numpy as np
-import nltk
-import spacy
-from nltk.corpus import stopwords
-from spacy.language import Language
-
-
-
-# load some libraries
-
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
-
-nltk.download('stopwords')
-nlp = spacy.load("en_core_web_sm")
-_stopWords = stopwords.words("english")
+    # load text data
+    _df = pd.read_csv(_filepath, 
+                         header=None, 
+                         sep=_delimiter,
+                         index_col=0,
+                         names=_colNames)
+    _df[_dataCol] = _df[_dataCol].astype(str) # some numbers are causing errors and being treated as floats
+    _df = _df.drop(columns = [_uselessLabel])
+    print(_df.dtypes)
+    print(_df.head())
+    print(_df.shape)
 
 
-# load text data
-
-texts = sys.argv[1]
-texts = np.array(texts)
-# indexCol = sys.argv[2]
-
-
-# preprocess the data
-
-# TODO
-#
-#  - split by \t
-#  - group by manuscript (hash)
-#  - de-nest list
-
-for line in texts:
-    splitTexts = line.split("\t")
-
-print(splitTexts)
-
-textTagged = []
-
-        
-textTagged = splitTexts.apply(lambda x: " ".join([word for word in x.split() if word not in (list(_stopWords))])).to_list()
-textPOS = []
-POS=["PROPN", "NOUN", "ADJ", "ADV", "VERB", "X"]
-
-textPipe = nlp.pipe(textTagged, batch_size=10, n_process=4)
+    # preprocess the data
+    # TODO
+    #
+    #  - DONE split by \t
+    #  - DONE group by manuscript (hash)
+    #  - DONE de-nest list
+    #  - DONE remove stopwords
+    #  - POS tagging
 
 
+    _df = _df.groupby(_indexCol).agg(list)
+    _df[_dataCol] = _df[_dataCol].apply(lambda x: ". ".join([word for word in x if word not in (list(_stopWords))]))
+    print(_df[_dataCol])
+    print(_df.shape)
 
 
-# return preprocessed data
+    textPOS = []
+    POS=["PROPN", "NOUN", "ADJ", "ADV", "VERB", "X"]
+    textPipe = nlp.pipe(_df[_dataCol], batch_size=10, n_process=4)
 
-# TODO
-#
-#
+#     print(list(textPipe))
+
+
+    # return preprocessed data
+
+    # TODO
+    #
+    #
+
+
+    return _df
