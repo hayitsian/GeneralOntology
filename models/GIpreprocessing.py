@@ -11,7 +11,8 @@ from nltk.corpus import stopwords
 
 # TODO
 #
-# consider making this into a class and adding as a custom component to a spacy pipeline.
+#  - consider making this into a class and adding as a custom component to a spacy pipeline.
+#  - runtime & memory optimization
 
 
 
@@ -47,7 +48,6 @@ def preprocess(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLa
                          low_memory=False)
     _df[_dataCol] = _df[_dataCol].astype(str) # some numbers are causing errors and being treated as floats
     _df = _df.drop(columns = [_uselessLabel]) # data_added column is useless and holds mostly \N characters
-    print(_df.dtypes)
     print(_df.head())
     print(_df.shape)
 
@@ -55,8 +55,8 @@ def preprocess(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLa
     # preprocess the data
     _df = _df.groupby(_indexCol).agg(list)
     _df[_dataCol] = _df[_dataCol].apply(lambda x: ". ".join([word for word in x if word not in (list(_stopWords))]))
-    print(_df[_dataCol])
-    print(_df.shape)
+    print(_df[_dataCol].head())
+    print(_df[_dataCol].shape)
 
 
     # return preprocessed data
