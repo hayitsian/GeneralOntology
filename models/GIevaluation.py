@@ -28,7 +28,7 @@ print(topic_model.get_topics())
 
 
 # visualize (bar charts)
-fig = topic_model.visualize_barchart()
+fig = topic_model.visualize_barchart(top_n_topics=16)
 fig.write_html(_modelFilename + "_bar_chart.html")
 
 
@@ -44,7 +44,7 @@ fig.write_html(_modelFilename + "_hierarchy.html")
 
 # visualize term rank
 fig = topic_model.visualize_term_rank()
-fig.write_html(_modelFilename + "term_rank.html")
+fig.write_html(_modelFilename + "_term_rank.html")
 
 
 # visualize topics
