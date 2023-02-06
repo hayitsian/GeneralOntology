@@ -65,16 +65,23 @@ print("looping\n")
 for doc in GIdocs:
     GItext.append(doc.text) # is this getting the preprocessed text from spaCy pipeline? or the raw text?
 
-print(GItext[0:5])
-print(_texts[0:5])
+print(len(GItext))
+print(len(_texts))
 print("done\n")
 
 
+# training the model
+print("\nBuilding model...\n\n")
+
 
 # embedding
+
+# need to figure out how to get GPU compute to work
 # spacy.require_gpu()
+
 embedding_model = spacy.load("en_core_web_trf", exclude=["ner", "attribute_ruler", "lemmatizer", "tagger", "parser"])
 embedding_model.max_length = 3000000
+print(embedding_model.pipeline)
 
 # dimensional reduction
 umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine')
@@ -94,19 +101,19 @@ ctfidf_model = ClassTfidfTransformer()
 
 # BERTopic pipeline
 topic_model = BERTopic(
-  embedding_model=embedding_model,    # Step 1 - Extract embeddings
+#  embedding_model=embedding_model,    # Step 1 - Extract embeddings
   umap_model=umap_model,              # Step 2 - Reduce dimensionality
   hdbscan_model=hdbscan_model,        # Step 3 - Cluster reduced embeddings
   vectorizer_model=vectorizer_model,  # Step 4 - Tokenize topics
   ctfidf_model=ctfidf_model,          # Step 5 - Extract topic words
   diversity=0.5,                      # Step 6 - Diversify topic words
   low_memory=False,
-  verbose=True 
+  verbose=True,
+  calculate_probabilities=True
 )
 
 
 # fit the General Index
-print("\nBuilding model...\n\n")
 topics, probabilities = topic_model.fit_transform(_texts)
 
 topic_model.save(_modelFilename)

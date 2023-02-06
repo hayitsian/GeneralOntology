@@ -40,12 +40,14 @@ def preprocess(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLa
 
 
     # load text data
+    print("Loading into Pandas...\n")
     _df = pd.read_csv(_filepath, 
                          header=None, 
                          sep=_delimiter,
                          index_col=0,
                          names=_colNames,
                          low_memory=False)
+    print("done")
     _df[_dataCol] = _df[_dataCol].astype(str) # some numbers are causing errors and being treated as floats
     _df = _df.drop(columns = [_uselessLabel]) # data_added column is useless and holds mostly \N characters
     print(_df.head())
@@ -53,7 +55,9 @@ def preprocess(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLa
 
 
     # preprocess the data
+    print("Grouping manuscripts...\n")
     _df = _df.groupby(_indexCol).agg(list)
+    print("Removing stopwords...\n")
     _df[_dataCol] = _df[_dataCol].apply(lambda x: ". ".join([word for word in x if word not in (list(_stopWords))]))
     print(_df[_dataCol].head())
     print(_df[_dataCol].shape)
