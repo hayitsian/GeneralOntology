@@ -7,6 +7,7 @@ import ssl
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
+import plotly.express as px
 
 
 # TODO
@@ -54,14 +55,18 @@ def preprocess(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLa
     print(_df.shape)
 
 
-    # preprocess the data
+    # group the data & remove NLTK stopwords
     print("Grouping manuscripts...\n")
     _df = _df.groupby(_indexCol).agg(list)
+    _df["num_ngrams"] = _df[_dataCol].apply(lambda x: len(x))
     print("Removing stopwords...\n")
     _df[_dataCol] = _df[_dataCol].apply(lambda x: ". ".join([word for word in x if word not in (list(_stopWords))]))
-    print(_df[_dataCol].head())
+    print(_df["num_ngrams"].describe())
     print(_df[_dataCol].shape)
 
 
-    # return preprocessed data
+    fig = px.histogram(_df["num_ngrams"])
+    fig.write_html(_filepath + "_ngrams_per_manuscript.html")
+
+    # return imported data
     return _df[_dataCol]

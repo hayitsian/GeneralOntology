@@ -4,17 +4,14 @@
 
 import sys
 import spacy
-from umap import UMAP
-from hdbscan import HDBSCAN
-from sklearn.feature_extraction.text import CountVectorizer
-from bertopic.vectorizers import ClassTfidfTransformer
 from bertopic import BERTopic
+from transformers import BertTokenizerFast
 import os
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
+import plotly.express as px
 
-
-import GIpreprocessing as GIpreprocessing
-
+import GIpreprocessing
+import GIbertopic
 
 #
 # Make sure to run this in your environment!: python3 -m spacy download en_core_web_trf
@@ -40,6 +37,7 @@ print("\nImporting data...\n\n")
 _texts = GIpreprocessing.preprocess(_rawFilename, _columnListNGrams, _indexCol, _dataLabel, _delimiter, _uselessLabel)
 
 print(f"Number of manuscripts opened from \'{_rawFilename}\': {_texts.shape[0]}")
+
 print("done\n")
 
 
@@ -47,26 +45,44 @@ print("done\n")
 print("\nPreprocessing data...\n\n")
 
 # load into spaCy generator object
-nlp = spacy.load("en_core_web_sm", exclude=["tok2vec", "ner", "attribute_ruler"])
+""" nlp = spacy.load("en_core_web_trf", exclude=["tok2vec", "ner", "attribute_ruler"])
 nlp.max_length = 3000000
+nlp.truncation
 
 print(nlp.pipeline)
 print("\n")
 
-textPipe = nlp.pipe(_texts, batch_size=2, n_process=12)
+textPipe = nlp.pipe(_texts, batch_size=2, n_process=12)"""
 
 # get the preprocessed text
 
-GIdocs = list(textPipe)
-GItext = []
+""" GItexts = []
 
 print("looping\n")
 
-for doc in GIdocs:
-    GItext.append(doc.text) # is this getting the preprocessed text from spaCy pipeline? or the raw text?
-
+for doc in list(textPipe):
+  _text = [
+    token.text
+    for token in doc
+      if not token.is_punct
+      and not token.is_stop
+      and not token.like_num
+      and token.is_alpha
+        ]
+  GItext.append(" ".join(_text).lower()) # https://stackoverflow.com/questions/65850018/processing-text-with-spacy-nlp-pipe
 print(len(GItext))
 print(len(_texts))
+
+processedNgramLengths = []
+for doc in GItexts:
+  __text = doc.split(". ")
+  processedNgramLengths.append(len(__text))
+
+fig = px.histogram(processedNgramLengths)
+fig.write_html(_filepath + "_processed_ngrams_per_manuscript.html") """
+
+
+
 print("done\n")
 
 
@@ -77,45 +93,29 @@ print("\nBuilding model...\n\n")
 # embedding
 
 # need to figure out how to get GPU compute to work
-# spacy.require_gpu()
+""" spacy.require_gpu()
 
 embedding_model = spacy.load("en_core_web_trf", exclude=["ner", "attribute_ruler", "lemmatizer", "tagger", "parser"])
 embedding_model.max_length = 3000000
-print(embedding_model.pipeline)
+print(embedding_model.pipeline) """
 
-# dimensional reduction
-umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine')
+embedding_model = BertTokenizerFast.from_pretrained("bert-base-uncased")
+embedding_model.max_length = 3000
+embedding_model.truncation = True
 
-
-# clustering
-hdbscan_model = HDBSCAN(min_cluster_size=15, metric='euclidean', cluster_selection_method='eom', prediction_data=True)
-
-
-# tokenize
-vectorizer_model = CountVectorizer(stop_words="english")
-
-
-# topic weighting
-ctfidf_model = ClassTfidfTransformer()
 
 
 # BERTopic pipeline
-topic_model = BERTopic(
-#  embedding_model=embedding_model,    # Step 1 - Extract embeddings
-  umap_model=umap_model,              # Step 2 - Reduce dimensionality
-  hdbscan_model=hdbscan_model,        # Step 3 - Cluster reduced embeddings
-  vectorizer_model=vectorizer_model,  # Step 4 - Tokenize topics
-  ctfidf_model=ctfidf_model,          # Step 5 - Extract topic words
-  diversity=0.5,                      # Step 6 - Diversify topic words
-  low_memory=False,
-  verbose=True,
-  calculate_probabilities=True
-)
-
-
-# fit the General Index
-topics, probabilities = topic_model.fit_transform(_texts)
+topic_model = GIbertopic.train(_texts, _embeddingModel = None)
 
 topic_model.save(_modelFilename)
 print(f"BERTopic model saved as: {_modelFilename}\n")
 print("done")
+
+
+# fit the General Index (processed)
+""" topics, probabilities = topic_model.fit_transform(GItext)
+
+topic_model.save(_modelFilename + "_processed")
+print(f"BERTopic model saved as: {_modelFilename}_processed\n")
+print("done") """

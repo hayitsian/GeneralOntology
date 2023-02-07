@@ -28,7 +28,7 @@ print(topic_model.get_topics())
 
 
 # visualize (bar charts)
-fig = topic_model.visualize_barchart(top_n_topics=31)
+fig = topic_model.visualize_barchart(top_n_topics=20)
 fig.write_html(_modelFilename + "_bar_chart.html")
 
 
