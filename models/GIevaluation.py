@@ -8,7 +8,7 @@ from bertopic import BERTopic
 
 
 # hard coded things
-_modelFilename = "BERTopic_doc_ngrams_0_10M_ngrams_model"
+_modelFilename = "BERTopic_doc_ngrams_0_100M_ngrams_model"
 
 
 # load in the pretrained model
@@ -28,7 +28,7 @@ print(topic_model.get_topics())
 
 
 # visualize (bar charts)
-fig = topic_model.visualize_barchart(top_n_topics=20)
+fig = topic_model.visualize_barchart(top_n_topics=3)
 fig.write_html(_modelFilename + "_bar_chart.html")
 
 

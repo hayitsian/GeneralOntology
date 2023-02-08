@@ -26,7 +26,7 @@ def train(_texts, _embeddingModel = None):
     # BERTopic pipeline
     if (_embeddingModel):
         topic_model = BERTopic(
-        embedding_model=embedding_model,
+        embedding_model=_embeddingModel,
         umap_model=umap_model,
         hdbscan_model=hdbscan_model,
         vectorizer_model=vectorizer_model,

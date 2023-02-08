@@ -20,8 +20,8 @@ import GIbertopic
 
 # take in filename as a command line argument
 _rawFilename = sys.argv[1] # takes in the actual file path
-_rawDataFilename = "../data/doc_ngrams_0_10M_ngrams.txt"
-_modelFilename = "BERTopic_doc_ngrams_0_10M_ngrams_model"
+_rawDataFilename = "../data/doc_ngrams_0_100M_ngrams.txt"
+_modelFilename = "BERTopic_doc_ngrams_0_100M_ngrams_model"
 
 # hard coded things
 _columnListNGrams = ["hash", "ngram", "ngram_lc", "ngram_tokens", "ngram_count", "term_freq", "doc_count", "date_added"]
