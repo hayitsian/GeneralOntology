@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-#
 # Ian Hay - 2023-02-03
 
 
@@ -23,10 +21,8 @@ import plotly.express as px
 #  - load in ngrams by filename (parameter)
 #  - group ngrams by index column (parameter)
 #  - removes stopwords from NLTK's English stopwords (library)
-#  - POS tagging by spacy's "en_core_web_sm" (library)
-#  - incorporates it into a spacy pipeline
-#  - returns the spacy generator object
-def preprocess(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLabel):
+
+def preprocessNgrams(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLabel):
 
     # load some libraries
     try:

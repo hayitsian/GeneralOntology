@@ -4,3 +4,7 @@ models/BERTopic_doc_ngrams_0_1M_ngrams_model
 data/doc_ngrams_0_100M_ngrams.txt
 models/BERTopic_doc_ngrams_0_10M_ngrams_model
 models/BERTopic_doc_ngrams_0_100M_ngrams_model
+data/arXiv/arxiv-metadata-oai-snapshot.csv
+data/arXiv/arxiv-metadata-oai-snapshot.json
+data/GeneralIndex/doc_ngrams_0_100M_ngrams.txt
+data/GeneralIndex/doc_ngrams_0_10M_ngrams.txt
