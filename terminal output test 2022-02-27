@@ -1,0 +1,2215 @@
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-27 23:09:42.919082: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-27 23:09:43.444120: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:09:43.444165: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:09:43.444170: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+201979          1007.2741  ...            3
+2196271  quant-ph/0501034  ...            3
+1451466        2104.04048  ...            1
+1814942  astro-ph/0212331  ...            0
+1845364  astro-ph/0608266  ...            0
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|█████████████████████████████████████████████████████████████| 157/157 [00:08<00:00, 17.60it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 5
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...1
+
+tensor(5.0933, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5275, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3056, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2486, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2097, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1802, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1565, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1365, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1193, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1043, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...2
+
+tensor(2.2062, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4185, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2927, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2432, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2081, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1808, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1583, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1392, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1228, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1085, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...3
+
+tensor(4.4664, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9818, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3437, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2763, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2346, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2039, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1794, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1589, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1414, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1262, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...4
+
+tensor(3.1717, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5111, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3055, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2513, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2150, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1871, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1642, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1448, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1279, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1132, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...5
+
+tensor(2.6767, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4076, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2923, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2423, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2073, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1577, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1385, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1218, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1073, device='cuda:0', grad_fn=<DivBackward1>)
+\Trained FFNN on bert: 5000 epochs, 750 hidden neurons.
+Average Metrics: F1 = 0.580  ROC AUC = 0.816  Accuracy = 0.084
+
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...1
+
+tensor(3.3375, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8448, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6855, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5876, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5109, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4468, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3933, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3483, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3098, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2760, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...2
+
+tensor(1.9595, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8588, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6841, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5813, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5037, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4419, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3909, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3472, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3089, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2753, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...3
+
+tensor(4.1616, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7970, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6374, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5335, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4508, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3851, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3314, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2858, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2469, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2135, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...4
+
+tensor(3.8962, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8826, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7146, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6145, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5400, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4804, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4302, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3873, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3491, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3154, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...5
+
+tensor(4.9654, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8589, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6810, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5747, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4974, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4351, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3805, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3354, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2978, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2651, device='cuda:0', grad_fn=<DivBackward1>)
+\Trained FFNN on doc2vec: 5000 epochs, 750 hidden neurons.
+Average Metrics: F1 = 0.476  ROC AUC = 0.706  Accuracy = 0.060
+
+
+Training FFNN on bag-of-words: 5000 epochs, 750 hidden neurons...1
+
+tensor(3.0123, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5906, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5869, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5818, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5730, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5315, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.1875, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6836, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3607, device='cuda:0', grad_fn=<DivBackward1>)
+^CTraceback (most recent call last):
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 219, in <module>
+    main()
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 182, in main
+    ffNN.train(xNew[train], yTrainTrue)
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXsupervisedmodel.py", line 93, in train
+    optimizer.step()
+  File "/home/ian/anaconda3/lib/python3.9/site-packages/torch/optim/optimizer.py", line 140, in wrapper
+    out = func(*args, **kwargs)
+  File "/home/ian/anaconda3/lib/python3.9/site-packages/torch/optim/optimizer.py", line 23, in _use_grad
+    ret = func(self, *args, **kwargs)
+  File "/home/ian/anaconda3/lib/python3.9/site-packages/torch/optim/sgd.py", line 151, in step
+    sgd(params_with_grad,
+  File "/home/ian/anaconda3/lib/python3.9/site-packages/torch/optim/sgd.py", line 202, in sgd
+    func(params,
+  File "/home/ian/anaconda3/lib/python3.9/site-packages/torch/optim/sgd.py", line 245, in _single_tensor_sgd
+    param.add_(d_p, alpha=-lr)
+KeyboardInterrupt
+
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-27 23:15:29.126134: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-27 23:15:29.641245: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:15:29.641291: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:15:29.641297: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            3
+66389           0806.0376  ...            2
+18476           0708.0625  ...            1
+1855733  astro-ph/9604141  ...            2
+1437508        2103.07363  ...            1
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:26<00:00, 18.09it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 50000 epochs, 750 hidden neurons...1
+
+^CTraceback (most recent call last):
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 219, in <module>
+    main()
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 182, in main
+    ffNN.train(xNew[train], yTrainTrue)
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXsupervisedmodel.py", line 91, in train
+    optimizer.zero_grad()
+  File "/home/ian/anaconda3/lib/python3.9/site-packages/torch/optim/optimizer.py", line 279, in zero_grad
+    p.grad.zero_()
+KeyboardInterrupt
+
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-27 23:22:43.068291: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-27 23:22:43.586766: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:22:43.586817: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:22:43.586824: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            2
+66389           0806.0376  ...            1
+18476           0708.0625  ...            0
+1855733  astro-ph/9604141  ...            1
+1437508        2103.07363  ...            0
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:27<00:00, 17.89it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...1
+
+tensor(2.0347, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4638, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3704, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3414, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3255, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3152, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3079, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3023, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2978, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2941, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2909, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...2
+
+tensor(4.7880, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4718, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3676, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3385, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3226, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3124, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3052, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2996, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2951, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2913, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2880, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...3
+
+tensor(1.7516, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4221, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3581, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3332, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3187, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3089, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3015, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2956, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2907, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2863, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2824, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...4
+
+tensor(4.3144, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.1965, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4039, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3558, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3338, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3209, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3121, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3056, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3005, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2963, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2929, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 750 hidden neurons...5
+
+tensor(2.3011, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6248, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3919, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3533, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3340, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3221, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3137, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3074, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3024, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2983, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2949, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 5000 epochs, 750 hidden neurons.
+Average Metrics: F1 = 0.708  ROC AUC = 0.858  Accuracy = 0.315
+
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...1
+
+tensor(2.3465, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9498, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8432, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8020, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7713, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7444, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7203, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6985, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6786, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6601, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6430, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...2
+
+tensor(1.7857, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9902, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8586, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8155, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7860, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7621, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7406, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7213, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7037, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6871, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6712, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...3
+
+tensor(4.4490, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9447, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8381, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7922, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7594, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7323, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7086, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6867, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6664, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6475, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6298, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...4
+
+tensor(2.5991, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9152, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8208, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7753, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7419, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7132, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6878, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6651, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6443, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6252, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6074, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 750 hidden neurons...5
+
+tensor(1.8117, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9378, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8451, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8000, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7666, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7391, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7143, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6918, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6713, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6527, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6356, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on doc2vec: 5000 epochs, 750 hidden neurons.
+Average Metrics: F1 = 0.565  ROC AUC = 0.733  Accuracy = 0.146
+
+
+Training FFNN on bag-of-words: 5000 epochs, 750 hidden neurons...1
+
+Killed
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-27 23:43:07.009683: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-27 23:43:07.944060: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:43:07.944115: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:43:07.944121: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            0
+66389           0806.0376  ...            3
+18476           0708.0625  ...            1
+1855733  astro-ph/9604141  ...            3
+1437508        2103.07363  ...            1
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:26<00:00, 17.99it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 5000 epochs, 100 hidden neurons...1
+
+tensor(1.4383, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3955, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3517, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3314, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3191, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3106, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3042, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2992, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2950, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2914, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2883, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 hidden neurons...2
+
+tensor(1.6437, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3851, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3455, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3267, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3151, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3071, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3010, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2962, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2921, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2886, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2855, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 hidden neurons...3
+
+tensor(1.4655, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4125, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3562, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3327, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3187, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3092, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3021, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2966, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2919, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2880, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2846, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 hidden neurons...4
+
+tensor(1.4349, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3858, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3476, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3290, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3175, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3094, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3034, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2986, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2947, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2914, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2886, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 hidden neurons...5
+
+tensor(1.4551, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3913, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3520, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3334, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3218, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3138, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3077, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3029, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2990, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2957, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2929, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 5000 epochs, 100 hidden neurons.
+Average Metrics: F1 = 0.698  ROC AUC = 0.850  Accuracy = 0.289
+
+
+Training FFNN on doc2vec: 5000 epochs, 100 hidden neurons...1
+
+tensor(1.6927, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9196, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8300, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7809, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7472, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7214, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7001, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6836, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6702, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6589, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6488, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 hidden neurons...2
+
+tensor(2.5065, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9302, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8406, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7906, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7568, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7355, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7135, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6963, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6820, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6704, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6612, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 hidden neurons...3
+
+tensor(1.7925, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9258, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8325, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7828, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7473, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7219, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7028, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6869, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6730, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6608, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6504, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 hidden neurons...4
+
+tensor(1.4887, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9201, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8337, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7872, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7559, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7322, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7150, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7013, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6845, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6746, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6612, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 hidden neurons...5
+
+tensor(1.5148, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9367, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8437, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7927, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7602, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7365, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7171, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7213, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6905, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6773, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6740, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on doc2vec: 5000 epochs, 100 hidden neurons.
+Average Metrics: F1 = 0.561  ROC AUC = 0.728  Accuracy = 0.148
+
+^C^C^C^C^Z
+[1]+  Stopped                 python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-27 23:50:35.156568: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-27 23:50:35.666273: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:50:35.666325: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-27 23:50:35.666333: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            2
+66389           0806.0376  ...            3
+18476           0708.0625  ...            1
+1855733  astro-ph/9604141  ...            3
+1437508        2103.07363  ...            1
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:28<00:00, 17.66it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 50000 epochs, 100 hidden neurons...1
+
+tensor(1.6631, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2885, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2687, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2497, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2312, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2125, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1955, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1822, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1579, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1417, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1252, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 50000 epochs, 100 hidden neurons...2
+
+tensor(1.9085, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2860, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2679, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2527, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2355, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2171, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2005, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1620, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1536, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1245, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 50000 epochs, 100 hidden neurons...3
+
+tensor(1.6254, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2840, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2591, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2415, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2265, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2108, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1969, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1799, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1668, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1528, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1843, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 50000 epochs, 100 hidden neurons...4
+
+tensor(1.6287, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2863, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2620, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2458, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2314, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2171, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2021, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1887, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1717, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1585, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1422, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 50000 epochs, 100 hidden neurons...5
+
+tensor(1.4193, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2928, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2748, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2578, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2390, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2213, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2014, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1845, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1697, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1511, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1307, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 50000 epochs, 100 hidden neurons.
+Average Metrics: F1 = 0.680  ROC AUC = 0.840  Accuracy = 0.248
+
+
+Training FFNN on doc2vec: 50000 epochs, 100 hidden neurons...1
+
+tensor(1.4120, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6902, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6198, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5816, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5539, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5327, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5165, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5046, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4892, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4810, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4761, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 50000 epochs, 100 hidden neurons...2
+
+tensor(1.4475, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7045, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6319, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5910, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5623, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5401, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5230, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5095, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4972, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4867, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4815, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 50000 epochs, 100 hidden neurons...3
+
+tensor(1.6667, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6854, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6153, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5777, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5578, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5379, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5222, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5146, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5005, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4833, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4928, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 50000 epochs, 100 hidden neurons...4
+
+tensor(2.1856, device='cuda:0', grad_fn=<DivBackward1>)
+^CTraceback (most recent call last):
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 219, in <module>
+    
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 182, in main
+    ffNN = model.FFNN(input_size=numInput, output_size=numOutput, hidden_size_1=numHidden1, hidden_size_2=numHidden2, learningRate=learningRate, epochs=_epochs).to(device)
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXsupervisedmodel.py", line 91, in train
+    y_pred = self(x)
+  File "/home/ian/anaconda3/lib/python3.9/site-packages/torch/optim/optimizer.py", line 279, in zero_grad
+    p.grad.zero_()
+KeyboardInterrupt
+
+[1]+  Killed                  python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 00:10:32.928587: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 00:10:33.880322: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:10:33.880591: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:10:33.880598: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            3
+66389           0806.0376  ...            0
+18476           0708.0625  ...            1
+1855733  astro-ph/9604141  ...            0
+1437508        2103.07363  ...            1
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:28<00:00, 17.57it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...1
+
+tensor(1.5478, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8806, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3329, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3615, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3214, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3158, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3025, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2938, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2924, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2843, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2779, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...2
+
+tensor(1.4898, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3730, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3327, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3347, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5136, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3116, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3047, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2952, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2883, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3227, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8090, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...3
+
+tensor(1.6451, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4212, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3723, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3184, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3304, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3019, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9324, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3008, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.5710, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3833, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3065, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...4
+
+tensor(1.4928, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7828, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3824, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3238, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3205, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3020, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3118, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2885, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3050, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3108, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2742, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...5
+
+tensor(1.4937, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4160, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3764, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3316, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4259, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3336, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7129, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2990, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2905, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3199, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2873, device='cuda:0', grad_fn=<DivBackward1>)
+Traceback (most recent call last):
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 220, in <module>
+    main()
+  File "/home/ian/Documents/GitHub/General-Index-Visualization/models/AXpipeline.py", line 192, in main
+    print(f"\nTrained FFNN on {_dataLabel}: {_epochs} epochs, {numHidden} hidden neurons.\n"
+NameError: name 'numHidden' is not defined
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 00:15:21.043200: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 00:15:21.573744: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:15:21.573794: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:15:21.573800: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            1
+66389           0806.0376  ...            2
+18476           0708.0625  ...            0
+1855733  astro-ph/9604141  ...            2
+1437508        2103.07363  ...            0
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:27<00:00, 17.78it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...1
+
+tensor(1.4071, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3661, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3382, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3163, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3220, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3024, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3874, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2955, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2880, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7057, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2833, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...2
+
+tensor(1.4878, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3861, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3375, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3382, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3092, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3005, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3013, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3061, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2947, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3156, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2773, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...3
+
+tensor(1.4187, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3848, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3420, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4117, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3030, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5031, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4830, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3185, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3312, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3223, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3053, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...4
+
+tensor(1.4775, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3886, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3362, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3268, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3608, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3088, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2992, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3011, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3350, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2957, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2883, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 100 + 25 hidden neurons...5
+
+tensor(1.5400, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3902, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3512, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3332, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3138, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4058, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2989, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2914, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2956, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2871, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2918, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 5000 epochs, 100 + 25 hidden neurons.
+Average Metrics: F1 = 0.699  ROC AUC = 0.852  Accuracy = 0.300
+
+
+Training FFNN on doc2vec: 5000 epochs, 100 + 25 hidden neurons...1
+
+tensor(1.4230, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9023, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8374, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7955, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7638, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7252, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7023, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6840, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6837, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6297, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6240, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 + 25 hidden neurons...2
+
+tensor(1.4080, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9173, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8415, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8042, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7668, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7301, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7142, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6861, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6602, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6590, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6169, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 + 25 hidden neurons...3
+
+tensor(1.4376, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9115, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8398, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7956, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7699, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7319, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7024, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6718, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6472, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6413, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6147, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 + 25 hidden neurons...4
+
+tensor(1.4743, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9183, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8455, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8072, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7723, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7579, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7158, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7072, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6655, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6775, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6271, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 100 + 25 hidden neurons...5
+
+tensor(1.4543, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9123, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8367, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7946, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7613, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7259, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7132, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7040, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6547, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6455, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6205, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on doc2vec: 5000 epochs, 100 + 25 hidden neurons.
+Average Metrics: F1 = 0.578  ROC AUC = 0.742  Accuracy = 0.188
+
+
+Training FFNN on bag-of-words: 5000 epochs, 100 + 25 hidden neurons...1
+
+^ZKilled
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 00:21:34.314463: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 00:21:35.274373: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:21:35.274518: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:21:35.274524: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            1
+66389           0806.0376  ...            3
+18476           0708.0625  ...            2
+1855733  astro-ph/9604141  ...            3
+1437508        2103.07363  ...            2
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:29<00:00, 17.38it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 5000 epochs, 25 hidden neurons...1
+
+tensor(1.5082, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3849, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3460, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3276, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3162, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3082, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3021, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2971, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2929, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2893, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2861, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 25 hidden neurons...2
+
+tensor(1.4470, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3833, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3441, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3256, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3144, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3066, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3007, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2959, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2919, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2884, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2853, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 25 hidden neurons...3
+
+tensor(1.4214, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3830, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3437, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3252, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3136, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3054, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2992, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2942, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2901, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2865, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2833, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 25 hidden neurons...4
+
+tensor(1.4327, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3872, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3476, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3285, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3168, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3085, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3023, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2972, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2929, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2892, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2857, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 5000 epochs, 25 hidden neurons...5
+
+tensor(1.4515, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3901, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3517, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3333, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3217, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3136, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3074, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3025, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2983, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2947, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2915, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 5000 epochs, 25 hidden neurons.
+Average Metrics: F1 = 0.694  ROC AUC = 0.849  Accuracy = 0.271
+
+
+Training FFNN on doc2vec: 5000 epochs, 25 hidden neurons...1
+
+tensor(1.4259, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.0712, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9953, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9587, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9384, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9281, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9197, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9124, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9053, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9001, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8959, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 25 hidden neurons...2
+
+tensor(1.4385, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.1194, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.0058, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9680, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9466, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9329, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9246, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9162, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9102, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9044, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8983, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 25 hidden neurons...3
+
+tensor(1.4088, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.1612, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.0420, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9964, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9719, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9561, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9458, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9374, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9308, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9257, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9209, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 25 hidden neurons...4
+
+tensor(1.4417, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.1289, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.0101, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9711, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9506, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9387, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9283, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9204, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9145, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9096, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9057, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 5000 epochs, 25 hidden neurons...5
+
+tensor(1.4604, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.0712, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9982, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9672, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9484, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9341, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9244, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9173, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9121, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9073, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.9032, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on doc2vec: 5000 epochs, 25 hidden neurons.
+Average Metrics: F1 = 0.546  ROC AUC = 0.713  Accuracy = 0.143
+
+^Z
+[1]+  Stopped                 python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 00:27:42.704626: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 00:27:43.239488: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:27:43.239536: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:27:43.239541: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            2
+66389           0806.0376  ...            1
+18476           0708.0625  ...            0
+1855733  astro-ph/9604141  ...            1
+1437508        2103.07363  ...            0
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:29<00:00, 17.55it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 25000 epochs, 50 hidden neurons...1
+
+tensor(1.6742, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3092, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2880, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2765, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2677, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2588, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2500, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2415, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2325, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2233, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2143, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 50 hidden neurons...2
+
+tensor(1.4018, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3066, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2858, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2737, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2641, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2562, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2486, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2410, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2333, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2252, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2175, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 50 hidden neurons...3
+
+tensor(1.4310, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3051, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2835, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2716, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2626, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2541, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2459, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2377, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2293, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2213, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2131, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 50 hidden neurons...4
+
+tensor(1.4041, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3093, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2884, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2779, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2694, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2603, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2508, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2409, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2317, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2213, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2136, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 50 hidden neurons...5
+
+tensor(1.4859, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3135, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2927, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2818, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2733, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2648, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2562, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2475, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2389, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2301, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2211, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 25000 epochs, 50 hidden neurons.
+Average Metrics: F1 = 0.705  ROC AUC = 0.856  Accuracy = 0.305
+
+
+Training FFNN on doc2vec: 25000 epochs, 50 hidden neurons...1
+
+tensor(1.5967, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8405, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7896, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7652, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7463, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7508, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7199, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7070, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7055, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7053, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6936, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 50 hidden neurons...2
+
+tensor(1.4286, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8463, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7980, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7775, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7671, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7533, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7531, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7478, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7356, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7206, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7112, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 50 hidden neurons...3
+
+tensor(1.5161, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8492, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8063, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7724, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7528, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7385, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7258, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7193, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7082, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7072, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7004, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 50 hidden neurons...4
+
+tensor(1.4133, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8322, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7815, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7542, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7360, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7214, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7143, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6991, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6932, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6894, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6740, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 50 hidden neurons...5
+
+tensor(1.6105, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8424, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7951, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7624, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7463, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7310, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7188, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7112, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7036, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7176, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.6896, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on doc2vec: 25000 epochs, 50 hidden neurons.
+Average Metrics: F1 = 0.561  ROC AUC = 0.723  Accuracy = 0.200
+
+
+
+Evaluating model...
+
+
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 00:38:18.311182: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 00:38:18.851045: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:38:18.851093: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:38:18.851100: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            3
+66389           0806.0376  ...            1
+18476           0708.0625  ...            2
+1855733  astro-ph/9604141  ...            1
+1437508        2103.07363  ...            2
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:29<00:00, 17.44it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 25000 epochs, 25 + 25 hidden neurons...1
+
+tensor(1.3901, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3039, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2906, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2736, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3969, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3036, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2622, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2846, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2484, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2384, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2196, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 25 + 25 hidden neurons...2
+
+tensor(1.4026, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3069, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2805, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2856, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2568, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2380, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2998, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2463, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2176, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2128, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 25 + 25 hidden neurons...3
+
+tensor(1.4387, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3099, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3172, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3046, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3152, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3591, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3141, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3073, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2688, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2825, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2443, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 25 + 25 hidden neurons...4
+
+tensor(1.5274, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3010, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2834, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2826, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2393, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2520, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2460, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2952, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2162, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2848, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2635, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 25 + 25 hidden neurons...5
+
+tensor(1.4225, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3097, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2815, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2612, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2874, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3927, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3587, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3225, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2991, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2985, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2766, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 25000 epochs, 25 + 25 hidden neurons.
+Average Metrics: F1 = 0.675  ROC AUC = 0.835  Accuracy = 0.225
+
+
+Training FFNN on doc2vec: 25000 epochs, 25 + 25 hidden neurons...1
+
+tensor(1.5342, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8358, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8033, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7852, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7722, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7619, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7566, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7485, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7462, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7418, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7360, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 25 + 25 hidden neurons...2
+
+tensor(1.4108, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8317, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8007, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7847, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7720, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7625, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7552, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7487, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7435, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7391, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7351, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 25 + 25 hidden neurons...3
+
+tensor(1.3951, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8352, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8049, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7884, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7763, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7676, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7609, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7555, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7515, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7482, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7451, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 25 + 25 hidden neurons...4
+
+tensor(1.4443, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8315, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7982, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7802, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7679, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7584, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7515, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7466, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7413, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7350, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7335, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on doc2vec: 25000 epochs, 25 + 25 hidden neurons...5
+
+tensor(1.3960, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8345, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8082, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7927, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7814, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7713, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7635, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7570, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7514, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7464, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7420, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on doc2vec: 25000 epochs, 25 + 25 hidden neurons.
+Average Metrics: F1 = 0.593  ROC AUC = 0.750  Accuracy = 0.255
+
+
+
+Evaluating model...
+
+
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 00:51:29.833275: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 00:51:30.393516: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:51:30.393564: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 00:51:30.393570: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            0
+66389           0806.0376  ...            3
+18476           0708.0625  ...            1
+1855733  astro-ph/9604141  ...            3
+1437508        2103.07363  ...            1
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:30<00:00, 17.33it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 25000 epochs, 100 + 25 + 25 hidden neurons...1
+
+tensor(1.4212, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7056, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3672, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2851, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2519, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 100 + 25 + 25 hidden neurons...2
+
+tensor(1.4419, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4636, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4606, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3422, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3171, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2762, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2538, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2697, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 100 + 25 + 25 hidden neurons...3
+
+tensor(1.5712, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 100 + 25 + 25 hidden neurons...4
+
+tensor(1.4703, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3813, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+
+Training FFNN on bert: 25000 epochs, 100 + 25 + 25 hidden neurons...5
+
+tensor(1.4060, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.8304, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3092, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3800, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.3801, device='cuda:0', grad_fn=<DivBackward1>)
+
+Trained FFNN on bert: 25000 epochs, 100 + 25 + 25 hidden neurons.
+Average Metrics: F1 = 0.321  ROC AUC = 0.590  Accuracy = 0.240
+
+
+Training FFNN on doc2vec: 25000 epochs, 100 + 25 + 25 hidden neurons...1
+
+tensor(1.3995, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.7710, device='cuda:0', grad_fn=<DivBackward1>)
+^Z
+[2]+  Stopped                 python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 01:03:11.077815: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 01:03:11.628681: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 01:03:11.628729: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 01:03:11.628735: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id  ... top category
+1242345        2002.04922  ...            1
+66389           0806.0376  ...            2
+18476           0708.0625  ...            3
+1855733  astro-ph/9604141  ...            2
+1437508        2103.07363  ...            3
+
+[5 rows x 4 columns]
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████| 1563/1563 [01:31<00:00, 17.14it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 25000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...1
+
+tensor(1.5114, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3902, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3271, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3725, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3017, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2921, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2851, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2796, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2752, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2787, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2729, device='cuda:0', grad_fn=<DivBackward1>)
+F1: 0.701
+AUC: 0.854
+Accuracy: 0.296
+
+Training FFNN on bert: 25000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...2
+
+tensor(1.5268, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3836, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3241, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4864, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2986, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2895, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2830, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2821, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2768, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2730, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2698, device='cuda:0', grad_fn=<DivBackward1>)
+F1: 0.661
+AUC: 0.827
+Accuracy: 0.182
+
+Training FFNN on bert: 25000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...3
+
+tensor(1.6145, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3885, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3249, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3560, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2937, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2843, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2781, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2907, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2751, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2705, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2673, device='cuda:0', grad_fn=<DivBackward1>)
+F1: 0.739
+AUC: 0.874
+Accuracy: 0.409
+
+Training FFNN on bert: 25000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...4
+
+tensor(1.5307, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3809, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3247, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3106, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2959, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3403, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2916, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2848, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2802, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2765, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2735, device='cuda:0', grad_fn=<DivBackward1>)
+F1: 0.668
+AUC: 0.832
+Accuracy: 0.205
+
+Training FFNN on bert: 25000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...5
+
+tensor(1.9110, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3881, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3292, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3202, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3024, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2937, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2878, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2828, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2793, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2761, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.4711, device='cuda:0', grad_fn=<DivBackward1>)
+F1: 0.630
+AUC: 0.799
+Accuracy: 0.220
+
+Trained FFNN on bert: 25000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons.
+Average Metrics: F1 = 0.680  ROC AUC = 0.837  Accuracy = 0.262
+
+
+Training FFNN on doc2vec: 25000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...1
+
+tensor(1.5343, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.1261, device='cuda:0', grad_fn=<DivBackward1>)
+^Z
+[3]+  Stopped                 python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+2023-02-28 01:16:09.912608: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-28 01:16:10.470048: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2023-02-28 01:16:10.470096: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-02-28 01:16:10.470102: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+
+Importing & Preprocessing data...
+
+
+          id       categories                                           abstract
+0  0704.0001           hep-ph    A fully differential calculation in perturba...
+1  0704.0002    math.CO cs.CG    We describe a new algorithm, the $(k,\ell)$-...
+2  0704.0003   physics.gen-ph    The evolution of Earth-Moon system is descri...
+3  0704.0004          math.CO    We show that a determinant of Stirling cycle...
+4  0704.0005  math.CA math.FA    In this paper we show how to compute the $\L...
+0            hep-ph
+1           math.CO
+2    physics.gen-ph
+3           math.CO
+4           math.CA
+Name: top category, dtype: object
+                       id                   categories                                           abstract  top category
+1242345        2002.04922                     [hep-ph]    We study the effect of the magnetic field on...             1
+66389           0806.0376                   [astro-ph]    Using deep Chandra and optical spectroscopic...             2
+18476           0708.0625                   [quant-ph]    We propose a protocol of remote implementati...             3
+1855733  astro-ph/9604141                   [astro-ph]    Temperature and luminosity functions of X-ra...             2
+1437508        2103.07363  [quant-ph, physics.ins-det]    In this paper, we have investigated a self-d...             3
+
+
+Featurizing data...
+
+
+Bag-of-words
+
+TF-iDF
+
+BERT
+
+Batches: 100%|███████████████████████████████████████████████████████████████████████████████| 1563/1563 [01:33<00:00, 16.79it/s]
+doc2vec
+
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+Modeling data...
+
+
+Output neurons: 4
+
+Training FFNN on bert: 500000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...1
+
+tensor(1.4517, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.3777, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.1632, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0811, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0258, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0010, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0005, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0003, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0003, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0002, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.0002, device='cuda:0', grad_fn=<DivBackward1>)
+F1: 0.747
+AUC: 0.878
+Accuracy: 0.445
+
+Training FFNN on bert: 500000 epochs, 0.05 learning rate, 100 + 100 + 100 hidden neurons...2
+
+tensor(1.5249, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(0.2508, device='cuda:0', grad_fn=<DivBackward1>)
+^Z
+[4]+  Stopped                 python3 AXpipeline.py /home/ian/Documents/GitHub/General-Index-Visualization/data/arXiv/arxiv-metadata-oai-snapshot.csv
+(base) ian@pop-os:~/Documents/GitHub/General-Index-Visualization/models$ 
+

@@ -1,6 +1,6 @@
 # Ian Hay - 2023-02-23
 
-import GIutil as util
+import models.util as util
 
 class model():
     """

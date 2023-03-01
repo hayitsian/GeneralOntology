@@ -1,54 +1,86 @@
 # Ian Hay - 2023-02-23
 
 
-import ssl
-import csv
+import collections
 import pandas as pd
-import nltk
-from nltk.corpus import stopwords
-import plotly.express as px
 
 
 # TODO
 #
-#  - consider making this into a class and adding as a custom component to a spacy pipeline.
 #  - runtime & memory optimization
 
+class preprocessor():
 
-
-# This function takes in raw arxiv data and preprocesses it.
-#
-# Pipeline:
-#  - load in abstracts by filename (parameter)
-
-def preprocessAbstracts(_filepath, _colNames, _labelCol, _dataCol, _delimiter=","):
-
-    # load some libraries
-    try:
-        _create_unverified_https_context = ssl._create_unverified_context
-    except AttributeError:
+    def __init__(self):
         pass
-    else:
-        ssl._create_default_https_context = _create_unverified_https_context
-
-    nltk.download('stopwords')
-    _stopWords = stopwords.words("english")
 
 
-    # load text data
-    print("Loading into Pandas...\n")
-    _df = pd.read_csv(_filepath, 
-                         header=None, 
-                         sep=_delimiter,
-                         index_col=0,
-                         names=_colNames,
-                         low_memory=False,
-                         quoting=csv.QUOTE_NONE)
-    print("done")
-    print(_df.head())
-    print(_df.shape)
+    def classifyCategories(self, _df, _yLabel, verbose=False):
+        # classify the set of categories
+        _categories = _df[_yLabel].values
 
-    labels = _df[_labelCol]
-    print(set(labels))
+        categoryKeys = set(_categories)
+        categoryDict = {}
+        n = 0 # number of categories in total dataset
+        for cat in categoryKeys:
+            categoryDict[cat] = n
+            n += 1
 
-    return _df
+        _df = _df.replace({_yLabel: categoryDict}) # https://stackoverflow.com/questions/68487397/replacing-values-of-a-column-which-is-of-type-list
+        if verbose: print(_df.head())
+
+        return _df
+
+
+    def importAndPreprocess(self, _filepath, _labelCol, _yLabel, _colNames=None, _delimiter=",", classify=True, verbose=False):
+        """
+        This function takes in a filepath for arXiv abstracts, imports, and preprocesses it.
+        
+        Parameters:
+            - _filepath : str = the filepath to load data from
+            - _labelCol : str = the column of the data label
+            - _colNames : list[str] | None = the columns to label the data with
+            - _delimiter : str (default: ",") = the character to separate data with
+
+        Returns:
+            - _df : pd.DataFrame = the data imported and preprocessed _yLabel label column
+        """
+
+        # load text data
+        if verbose: print("Loading data into Pandas...\n")
+        _df = pd.read_csv(_filepath, 
+                            sep=_delimiter,
+                            names=_colNames,
+                            low_memory=False)
+        if verbose: print("done")
+        if verbose: print(_df.head())
+        if verbose: print(_df.shape)
+
+        _df[_labelCol] = _df[_labelCol].str.split(expand=False)
+
+        _df[_yLabel] = _df[_labelCol].str[0] # gets the first (top) category for each abstract
+
+        if classify: _df = self.classifyCategories(_df, _yLabel, verbose=verbose)
+        return _df
+
+    def getStratifiedSubset(self, _df, _yLabel, _numClasses, numSamples, replaceLabels=True, randomState=1):
+        """
+        
+
+        Returns:
+            - x : ndarray[n,d] = the data of size (num samples, num features)
+            - y : ndarray[n,1] = the labels of size (num samples, 1)
+        """
+        print(_df[_yLabel])
+        categoryCount = collections.Counter(_df[_yLabel])
+        topNCategories = categoryCount.most_common(_numClasses)
+        dfSmall = pd.DataFrame()
+        for key, value in topNCategories:
+            _df = _df[_df[_yLabel] == key]
+            dfSmall = pd.concat((dfSmall, _df))
+        
+        dfSmaller = dfSmall.sample(n=numSamples, random_state=randomState) # random state
+
+        if replaceLabels: self.classifyCategories(dfSmaller, _yLabel)
+
+        return dfSmaller
