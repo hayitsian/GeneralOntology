@@ -6,7 +6,7 @@ from sklearn import ensemble
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import CategoricalNB
+from sklearn.naive_bayes import GaussianNB
 
 import torch
 from torch import nn
@@ -38,6 +38,16 @@ class supervisedModel():
         util.raiseNotDefined()
 
 
+## -- factory class -- ##
+
+class nnFactory():
+
+    def __init__(self):
+        pass
+
+    def generateFFNN(self, input_size, output_size, criterion="cel", learningRate = 0.05, hidden_size_1=50, hidden_size_2=50, hidden_size_3=50, epochs=5000):
+        return FFNN(input_size, output_size, criterion, learningRate, hidden_size_1, hidden_size_2, hidden_size_3, epochs).to(device)
+
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 
    # models must have:
@@ -47,7 +57,7 @@ class supervisedModel():
 
 class FFNN(nn.Module):
 
-    def __init__(self,input_size, output_size, criterion="cel", learningRate = 0.05, hidden_size_1=50, hidden_size_2=50, hidden_size_3=50, epochs=5000):
+    def __init__(self, input_size, output_size, criterion="cel", learningRate = 0.05, hidden_size_1=50, hidden_size_2=50, hidden_size_3=50, epochs=5000):
         super(FFNN,self).__init__()
         self.l1 = nn.Linear(input_size,hidden_size_1)
         self.l2 = nn.Linear(hidden_size_1,hidden_size_2)
@@ -72,7 +82,7 @@ class FFNN(nn.Module):
         self.out.bias.data.zero_()
 
 
-    def forward(self,x):
+    def forward(self, x):
         output = self.l1(x) 
         output = self.sigmoid(output)
         output = self.l2(output)
@@ -80,7 +90,7 @@ class FFNN(nn.Module):
         output = self.l3(output)
         output = self.sigmoid(output)
         output = self.out(output)
-        return output
+        return self.sigmoid(output)
 
 
     def train(self, x, y):
@@ -247,12 +257,8 @@ class logisticRegression(supervisedModel):
 
 class NaiveBayes(supervisedModel):
 
-    def __init__(self, alpha=1.0):
-
-        params = {
-            "alpha": alpha,
-        }
-        self.model = CategoricalNB(**params)
+    def __init__(self):
+        self.model = GaussianNB()
 
 
     def train(self, x, y):

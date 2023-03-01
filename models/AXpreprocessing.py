@@ -18,7 +18,6 @@ class preprocessor():
     def classifyCategories(self, _df, _yLabel, verbose=False):
         # classify the set of categories
         _categories = _df[_yLabel].values
-
         categoryKeys = set(_categories)
         categoryDict = {}
         n = 0 # number of categories in total dataset
@@ -32,7 +31,7 @@ class preprocessor():
         return _df
 
 
-    def importAndPreprocess(self, _filepath, _labelCol, _yLabel, _colNames=None, _delimiter=",", classify=True, verbose=False):
+    def importData(self, _filepath, _labelCol, _yLabel, _colNames=None, _delimiter=",", classify=True, verbose=False):
         """
         This function takes in a filepath for arXiv abstracts, imports, and preprocesses it.
         
@@ -60,8 +59,10 @@ class preprocessor():
 
         _df[_yLabel] = _df[_labelCol].str[0] # gets the first (top) category for each abstract
 
+
         if classify: _df = self.classifyCategories(_df, _yLabel, verbose=verbose)
         return _df
+
 
     def getStratifiedSubset(self, _df, _yLabel, _numClasses, numSamples, replaceLabels=True, randomState=1):
         """
@@ -71,16 +72,17 @@ class preprocessor():
             - x : ndarray[n,d] = the data of size (num samples, num features)
             - y : ndarray[n,1] = the labels of size (num samples, 1)
         """
-        print(_df[_yLabel])
+        
         categoryCount = collections.Counter(_df[_yLabel])
         topNCategories = categoryCount.most_common(_numClasses)
+
         dfSmall = pd.DataFrame()
         for key, value in topNCategories:
-            _df = _df[_df[_yLabel] == key]
-            dfSmall = pd.concat((dfSmall, _df))
+            __df = _df[_df[_yLabel] == key]
+            dfSmall = pd.concat((dfSmall, __df))
         
         dfSmaller = dfSmall.sample(n=numSamples, random_state=randomState) # random state
 
-        if replaceLabels: self.classifyCategories(dfSmaller, _yLabel)
+        if replaceLabels: dfSmaller = self.classifyCategories(dfSmaller, _yLabel, verbose=True)
 
         return dfSmaller

@@ -22,12 +22,14 @@ def raiseNotDefined():
 # source: https://jesusleal.io/2021/04/21/Longformer-multilabel-classification/
 def multi_label_metrics(predictions, labels, threshold=0.5):
     # first, apply sigmoid on predictions which are of shape (batch_size, num_labels)
-    sigmoid = torch.nn.Sigmoid()
-    probs = sigmoid(torch.Tensor(predictions))
+    # sigmoid = torch.nn.Sigmoid()
+    # probs = sigmoid(torch.Tensor(predictions))
     # next, use threshold to turn them into integer predictions
+    probs = predictions
     probs = probs.cpu().data.numpy()
     y_pred = np.zeros(probs.shape)
     y_pred[np.where(probs >= threshold)] = 1
+    y_pred[np.where(probs < threshold)] = 0
     # finally, compute metrics
     y_true = labels
     f1_micro_average = f1_score(y_true=y_true, y_pred=y_pred, average='micro')
@@ -41,7 +43,7 @@ def multi_label_metrics(predictions, labels, threshold=0.5):
                'accuracy': accuracy,
                'recall': recall,
                'precision': precision}
-    print(confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1)))
+    print(confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1))) # this is throwing things off
     return metrics
 
 
