@@ -1,0 +1,127 @@
+Training FFNN with cel loss on BERT with 100000 abstracts across 10 topics:
+500000 epochs, 0.2 learning rate, 768 input neurons, 256 + 512 + 256 hidden neurons...
+
+tensor(2.2876, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.7212, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6829, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6713, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6639, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6319, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6246, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6198, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6159, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6126, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6097, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6072, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6050, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6028, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.6005, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5983, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5962, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5917, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5879, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5857, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5839, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5824, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5811, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5798, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5787, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5777, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5766, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5757, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5752, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5738, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5730, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5722, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5776, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5707, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5699, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5693, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5685, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5679, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5673, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5667, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5660, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5655, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5649, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5717, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5639, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5634, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5629, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5624, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5620, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5615, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5611, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5607, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5603, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5599, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5596, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5592, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5589, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5585, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5582, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5578, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5575, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5571, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5568, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5565, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5562, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5559, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5556, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5553, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5551, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5548, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5545, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5543, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5540, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5537, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5535, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5532, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5530, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5528, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5526, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5524, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5521, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5519, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5517, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5515, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5512, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5510, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5508, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5505, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5503, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5501, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5499, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5497, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5496, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5494, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5492, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5490, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5489, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5487, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5486, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5484, device='cuda:0', grad_fn=<DivBackward1>)
+tensor(1.5482, device='cuda:0', grad_fn=<DivBackward1>)
+[[1269   44    8    1   18   89   98   45    1    0]
+ [  48 2380   29    0  114    8   59   14   55    1]
+ [  24   51 2209    3   61   19    8    0   32    3]
+ [   5    1   11 1658    1    7    3    0    1   95]
+ [  51  376  153    3 2517   11   30   17   14    4]
+ [ 536    9   15   12   17  756   15   29    0    9]
+ [ 273  220   15    7   64   30 1863   27   11   11]
+ [ 338   75    7    0   32  291   71  333    0    0]
+ [  22  791  231    4   47    2   55    1  486    3]
+ [  16    2    9  451    9   16   37    1    2 1100]]
+
+Trained FFNN with cel loss on BERT with 100000 abstracts across 10 topics:
+500000 epochs, 0.2 learning rate, 256 + 512 + 256 hidden neurons.
+Training took 14824.021 seconds
+Metrics: 
+F1 = 0.755  
+ROC AUC = 0.913  
+Accuracy = 0.595  
+Recall = 0.876  
+Precision = 0.663
+
+
+

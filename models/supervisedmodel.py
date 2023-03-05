@@ -93,7 +93,7 @@ class FFNN(nn.Module):
         return self.sigmoid(output)
 
 
-    def train(self, x, y):
+    def train(self, x, y, verbose=False):
         x = torch.tensor(x, dtype=torch.float32).to(device)
         y = torch.tensor(y, dtype=torch.float32).to(device)
         criterion = nn.CrossEntropyLoss()
@@ -111,7 +111,7 @@ class FFNN(nn.Module):
             raise ValueError(f"Invalid criterion for PyTorch Neural Network: {self.criterion}")
 
         optimizer = torch.optim.SGD(self.parameters(),lr=self.learningRate, momentum=0.9)
-        
+
         costs = []
 
         n = 0
@@ -126,9 +126,12 @@ class FFNN(nn.Module):
             optimizer.zero_grad()
             cost.backward()
             optimizer.step()
-            if n % (self.epochs/10) == 0:
+            if n % (self.epochs/100) == 0 and verbose == True:
                 print(cost)
                 costs.append(cost)
+            if n % (self.epochs/10) == 0 and verbose == True:
+                f1, roc, acc, recall, precision = util.multi_label_metrics(y_pred, y.cpu().data.numpy()).values()
+                print(f"Metrics: \nF1 = {f1:0.3f}  \nROC AUC = {roc:0.3f}  \nAccuracy = {acc:0.3f}  \nRecall = {recall:.3f}  \nPrecision = {precision:.3f}\n")
             n += 1
         print(cost)
 
@@ -137,7 +140,7 @@ class FFNN(nn.Module):
         x = torch.tensor(x, dtype=torch.float32).to(device)
         ypred = self(x)
         return ypred
-    
+
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 

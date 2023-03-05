@@ -46,8 +46,8 @@ def main():
    _labelCol = "categories"
    _yLabel = "top category"
 
-   numClasses = 30 # value is used later on
-   numDataPoints = 200000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
+   numClasses = 15 # value is used later on
+   numDataPoints = 100000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
    #####################################################
 
    # open the data file
@@ -116,11 +116,11 @@ def main():
    Y = dfSmaller[_yLabel].values
 
    #####################################################
-   _epochs = 100000
+   _epochs = 20000
    numHidden1 = 256
-   numHidden2 = 256
+   numHidden2 = 512
    numHidden3 = 256
-   learningRate = 0.05
+   learningRate = 0.2
    maxIter=10000
    nEstimators = 1000
    nEstimatorsAda = 50
@@ -128,6 +128,7 @@ def main():
    #####################################################
 
    # supervised - FFNN, decision tree (boosted), TODO: SVM, EM, naive bayes?, logistic regression?
+   # Reinforcement learning - PPO ???
 
    models = {
             # "randomForest": model.RandomForestClassifier(nEstimators=nEstimators, criterion="entropy", maxDepth=5, minSamplesSplit=5),
@@ -158,13 +159,13 @@ def main():
       ffNN = model.FFNN(input_size=numInput, output_size=numOutput, criterion=_criterion, hidden_size_1=numHidden1, hidden_size_2=numHidden2, hidden_size_3=numHidden3, learningRate=learningRate, epochs=_epochs).to(device)
 
       start = default_timer()
-      f1, roc, acc, recall, precision = optimizer.runNN(ffNN, xTrain, yTrain, xTest, yTest)
+      f1, roc, acc, recall, precision = optimizer.runNN(ffNN, xTrain, yTrain, xTest, yTest, verbose=True)
       _time = default_timer() - start
 
       print(f"\nTrained FFNN with {_criterion} loss on {_dataLabel} with {numDataPoints} abstracts across {numClasses} topics:\n"
             + f"{_epochs} epochs, {learningRate} learning rate, {numHidden1} + {numHidden2} + {numHidden3} hidden neurons.\n"
-            + f"Training took {_time}"
-            + f"Average Metrics: \nF1 = {f1:0.3f}  \nROC AUC = {roc:0.3f}  \nAccuracy = {acc:0.3f}  \nRecall = {recall:.3f}  \nPrecision = {precision:.3f}\n")
+            + f"Training took {_time:.3f} seconds\n"
+            + f"Metrics: \nF1 = {f1:0.3f}  \nROC AUC = {roc:0.3f}  \nAccuracy = {acc:0.3f}  \nRecall = {recall:.3f}  \nPrecision = {precision:.3f}\n")
 
 
 

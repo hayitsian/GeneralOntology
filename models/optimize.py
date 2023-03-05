@@ -17,7 +17,7 @@ class modelOptimizer():
     def __init__(self):
         pass
 
-    def runNN(self, NN, xtrain, ytrain, xtest, ytest):
+    def runNN(self, NN, xtrain, ytrain, xtest, ytest, verbose=False):
         numOutput = len(set(ytrain))
 
         yTrainTrue = np.zeros((ytrain.size, numOutput)) # https://stackoverflow.com/questions/29831489/convert-array-of-indices-to-one-hot-encoded-array-in-numpy
@@ -26,7 +26,7 @@ class modelOptimizer():
         yTestTrue = np.zeros((ytest.size, numOutput))
         yTestTrue[np.arange(ytest.size), ytest] = 1
 
-        NN.train(xtrain, yTrainTrue)#.to(device)
+        NN.train(xtrain, yTrainTrue, verbose=verbose)#.to(device)
         ypred = NN.test(xtest)#.to(device)
 
         f1, roc, acc, recall, precision = util.multi_label_metrics(ypred, yTestTrue).values()
