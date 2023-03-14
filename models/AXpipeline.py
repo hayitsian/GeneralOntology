@@ -21,7 +21,7 @@ from timeit import default_timer
 import AXpreprocessing # local file
 import supervisedmodel as model # local file
 import util # local file
-import optimize # loca file
+import optimize # local file
 
 import torch
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -56,20 +56,18 @@ def main():
    preprocessor = AXpreprocessing.preprocessor()
    df = preprocessor.importData(_rawFilename, _labelCol, _yLabel, verbose=True, classify=False)
 
-   dfSmaller = preprocessor.getStratifiedSubset(df, _yLabel, numClasses, numDataPoints)
-   print(dfSmaller[_yLabel].head())
-   print(dfSmaller[_yLabel].describe())
+   _texts, Y = preprocessor.getStratifiedSubset(df, _yLabel, _dataCol, numClasses, numDataPoints)
  
    print("\n\nPreprocessing data...\n\n")
 
    # TODO preprocess texts for BOW and TF-IDF, dimensional reduction / feature selection
-   _texts = dfSmaller[_dataCol].values
+   _preprocessedTexts = preprocessor.preprocessTexts(_texts)
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # # # ---- featurization ---- # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-  
+
 
   # currently doing minimal preprocessing (no POS tagging, stemming, etc.)
 
@@ -79,7 +77,7 @@ def main():
    # _textWords = [re.findall(r'\w+', _text) for _text in _texts] # this is super slow (regex :()
    print("Bag-of-words\n")
    _vectorizer = CountVectorizer()
-   _bow = _vectorizer.fit_transform(_texts)
+   _bow = _vectorizer.fit_transform(_preprocessedTexts)
 
    #TF-iDF
    print("TF-iDF\n")
@@ -99,10 +97,7 @@ def main():
    _docembeddings = _docmodel.dv.get_normed_vectors()
    """
 
-   # top2vec
-
-
-   # LDA2vec
+   # custom embeddings
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
@@ -113,7 +108,6 @@ def main():
    print("\n\nModeling data...\n\n")
 
    X = {"BERT":_bertembeddings} # , "doc2vec":_docembeddings , "bag-of-words":_bow.toarray(), "tf-idf":_tfidf.toarray()}
-   Y = dfSmaller[_yLabel].values
 
    #####################################################
    _epochs = 20000
@@ -124,10 +118,11 @@ def main():
    maxIter=10000
    nEstimators = 1000
    nEstimatorsAda = 50
+   verbose = True
    numOutput = numClasses
    #####################################################
 
-   # supervised - FFNN, decision tree (boosted), TODO: SVM, EM, naive bayes?, logistic regression?
+   # supervised - FFNN, decision tree (boosted), TODO: SVC/M, naive bayes?, logistic regression?
    # Reinforcement learning - PPO ???
 
    models = {
@@ -157,9 +152,10 @@ def main():
 
       optimizer = optimize.modelOptimizer()
       ffNN = model.FFNN(input_size=numInput, output_size=numOutput, criterion=_criterion, hidden_size_1=numHidden1, hidden_size_2=numHidden2, hidden_size_3=numHidden3, learningRate=learningRate, epochs=_epochs).to(device)
-
+      
       start = default_timer()
-      f1, roc, acc, recall, precision = optimizer.runNN(ffNN, xTrain, yTrain, xTest, yTest, verbose=True)
+      f1, roc, acc, recall, precision = ffNN.train(xTrain, yTrain, verbose=verbose)
+      optimizer.runNN(ffNN, xTrain, yTrain, xTest, yTest, verbose=True)
       _time = default_timer() - start
 
       print(f"\nTrained FFNN with {_criterion} loss on {_dataLabel} with {numDataPoints} abstracts across {numClasses} topics:\n"

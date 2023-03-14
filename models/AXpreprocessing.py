@@ -64,7 +64,7 @@ class preprocessor():
         return _df
 
 
-    def getStratifiedSubset(self, _df, _yLabel, _numClasses, numSamples, replaceLabels=True, randomState=1):
+    def getStratifiedSubset(self, _df, _yLabel, _dataCol, _numClasses, numSamples, replaceLabels=True, randomState=1):
         """
         
 
@@ -85,4 +85,9 @@ class preprocessor():
 
         if replaceLabels: dfSmaller = self.classifyCategories(dfSmaller, _yLabel, verbose=True)
 
-        return dfSmaller
+        return dfSmaller[_dataCol].values, dfSmaller[_yLabel].values
+    
+
+    def preprocessTexts(self, _texts, _stopwordRemoval=False, _posTagging=True, _pos=[""]):
+        return _texts
+        pass
