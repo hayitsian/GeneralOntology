@@ -1,13 +1,6 @@
-# Ian Hay - 2023-02-25
+# Ian Hay - 2023-03-14
 
 import util as util
-
-from sklearn import ensemble
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.multioutput import MultiOutputClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import GaussianNB
-
 import numpy as np
 
 import torch
@@ -16,40 +9,6 @@ from torch.nn import functional as F
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
-### --- abstract class --- ###
-
-class supervisedModel():
-
-    def train(self, x, y):
-        """
-        Takes in and trains on the data `x` to return desired features `y`.
-        Parameters:
-            - x : ndarray[float] : 2d array of datapoints n samples by d features
-            - y : ndarray[int] : topic prediction of n samples by c classes
-        """
-        util.raiseNotDefined()
-
-    def test(self, x):
-        """
-        For lowercase ngrams, featurizes them based on the trained model.
-        Parameters:
-            - x : ndarray[float] : list of datapoints n samples by d features
-        Returns:
-            - ypred : ndarray[int] : topic prediction of n samples bc y classes
-        """
-        util.raiseNotDefined()
-
-
-## -- factory class -- ##
-
-class nnFactory():
-
-    def __init__(self):
-        pass
-
-    def generateFFNN(self, input_size, output_size, criterion="cel", learningRate = 0.05, hidden_size_1=50, hidden_size_2=50, hidden_size_3=50, epochs=5000):
-        return FFNN(input_size, output_size, criterion, learningRate, hidden_size_1, hidden_size_2, hidden_size_3, epochs).to(device)
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 
@@ -99,10 +58,10 @@ class FFNN(nn.Module):
     def train(self, x, y, verbose=False):
         numOutput = len(set(y))
 
-        y = np.zeros((y.size, numOutput)) # https://stackoverflow.com/questions/29831489/convert-array-of-indices-to-one-hot-encoded-array-in-numpy
-        y[np.arange(y.size), y] = 1
+        y_true = np.zeros((y.size, numOutput)) # https://stackoverflow.com/questions/29831489/convert-array-of-indices-to-one-hot-encoded-array-in-numpy
+        y_true[np.arange(y.size), y] = 1
         x = torch.tensor(x, dtype=torch.float32).to(device)
-        y = torch.tensor(y, dtype=torch.float32).to(device)
+        y_true = torch.tensor(y_true, dtype=torch.float32).to(device)
 
         # criterion types: "cel", "nll", "he", "kl"
         if (self.criterion == "cel"):
@@ -126,7 +85,7 @@ class FFNN(nn.Module):
             y_pred = self(x)
             
             #calculating loss
-            cost = criterion(y_pred,y)
+            cost = criterion(y_pred,y_true)
         
             #backprop
             optimizer.zero_grad()
@@ -136,7 +95,7 @@ class FFNN(nn.Module):
                 print(cost)
                 costs.append(cost)
             if n % (self.epochs/10) == 0 and verbose == True:
-                f1, roc, acc, recall, precision = util.multi_label_metrics(y_pred, y.cpu().data.numpy()).values()
+                f1, roc, acc, recall, precision = util.multi_label_metrics(y_pred, y_true.cpu().data.numpy()).values()
                 print(f"Metrics: \nF1 = {f1:0.3f}  \nROC AUC = {roc:0.3f}  \nAccuracy = {acc:0.3f}  \nRecall = {recall:.3f}  \nPrecision = {precision:.3f}\n")
             n += 1
         print(cost)
@@ -227,106 +186,3 @@ class EmbeddingNN(nn.Module):
         ypred, theta = self(x)
         return theta
     
-
-### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
-
-
-class logisticRegression(supervisedModel):
-
-    def __init__(self, maxIter=10000, multiClass="ovr", penalty="l2"):
-
-        params = {
-            "penalty": penalty,
-            "multi_class": multiClass,
-            "max_iter": maxIter,
-            "n_jobs": -1,
-        }
-        self.model = LogisticRegression(**params)
-
-
-    def train(self, x, y):
-        self.model.fit(x, y)
-
-    def test(self, x):
-        return self.model.predict(x)
-    
-
-
-### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
-
-
-class NaiveBayes(supervisedModel):
-
-    def __init__(self):
-        self.model = GaussianNB()
-
-
-    def train(self, x, y):
-        self.model.fit(x, y)
-
-    def test(self, x):
-        return self.model.predict(x)
-
-
-
-### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
-
-
-class adaBoostDecisionTree(supervisedModel):
-
-    def __init__(self, estimator=DecisionTreeClassifier(max_depth=5), nEstimators=1000, learningRate=0.5):
-
-        params = {
-            "estimator": estimator,
-            "n_estimators": nEstimators,
-            "learning_rate": learningRate,
-        }
-        self.model = MultiOutputClassifier(ensemble.AdaBoostClassifier(**params))
-
-
-    def train(self, x, y):
-        self.model.fit(x, y)
-
-    def test(self, x):
-        return self.model.predict(x)
-
-
-### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
-
-
-class RandomForestClassifier(supervisedModel):
-
-    def __init__(self, nEstimators=1000, criterion="entropy", maxDepth=25, minSamplesSplit=5, verbose=0):
-
-        params = {
-            "n_estimators": nEstimators,
-            "criterion": criterion,
-            "max_depth": maxDepth,
-            "min_samples_split": minSamplesSplit,
-            "verbose": verbose,
-        }
-        self.model = ensemble.RandomForestClassifier(**params)
-
-
-    def train(self, x, y):
-        self.model.fit(x, y)
-
-    def test(self, x):
-        return self.model.predict(x)
-
-
-### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
-
-
-class EM(supervisedModel):
-
-    def __init__(self):
-        pass
-
-
-    def train(self, x, y):
-        pass
-
-
-    def test(self, x):
-        pass

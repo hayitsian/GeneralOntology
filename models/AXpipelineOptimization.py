@@ -19,7 +19,7 @@ import numpy as np
 from timeit import default_timer
 
 import AXpreprocessing # local file
-import supervisedmodel as model # local file
+import models.classifiermodel as model # local file
 import util as util # local file
 import optimize # local file
 

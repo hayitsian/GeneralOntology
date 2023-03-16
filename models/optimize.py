@@ -1,6 +1,9 @@
 # Ian Hay - 2023-02-28
 
-import supervisedmodel
+import classifiermodel
+import clusteringmodel
+import neuralnetwork
+
 import itertools
 from sklearn.model_selection import StratifiedKFold
 import numpy as np
@@ -71,7 +74,7 @@ class modelOptimizer():
             
 
             for train, test in skfold.split(x, y):
-                ffNN = supervisedmodel.FFNN(numInput, numOutput, hidden_size_1=numFirst, hidden_size_2=numSecond, hidden_size_3=numThird, epochs=epochs).to(device)
+                ffNN = neuralnetwork.FFNN(numInput, numOutput, hidden_size_1=numFirst, hidden_size_2=numSecond, hidden_size_3=numThird, epochs=epochs).to(device)
                 xTrain = x[train]
                 xTest = x[test]
                 yTrain = y[train]
