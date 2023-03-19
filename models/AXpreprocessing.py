@@ -4,6 +4,14 @@
 import collections
 import pandas as pd
 
+import numpy as np
+import multiprocessing as mp
+
+import string
+import spacy 
+from sklearn.base import TransformerMixin, BaseEstimator
+
+nlp = spacy.load("en_core_web_sm", disable=['parser', 'tagger', 'ner'])
 
 # TODO
 #
@@ -85,9 +93,78 @@ class preprocessor():
 
         if replaceLabels: dfSmaller = self.classifyCategories(dfSmaller, _yLabel, verbose=True)
 
-        return dfSmaller[_dataCol].values, dfSmaller[_yLabel].values
+        return dfSmaller[_dataCol], dfSmaller[_yLabel].values
     
 
-    def preprocessTexts(self, _texts, _stopwordRemoval=False, _posTagging=True, _pos=[""]):
-        return _texts
-        pass
+    def preprocessTexts(self, _texts, _stopwordRemoval=True, _lowercase=True, _posTagging=True, _pos=[""]):
+
+        stopwords = list(nlp.Defaults.stop_words)
+
+        if (_lowercase):
+            _texts = [text.lower() for text in _texts]
+
+        textSpacy = nlp(_texts)
+        lemmas = [[token.lemma_ for token in document if not token.is_stop] for document in textSpacy]
+
+        return _texts, 
+
+
+
+# https://stackoverflow.com/questions/45605946/how-to-do-text-pre-processing-using-spacy
+class TextPreprocessor(BaseEstimator, TransformerMixin):
+
+    def __init__(self,
+                 nlp = nlp,
+                 n_jobs=1):
+        """
+        Text preprocessing transformer includes steps:
+            1. Punctuation removal
+            2. Stop words removal
+            3. Lemmatization
+
+        nlp  - spacy model
+        n_jobs - parallel jobs to run
+        """
+        self.nlp = nlp
+        self.n_jobs = n_jobs
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X, *_):
+        X_copy = X.copy()
+
+        partitions = 1
+        cores = mp.cpu_count()
+        if self.n_jobs <= -1:
+            partitions = cores
+        elif self.n_jobs <= 0:
+            return X_copy.apply(self._preprocess_text)
+        else:
+            partitions = min(self.n_jobs, cores)
+
+        data_split = np.array_split(X_copy, partitions)
+        pool = mp.Pool(cores)
+        data = pd.concat(pool.map(self._preprocess_part, data_split))
+        pool.close()
+        pool.join()
+
+        return data
+
+    def _preprocess_part(self, part):
+        return part.apply(self._preprocess_text)
+
+    def _preprocess_text(self, text):
+        doc = self.nlp(text)
+        removed_punct = self._remove_punct(doc)
+        removed_stop_words = self._remove_stop_words(removed_punct)
+        return self._lemmatize(removed_stop_words)
+
+    def _remove_punct(self, doc):
+        return (t for t in doc if t.text not in string.punctuation)
+
+    def _remove_stop_words(self, doc):
+        return (t for t in doc if not t.is_stop)
+
+    def _lemmatize(self, doc):
+        return ' '.join(t.lemma_ for t in doc)

@@ -84,7 +84,7 @@ def main():
    print("\n\nFeaturizing data...\n\n")
 
    # BoW
-   # _textWords = [re.findall(r'\w+', _text) for _text in _texts] # this is super slow (regex :()
+   # _textWords = [re.findall(r'\w+', _text) for _text in _texts] # this is super slow (regex :( )
    print("Bag-of-words\n")
    _vectorizer = CountVectorizer()
    _bow = _vectorizer.fit_transform(_preprocessedTexts)
@@ -116,7 +116,7 @@ def main():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 
-   # TODO: PLSA, PCA, t-SNE, UMAP, etc.
+   # TODO: PLSA, PCA, t-SNE, UMAP, etc. or some lasso regularization
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
@@ -124,24 +124,24 @@ def main():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 
-   print("\n\nModeling data...\n\n")
+   print("\n\nModeling data...\n")
 
    X = {"BERT":_bertembeddings} # , "doc2vec":_docembeddings , "bag-of-words":_bow.toarray(), "tf-idf":_tfidf.toarray()}
 
 
    ####################### --- clustering --- ##############################
 
-   print("KMeans Clustering, TF-IDF Features...")
+   print("\nKMeans Clustering, TF-IDF Features...")
    start = default_timer()
    km = clusteringmodel.KMeans(nClasses=numClasses, maxIter=5000)
    km.train(_tfidf.toarray(), Y, verbose=True)
    _time = default_timer() - start
    
-   print("KMeans Clustering, BERT Embedding Features...")
+   print("\nKMeans Clustering, BERT Embedding Features...")
    km = clusteringmodel.KMeans(nClasses=numClasses, maxIter=5000)
    km.train(_bertembeddings, Y, verbose=True)
 
-   print("LDA, BOW Features...")
+   print("\nLDA, BOW Features...")
    lda = clusteringmodel.LDA(nClasses=numClasses, maxIter=10)
    lda.train(_bow.toarray(), Y, verbose=True)
 
@@ -161,7 +161,7 @@ def main():
       util.getClusterMetrics(pred, x=_bertembeddings, labels=Y, supervised=True)
    """
 
-   print("BERTopic, raw Texts + BERT Embedding...")
+   print("\nBERTopic, raw Texts + BERT Embedding...")
    bertopic = BERTopic(embedding_model=_bertmodel, 
                               umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine'),
                               hdbscan_model=HDBSCAN(min_cluster_size=15, metric='euclidean', cluster_selection_method='eom', prediction_data=True),
@@ -174,7 +174,7 @@ def main():
    pred = util.getTopPrediction(probs)
    util.getClusterMetrics(pred, labels=Y, supervised=True)
 
-   print("Top2Vec, raw Texts + universal-sentence-encoder...")
+   print("\nTop2Vec, raw Texts + universal-sentence-encoder...")
    top2vec = Top2Vec(documents=_texts, embedding_model='universal-sentence-encoder')
    docsids = top2vec.document_ids
    pred = top2vec.get_documents_topics(docsids, num_topics=1)[0]

@@ -7,7 +7,7 @@ from collections import OrderedDict
 import numpy as np
 from sklearn import metrics
 from sklearn.metrics import f1_score, roc_auc_score, accuracy_score, recall_score, precision_score, confusion_matrix
-
+from sklearn.feature_selection import mutual_info_classif
 
 
 def raiseNotDefined():

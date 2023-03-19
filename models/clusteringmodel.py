@@ -5,6 +5,7 @@ import numpy as np
 
 from sklearn.cluster import MiniBatchKMeans as km
 from sklearn.decomposition import LatentDirichletAllocation as lda
+from sklearn.decomposition import NMF as nmf
 from hdbscan import HDBSCAN
 from bertopic import BERTopic
 from bertopic.vectorizers import ClassTfidfTransformer
@@ -37,27 +38,43 @@ class clusteringModel():
 
 class KMeans(clusteringModel):
 
-    def __init__(self, nClasses, batchSize=4096, maxIter=5000):
-        self.model = km(n_clusters=nClasses, batch_size=batchSize, max_iter=maxIter)
+    def __init__(self):
+        pass
 
-    def train(self, x, y=None, verbose=True):
+    def train(self, x, nClasses, batchSize=4096, maxIter=5000, y=None, verbose=False):
+        self.model = km(n_clusters=nClasses, batch_size=batchSize, max_iter=maxIter)
         self.model.fit(x)
         pred = self.model.labels_
-        util.getClusterMetrics(pred, x=x, labels=y, supervised=y is not None, verbose=verbose)
+        _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(pred, x=x, labels=y, supervised=y is not None, verbose=verbose)
+        return pred, [_silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand]
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 
 class LDA(clusteringModel):
 
-    def __init__(self, nClasses, batchSize=512, maxIter=10):
-        self.model = lda(n_components=nClasses, batch_size=batchSize, max_iter=maxIter)
+    def __init__(self):
+        pass
 
-    def train(self, x, y=None, verbose=True):
+    def train(self, x, nClasses, batchSize=512, maxIter=10, y=None, verbose=False):
+        self.model = lda(n_components=nClasses, batch_size=batchSize, max_iter=maxIter)
         output = self.model.fit_transform(x)
         pred = util.getTopPrediction(output)
-        util.getClusterMetrics(pred, x=x, labels=y, supervised=y is not None, verbose=verbose)
+        _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(pred, x=x, labels=y, supervised=y is not None, verbose=verbose)
         """        if (verbose):
             print(f"Perplexity: {lda.perplexity(x)}")
             print(f"Log-likelihood: {lda.score(x)}")"""
+        return pred, [_silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand]
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
+
+class NMF(clusteringModel):
+
+    def __init__(self):
+        pass
+
+    def train(self, x, nClasses, maxIter=1000, y=None, verbose=False):
+        self.model = nmf(n_components=nClasses, max_iter=maxIter, init="nndsvda", beta_loss="frobenius", alpha_W=0.00005, alpha_H=0.00005, l1_ratio=1)
+        output = self.model.fit_transform(x)
+        pred = util.getTopPrediction(output)
+        _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(pred, x=x, labels=y, supervised=y is not None, verbose=verbose)
+        return pred, [_silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand]
