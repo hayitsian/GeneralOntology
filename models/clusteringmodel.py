@@ -73,7 +73,7 @@ class NMF(clusteringModel):
         pass
 
     def train(self, x, nClasses, maxIter=1000, y=None, verbose=False):
-        self.model = nmf(n_components=nClasses, max_iter=maxIter, init="nndsvda", beta_loss="frobenius", alpha_W=0.00005, alpha_H=0.00005, l1_ratio=1)
+        self.model = nmf(n_components=nClasses, max_iter=maxIter, solver="mu", init="nndsvd", beta_loss="kullback-leibler", alpha_W=0.00005, alpha_H=0.00005, l1_ratio=1)
         output = self.model.fit_transform(x)
         pred = util.getTopPrediction(output)
         _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(pred, x=x, labels=y, supervised=y is not None, verbose=verbose)

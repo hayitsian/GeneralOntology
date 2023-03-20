@@ -52,6 +52,8 @@ def getClusterMetrics(pred, x=None, labels=None, supervised=False, verbose=True)
     # perplexity
     # coherence
     # log-likelihood
+    if (len(list(set(pred))) < 2):
+        return 0., 0., 0., 0., 0., 0., 0. # hard coded, TODO to fix in the future
     if(x is not None):
         _silhouette = metrics.silhouette_score(x, pred)
         _calinskiHarabasz = metrics.calinski_harabasz_score(x, pred)

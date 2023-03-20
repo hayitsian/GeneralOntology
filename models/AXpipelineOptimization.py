@@ -62,7 +62,7 @@ def main():
    _yLabel = "top category"
 
    numClasses = 10 # value is used later on
-   numDataPoints = 20000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
+   numDataPoints = 25000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
    #####################################################
 
    # open the data file
@@ -156,6 +156,8 @@ def main():
          masterDict = {}
 
          for _modelLabel, _model in _models.items():
+            if (_featLabel == "BERT" and (_modelLabel == "LDA" or _modelLabel == "NMF")):
+               continue
             print("\nModeling data...\n")
             silhouette = []
             calinski = []
@@ -164,6 +166,7 @@ def main():
             completeness = []
             vMeasure = []
             rand = []
+            time = []
  
             for i in numtopics:
                print(f"Training {_xLabel} with {_featLabel} features and {_modelLabel} model using {i} topics...")
@@ -178,6 +181,7 @@ def main():
                completeness.append(metrics[4])
                vMeasure.append(metrics[5])
                rand.append(metrics[6])
+               time.append(_time)
 
             metricDict = {}
             metricDict["silhouette"] = silhouette
@@ -187,14 +191,15 @@ def main():
             metricDict["completeness"] = completeness
             metricDict["vMeasure"] = vMeasure
             metricDict["rand"] = rand
+            metricDict["time"] = time
             masterDict[_modelLabel] = metricDict
             print(completeness)
 
          for _metric in metricList:
             for _modelLabel, _metrics in masterDict.items():
                plt.plot(numtopics, _metrics[_metric], label=_modelLabel)
-            plottitle = f"Comparison of {_metric} performance\nAcross models for {_featLabel} features."
-            plotname = f"Comparison of {_metric} performance across models for {_featLabel} features"
+            plottitle = f"Comparison of {_metric} performance\nAcross models for {_featLabel} features\nOn {_xLabel} data."
+            plotname = f"Comparison of {_metric} performance across models for {_featLabel} features on {_xLabel} data"
             plt.title(plottitle)
             plt.xlabel(numtopics)
             plt.ylabel(_metric)
@@ -205,7 +210,7 @@ def main():
          for _modelLabel, metrics in masterDict.items():
             metrics["num topics"] = numtopics
             df = pd.DataFrame.from_dict(metrics)
-            df.to_csv(f"Metrics for {_modelLabel} with {_featLabel} features.csv")
+            df.to_csv(f"Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data.csv")
 
 
    ### does not specify number of classes
