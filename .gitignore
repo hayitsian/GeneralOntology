@@ -8,3 +8,6 @@ data/arXiv/arxiv-metadata-oai-snapshot.csv
 data/arXiv/arxiv-metadata-oai-snapshot.json
 data/GeneralIndex/doc_ngrams_0_100M_ngrams.txt
 data/GeneralIndex/doc_ngrams_0_10M_ngrams.txt
+pipeline/BERTopic_doc_ngrams_0_100M_ngrams_model
+pipeline/BERTopic_doc_ngrams_0_10M_ngrams_model
+pipeline/BERTopic_doc_ngrams_0_1M_ngrams_model

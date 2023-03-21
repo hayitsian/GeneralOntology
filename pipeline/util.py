@@ -3,11 +3,10 @@
 import sys
 import inspect
 import torch
-from collections import OrderedDict
 import numpy as np
 from sklearn import metrics
-from sklearn.metrics import f1_score, roc_auc_score, accuracy_score, recall_score, precision_score, confusion_matrix
-from sklearn.feature_selection import mutual_info_classif
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def raiseNotDefined():
@@ -19,35 +18,47 @@ def raiseNotDefined():
     sys.exit(1)
 
 
+def getTopPrediction(probs):
+    return np.argmax(probs, axis=1)
+
+
 # https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/BERT/Fine_tuning_BERT_(and_friends)_for_multi_label_text_classification.ipynb#scrollTo=6XPL1Z_RegBF
 # source: https://jesusleal.io/2021/04/21/Longformer-multilabel-classification/
-def multi_label_metrics(predictions, labels, threshold=0.5):
-    # first, apply sigmoid on predictions which are of shape (batch_size, num_labels)
-    # sigmoid = torch.nn.Sigmoid()
-    # probs = sigmoid(torch.Tensor(predictions))
-    # next, use threshold to turn them into integer predictions
+def getClassificationMetrics(predictions, labels, threshold=0.5, upperVal=1, lowerVal=0, verbose=True):
+    # assumes predictions are a torch tensor object
+
     probs = predictions
     probs = probs.cpu().data.numpy()
-    y_pred = np.zeros(probs.shape)
-    y_pred[np.where(probs >= threshold)] = 1
-    y_pred[np.where(probs < threshold)] = 0
-    # finally, compute metrics
+    # y_pred = np.zeros(probs.shape)
+    y_pred = np.where(probs >= threshold, upperVal, lowerVal)
     y_true = labels
-    f1_micro_average = f1_score(y_true=y_true, y_pred=y_pred, average='micro')
-    roc_auc = roc_auc_score(y_true, y_pred, average = 'micro')
-    accuracy = accuracy_score(y_true, y_pred)
-    recall = recall_score(y_true, y_pred, average = 'micro')
-    precision = precision_score(y_true, y_pred, average = 'micro')
-    # return as dictionary
-    metrics = {'f1': f1_micro_average,
-               'roc_auc': roc_auc,
-               'accuracy': accuracy,
-               'recall': recall,
-               'precision': precision}
-    print(confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1))) # this is throwing things off
+
+    f1_score = metrics.f1_score(y_true=y_true, y_pred=y_pred, average='micro')
+    roc_auc = metrics.roc_auc_score(y_true, y_pred, average = 'micro')
+    accuracy = metrics.accuracy_score(y_true, y_pred)
+    recall = metrics.recall_score(y_true, y_pred, average = 'micro')
+    precision = metrics.precision_score(y_true, y_pred, average = 'micro')
+    confusion_matrix = metrics.confusion_matrix(y_true.argmax(axis=1), y_pred.argmax(axis=1))
+
+    metrics = {'f1': f1_score,
+            'roc_auc': roc_auc,
+            'accuracy': accuracy,
+            'recall': recall,
+            'precision': precision,
+            'confusion matrix': confusion_matrix}
+    
+    if verbose: print(f"F1: {f1_score}\tAUC: {roc_auc}\tAccuracy: {accuracy}\n"
+                        +f"Recall: {recall}\tPrecision: {precision}\n"
+                        +f"Confusion matrix:\n{confusion_matrix}")
+
     return metrics
 
+
 def getClusterMetrics(pred, x=None, labels=None, supervised=False, verbose=True):
+    
+    # TODO holy fuck clean this up please
+
+
     # TODO
     # perplexity
     # coherence
@@ -88,5 +99,3 @@ def getClusterMetrics(pred, x=None, labels=None, supervised=False, verbose=True)
             print(f"Adjusted Rand-Index: {_rand}") # supervised
         return _homogeneity, _completeness, _vMeasure, _rand
 
-def getTopPrediction(probs):
-    return np.argmax(probs, axis=1)

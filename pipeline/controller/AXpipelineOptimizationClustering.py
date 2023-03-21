@@ -19,13 +19,13 @@ import numpy as np
 from timeit import default_timer
 import matplotlib.pyplot as plt
 
-import AXpreprocessing # local file
+import pipeline.model.AXpreprocessing as AXpreprocessing # local file
 import classifiermodel # local file
-import neuralnetwork
+import neuralnetworkmodel as neuralnetworkmodel # local file
 import util # local file
-import optimize # local file
+import pipeline.controller.optimizer as optimizer # local file
 import clusteringmodel # local file
-import featuremodel
+import featuremodel # local file
 
 
 import torch
@@ -76,7 +76,7 @@ def main():
    print("\n\nPreprocessing data...\n\n")
 
    # preprocess texts
-   textPrep = AXpreprocessing.TextPreprocessor(n_jobs=-1)
+   textPrep = AXpreprocessing.TextPreprocessor(n_jobs=-1) # use maximum numvber of threads
    _preprocessedTexts = textPrep.transform(_texts).values
    _texts = _texts.values
 
@@ -89,7 +89,6 @@ def main():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # # # ---- featurization ---- # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-
 
 
    featurizers = {}
@@ -143,8 +142,10 @@ def main():
       "NMF": nmf
    }
 
+   #######################
    maxIter=50
    numtopics = range(2, 2*numClasses)
+   #######################
 
    for _xLabel, _x in X.items(): 
 
@@ -152,7 +153,7 @@ def main():
          print("\nFeaturizing data...\n")
          _xx = _featurizer.train(_x)
 
-         metricList = ["silhouette", "calinski", "davies", "homogeneity", "completeness", "vMeasure", "rand"]
+         metricList = ["silhouette", "calinski", "davies", "homogeneity", "completeness", "vMeasure", "rand"] # likely want to abstract these out
          masterDict = {}
 
          for _modelLabel, _model in _models.items():
@@ -201,7 +202,7 @@ def main():
             plottitle = f"Comparison of {_metric} performance\nAcross models for {_featLabel} features\nOn {_xLabel} data."
             plotname = f"Comparison of {_metric} performance across models for {_featLabel} features on {_xLabel} data"
             plt.title(plottitle)
-            plt.xlabel(numtopics)
+            plt.xlabel("Number of topics")
             plt.ylabel(_metric)
             plt.legend()
             plt.savefig(plotname)
@@ -210,7 +211,7 @@ def main():
          for _modelLabel, metrics in masterDict.items():
             metrics["num topics"] = numtopics
             df = pd.DataFrame.from_dict(metrics)
-            df.to_csv(f"Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data.csv")
+            df.to_csv(f"Clustering Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data.csv")
 
 
    ### does not specify number of classes
@@ -265,36 +266,18 @@ def main():
                               verbose=True,
                               calculate_probabilities=True),
          "Top2Vec": Top2Vec(documents=_texts, embedding_model='universal-sentence-encoder') # this one has texts already passed in
+         
          # TODO: Neural Topic Modeling
+         # some neural network topic models: https://github.com/zll17/Neural_Topic_Models#NVDM-GSM
       }
    """
 
 
    # TODO : plot top words for topics
-
-   #####################################################
-   _epochs = 100000
-   # numHidden1 = list(range(64, 259, 64))
-   # numHidden2 = list(range(64, 259, 64))
-   # numHidden3 = list(range(64, 259, 64))
-   numHidden1 = numHidden2 = numHidden3 = [64, 128, 256]
-
-   learningRate = 0.2
-   #####################################################
-
-   # supervised - FFNN, decision tree (boosted), TODO: SVM, EM, naive bayes?, logistic regression?
-
-   """   optmizer = optimize.modelOptimizer()
-   metricDF = optmizer.optimizeNN(X, Y, numHidden1, numHidden2, numHidden3, _epochs, learningRate, verbose=True)
-   print(metricDF)
-   metricDF.to_csv("optimization_metrics.csv")"""
-
-   # some neural network topic models: https://github.com/zll17/Neural_Topic_Models#NVDM-GSM
+   # TODO : metadata extraction and evaluation
 
 
-   # TODO : plot classification metrics 
 
-  
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # # # # ---- evaluation ----# # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 

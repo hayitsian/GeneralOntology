@@ -18,11 +18,11 @@ import pandas as pd
 import numpy as np
 from timeit import default_timer
 
-import AXpreprocessing # local file
+import pipeline.model.AXpreprocessing as AXpreprocessing # local file
 import classifiermodel # local file
-import neuralnetwork
+import neuralnetworkmodel as neuralnetworkmodel
 import util # local file
-import optimize # local file
+import pipeline.controller.optimizer as optimizer # local file
 import clusteringmodel # local file
 
 import torch
@@ -249,8 +249,8 @@ def main():
 
       xTrain, xTest, yTrain, yTest = train_test_split(x, Y, test_size=0.2, random_state=42)
 
-      optimizer = optimize.modelOptimizer()
-      ffNN = neuralnetwork.FFNN(input_size=numInput, output_size=numOutput, criterion=_criterion, hidden_size_1=numHidden1, hidden_size_2=numHidden2, hidden_size_3=numHidden3, learningRate=learningRate, epochs=_epochs).to(device)
+      optimizer = optimizer.modelOptimizer()
+      ffNN = neuralnetworkmodel.FFNN(input_size=numInput, output_size=numOutput, criterion=_criterion, hidden_size_1=numHidden1, hidden_size_2=numHidden2, hidden_size_3=numHidden3, learningRate=learningRate, epochs=_epochs).to(device)
       
       start = default_timer()
       f1, roc, acc, recall, precision = ffNN.train(xTrain, yTrain, verbose=verbose)

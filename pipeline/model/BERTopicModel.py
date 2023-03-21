@@ -6,10 +6,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from bertopic.vectorizers import ClassTfidfTransformer
 from bertopic import BERTopic
 
-import GIabstractModel as model
+import abstractmodel as model
 
 
-class BERTopicModel(model.topicModel):
+class BERTopicModel(model.abstractModel()):
 
     def train(_texts, _labels=None, _embeddingModel = None):
         # dimensional reduction

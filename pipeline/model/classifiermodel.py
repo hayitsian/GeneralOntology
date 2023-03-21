@@ -1,6 +1,7 @@
 # Ian Hay - 2023-02-25
 
-import util as util
+import util
+import abstractmodel
 
 from sklearn import ensemble
 from sklearn.tree import DecisionTreeClassifier
@@ -14,7 +15,7 @@ import numpy as np
 
 ### --- abstract class --- ###
 
-class classifierModel():
+class classifierModel(abstractmodel.abstractModel):
 
     def train(self, x, y):
         """
@@ -55,6 +56,7 @@ class logisticRegression(classifierModel):
     def train(self, x, y):
         self.model.fit(x, y)
 
+
     def test(self, x):
         return self.model.predict(x)
     
@@ -67,29 +69,6 @@ class NaiveBayes(classifierModel):
 
     def __init__(self):
         self.model = GaussianNB()
-
-
-    def train(self, x, y):
-        self.model.fit(x, y)
-
-    def test(self, x):
-        return self.model.predict(x)
-
-
-
-### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
-
-
-class adaBoostDecisionTree(classifierModel):
-
-    def __init__(self, estimator=DecisionTreeClassifier(max_depth=5), nEstimators=1000, learningRate=0.5):
-
-        params = {
-            "estimator": estimator,
-            "n_estimators": nEstimators,
-            "learning_rate": learningRate,
-        }
-        self.model = MultiOutputClassifier(ensemble.AdaBoostClassifier(**params))
 
 
     def train(self, x, y):
@@ -121,20 +100,3 @@ class RandomForestClassifier(classifierModel):
 
     def test(self, x):
         return self.model.predict(x)
-
-
-### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
-
-
-class EM(classifierModel):
-
-    def __init__(self):
-        pass
-
-
-    def train(self, x, y):
-        pass
-
-
-    def test(self, x):
-        pass
