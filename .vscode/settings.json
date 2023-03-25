@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./pipeline/model"
+        "./pipeline/model",
+        "./GOpipeline/model"
     ]
 }
