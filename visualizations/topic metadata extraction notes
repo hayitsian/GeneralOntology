@@ -1,0 +1,9 @@
+
+Types of topic and keyword metadata we can obtain from our datasources (abstracts, n-grams, full manuscripts).
+
+-------------------------------------------
+
+- maximally relevant keywords via TF-iDF
+- maximally relevant ngrams via TF-iDF
+- abstracted topics from aggregated clusters
+

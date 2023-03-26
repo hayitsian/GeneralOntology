@@ -12,10 +12,49 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import  LogisticRegressionCV
 from sklearn.pipeline import Pipeline
 
-
+import util as util
 import GOpipeline.model.AXpreprocessing as AXpreprocessing
 
 nlp = spacy.load("en_core_web_sm")
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+
+
+class abstractPipeline():
+    '''
+    An abstractPipeline contains a feature pipeline, model pipeline and evaluation pipeline.
+    '''
+
+    def compile(FeaturePipeline, ModelPipeline, EvaluationPipeline):
+        '''
+
+        compile() generates the pipeline object from the given components. 
+    
+        '''
+        util.raiseNotDefined()
+
+    def fit(x, y):
+        '''
+
+        train() trains the feature pipeline on input data x and labels y.
+    
+        '''
+        util.raiseNotDefined()
+
+    def predict(x):
+        '''
+
+        predict() passes the input data x through the pipeline and produces a prediction of labels.
+
+        '''
+        util.raiseNotDefined()
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+
 
 class pipeline():
 

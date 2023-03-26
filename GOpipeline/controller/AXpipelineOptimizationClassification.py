@@ -49,9 +49,11 @@ def main():
    _dataCol = "abstract"
    _labelCol = "categories"
    _yLabel = "top category"
+   _baseLabelCol = "base categories"
+   _baseLabel = "base category"
 
-   numClasses = 10 # value is used later on
-   numDataPoints = 15000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
+   numClasses = 5 # value is used later on
+   numDataPoints = 10000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
    #####################################################
 
    # open the data file
@@ -61,15 +63,32 @@ def main():
    df = preprocessor.importData(_rawFilename, _labelCol, _yLabel, verbose=True, classify=False)
 
    categoryCounter = Counter(list(itertools.chain(*df[_labelCol].values)))
-   print(f"Total number of labels: {sum(categoryCounter.values())}\n")
+   print(f"\nTotal number of categories: {len(list(set(categoryCounter.keys())))}\n")
    print(categoryCounter)
 
+   topCategoryCounter = Counter(df[_yLabel].values)
+   print(f"\nTotal number of top categories: {len(list(set(topCategoryCounter.keys())))}\n")
+   print(topCategoryCounter)
+
+
+   df[_baseLabelCol] = df[_labelCol].apply(AXpreprocessing.getBaseCategories)
+   df[_baseLabel] = df[_baseLabelCol].str[0]
+   baseCategoryCounter = Counter(df[_baseLabel].values)
+   print(f"\nTotal number of base categories: {len(list(set(baseCategoryCounter.keys())))}\n")
+   print(baseCategoryCounter)
+
+
    print("\n\nPreprocessing data...\n\n")
+   _texts, Ylower = preprocessor.getStratifiedSubset(df, _yLabel, _dataCol, numClasses, numDataPoints, verbose=True)
+   _texts, Yhigher = preprocessor.getStratifiedSubset(df, _baseLabel, _dataCol, numClasses, numDataPoints, verbose=True)
 
-   _texts, Y = preprocessor.getStratifiedSubset(df, _yLabel, _dataCol, numClasses, numDataPoints, verbose=True)
-   Y = Y.values
+   Ylower = Ylower.values
+   Yhigher = Yhigher.values
 
-   # preprocess texts
+   stratBaseCounter = Counter(Yhigher)
+   print(stratBaseCounter)
+
+   # preprocess texts 
    _tokensPrior = list(itertools.chain(*[_txt.split() for _txt in _texts]))
    _vocabSizePrior = len(set(_tokensPrior))
    print(f"\nToken number before preprocessing: {len(_tokensPrior)}")
@@ -84,16 +103,16 @@ def main():
    print(f"Token number after preprocessing: {len(_tokensAfter)}")
    print(f"Vocab size after preprocessing: {_vocabSizeAfter}\n")
 
-   
-   # TODO: plot of tokens vs vocab in ascending order, histogram of token freq, tokens per manuscript
-   # all ^ comparing before & after preprocessing
+   #####################################################
 
    X = {"raw texts": _texts, "preprocessed texts": _preprocessedTexts}
 
+   #####################################################
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # # # # # # # # # # # # # ---- featurization ---- # # # # # # # # # # # # # # # # # # # 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+   # # # # # # # # # # # # # # # # # ---- featurization ---- # # # # # # # # # # # # # # # # # # # 
+   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 
    featurizers = {}
@@ -114,38 +133,21 @@ def main():
    featurizers[_name] = _bertmodel
 
 
-   # TODO: custom embeddings, ngrams
-   # TODO: add feature extraction with preprocessed text
-   # TODO: plot features, somehow...
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # # # # # # # # # # # # ---- feature selection ---- # # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-
-
-   # TODO: PLSA, PCA, t-SNE, UMAP, etc. or some lasso regularization
-   # TODO: visualize features
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-# # # # # # # # # # # # # # # #  ---- topic modeling ---- # # # # # # # # # # # # # # # # # # #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+   # # # # # # # # # # # # # # # #  ---- topic modeling ---- # # # # # # # # # # # # # # # # # # #
+   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
    ####################### --- classification --- ##############################
 
 
    #####################################################
-   _epochs = 8000
-   # numHidden1 = list(range(64, 259, 64))
-   # numHidden2 = list(range(64, 259, 64))
-   # numHidden3 = list(range(64, 259, 64))
-   numHidden1 = numHidden2 = numHidden3 = 128
+   _epochs = 5000
+   numHidden1 = numHidden2 = numHidden3 = 64
 
    learningRate = 0.2
 
    nEstimators=1000
-   maxIter=1000000
+   maxIter=50000
 
    VERBOSE=True
 
@@ -164,7 +166,6 @@ def main():
       "Random Forest": rfc
    }
 
-
    for _xLabel, _x in X.items(): 
 
       for _featLabel, _featurizer in featurizers.items():
@@ -177,82 +178,75 @@ def main():
 
          for _modelLabel, _model in _models.items():
                
-            metricDict = {}
-            for _metric in metricList:
-               metricDict[_metric] = []
+               metricDict = {}
+               for _metric in metricList:
+                  metricDict[_metric] = []
 
-            kfold = StratifiedKFold(n_splits=5)
-            for i, (train_index, test_index) in enumerate(kfold.split(_xx, Y)):
-               print(f"Training {_xLabel} with {_featLabel} features and {_modelLabel} model\nOn {numDataPoints} abstracts across {numClasses} topics. Fold {i}...")
-               xtrain = _xx[train_index]
-               ytrain = Y[train_index]
-               xtest = _xx[test_index]
-               ytest = Y[test_index]
-               start = default_timer()
-               _model.train(xtrain, ytrain)
-               predy = _model.test(xtest)
-               _time = default_timer() - start
-               print(f"Training took: {_time:.3f}")
+               kfold = StratifiedKFold(n_splits=5)
+               for i, (train_index, test_index) in enumerate(kfold.split(_xx, Yhigher)):
+                  print(f"Training {_xLabel} with {_featLabel} features and {_modelLabel} model\nOn {numDataPoints} abstracts across {numClasses} topics. Fold {i}...")
+                  xtrain = _xx[train_index]
+                  ytrain = Yhigher[train_index]
+                  xtest = _xx[test_index]
+                  ytest = Yhigher[test_index]
+                  start = default_timer()
+                  _model.train(xtrain, ytrain)
+                  predy = _model.test(xtest)
+                  _time = default_timer() - start
+                  print(f"Training took: {_time:.3f}")
 
-               _metrics = util.getClassificationMetrics(predy, ytest, probability=False, verbose=False)
-               _f1 = _metrics['f1']
-               if VERBOSE: print(f"F1 Score: {_f1:.3f}\n")
-               for _key in metricDict.keys():
-                  metricDict[_key].append(_metrics[_key])
+                  _metrics = util.getClassificationMetrics(predy, ytest, probability=False, verbose=False)
+                  _f1 = _metrics['f1']
+                  if VERBOSE: print(f"F1 Score: {_f1:.3f}\n")
+                  for _key in metricDict.keys():
+                     metricDict[_key].append(_metrics[_key])
 
-            masterDict[_modelLabel] = metricDict
+               masterDict[_modelLabel] = metricDict
 
 
+                  
          # now do the neural network bc its different :)
          numInput = _xx.shape[1]
 
          metricDict = {}
          for _metric in metricList:
-            metricDict[_metric] = []
+               metricDict[_metric] = []
 
          kfold = StratifiedKFold(n_splits=5)
-         for i, (train_index, test_index) in enumerate(kfold.split(_xx, Y)):
-            print(f"Training {_xLabel} with {_featLabel} features and Neural Network model\nOn {numDataPoints} abstracts across {numClasses} topics. Fold {i}...")
-            _model = neuralnetworkmodel.FFNN(numInput, numClasses, hidden_size_1=numHidden1, hidden_size_2=numHidden2, hidden_size_3=numHidden3, epochs=_epochs)
-            xtrain = _xx[train_index]
-            ytrain = Y[train_index]
-            xtest = _xx[test_index]
-            ytest = Y[test_index]
-            start = default_timer()
-            _model.train(xtrain, ytrain, verbose=VERBOSE)
-            predy = _model.test(xtest)
-            _time = default_timer() - start
-            print(f"Training took: {_time:.3f}")
+         for i, (train_index, test_index) in enumerate(kfold.split(_xx, Yhigher)):
+               print(f"Training {_xLabel} with {_featLabel} features and Neural Network model\nOn {numDataPoints} abstracts across {numClasses} topics. Fold {i}...")
+               _model = neuralnetworkmodel.FFNN(numInput, numClasses, hidden_size_1=numHidden1, hidden_size_2=numHidden2, hidden_size_3=numHidden3, epochs=_epochs)
+               xtrain = _xx[train_index]
+               ytrain = Yhigher[train_index]
+               xtest = _xx[test_index]
+               ytest = Yhigher[test_index]
+               start = default_timer()
+               _model.train(xtrain, ytrain, verbose=VERBOSE)
+               predy = _model.test(xtest)
+               _time = default_timer() - start
+               print(f"Training took: {_time:.3f}")
 
-            predy = predy.cpu().data.numpy()
+               predy = predy.cpu().data.numpy()
 
-            numOutput = len(set(ytest))
-            y_true = np.zeros((ytest.size, numOutput)) # https://stackoverflow.com/questions/29831489/convert-array-of-indices-to-one-hot-encoded-array-in-numpy
-            y_true[np.arange(ytest.size), ytest] = 1
+               numOutput = len(set(ytest))
+               y_true = np.zeros((ytest.size, numOutput)) # https://stackoverflow.com/questions/29831489/convert-array-of-indices-to-one-hot-encoded-array-in-numpy
+               y_true[np.arange(ytest.size), ytest] = 1
 
-            _metrics = util.getClassificationMetrics(predy, y_true, probability=True, verbose=False)
-            _metrics["confusion matrix"] = [[0, 0, 0],[0, 0, 0],[0, 0, 0]]
-            _f1 = _metrics['f1']
-            if VERBOSE: print(f"F1 Score: {_f1:.3f}")
-            for _key in metricDict.keys():
-               metricDict[_key].append(_metrics[_key])
+               _metrics = util.getClassificationMetrics(predy, y_true, probability=True, verbose=False)
+               _metrics["confusion matrix"] = [[0, 0, 0],[0, 0, 0],[0, 0, 0]]
+               _f1 = _metrics['f1']
+               if VERBOSE: print(f"F1 Score: {_f1:.3f}")
+               for _key in metricDict.keys():
+                  metricDict[_key].append(_metrics[_key])
 
          masterDict["neural network"] = metricDict
-
+         
 
          for _modelLabel, metrics in masterDict.items():
-            df = pd.DataFrame.from_dict(metrics)
-            df.to_csv(f"../../Visualizations/experiment 2 - 2023-03-22/Classification Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data.csv")
+               df = pd.DataFrame.from_dict(metrics)
+               df.to_csv(f"../visualizations/experiment 2 - 2023-03-22/Classification Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data - base labels.csv")
 
       
-   
-   """
-   optmizer = optimize.modelOptimizer()
-   metricDF = optmizer.optimizeNN(X, Y, numHidden1, numHidden2, numHidden3, _epochs, learningRate, verbose=True)
-   print(metricDF)
-   metricDF.to_csv("optimization_metrics.csv")
-   """
-
 
   
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 

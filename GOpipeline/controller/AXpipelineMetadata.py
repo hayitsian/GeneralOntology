@@ -20,6 +20,7 @@ sys.path.append(os.path.abspath("/home/ian/Documents/GitHub/General-Index-Visual
 import util # local file
 import model.AXpreprocessing as AXpreprocessing # local file
 import model.featuremodel as featuremodel # local file
+import model.clusteringmodel as clusteringmodel # local file
 import model.classifiermodel as classifiermodel # local file
 import model.neuralnetworkmodel as neuralnetworkmodel # local file
 
@@ -34,8 +35,8 @@ _yLabel = "top category"
 _baseLabelCol = "base categories"
 _baseLabel = "base category"
 
-numClasses = 5 # value is used later on
-numDataPoints = 10000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
+numClasses = 4 # value is used later on
+numDataPoints = 500 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
 #####################################################
 
 # open the data file
@@ -104,7 +105,7 @@ _name = "Bag-of-words"
 _vectorizer = featuremodel.bowModel()
 featurizers[_name] = _vectorizer
 
-#TF-iDF
+"""#TF-iDF
 _name = "TF-iDF"
 _tfidftransformer = featuremodel.tfidfModel()
 featurizers[_name] = _tfidftransformer
@@ -112,10 +113,12 @@ featurizers[_name] = _tfidftransformer
 # BERT
 _name = "BERT"
 _bertmodel = featuremodel.bertModel()
-featurizers[_name] = _bertmodel
+featurizers[_name] = _bertmodel"""
 
-
-# TODO: n-gram model (1-5 gram)
+# n-gram model (1-5 gram)
+_name = "n-grams"
+_ngramVectorizer = featuremodel.bowModel(ngram_range=(1,5))
+featurizers[_name] = _ngramVectorizer
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
@@ -126,29 +129,22 @@ featurizers[_name] = _bertmodel
 
 
 #####################################################
-_epochs = 5000
-numHidden1 = numHidden2 = numHidden3 = 64
-
-learningRate = 0.2
-
-nEstimators=1000
-maxIter=50000
-
+maxIter=50
+numtopics = range(2, 5*numClasses)
 VERBOSE=True
-
 #####################################################
 
 
-# supervised - FFNN, random forest, naive bayes, logistic regression
-
-logr = classifiermodel.logisticRegression(maxIter=maxIter)
-nb = classifiermodel.NaiveBayes()
-rfc = classifiermodel.RandomForestClassifier(nEstimators=nEstimators)
+km = clusteringmodel.KMeans()
+lda = clusteringmodel.LDA()
+nmf = clusteringmodel.NMF()
+ldagensim = clusteringmodel.gensimLDA()
 
 _models = {
-    "Naive Bayes": nb,
-    "Logistic Regression": logr,
-    "Random Forest": rfc
+    "KMeans": km,
+    "LDA": lda,
+    "LDA gensim": ldagensim,
+    "NMF": nmf
 }
 
 for _xLabel, _x in X.items(): 
@@ -159,76 +155,53 @@ for _xLabel, _x in X.items():
 
         masterDict = {}
         # metricList = ["f1", "roc_auc", "accuracy", "recall", "precision", "confusion matrix"]
-        metricList = ["f1", "accuracy", "recall", "precision", "confusion matrix"]
+        metricList = ["silhouette", "calinski", "davies", "homogeneity", "completeness", "vMeasure", "rand"] # likely want to abstract these out
 
         for _modelLabel, _model in _models.items():
+
+            silhouette = []
+            calinski = []
+            davies = []
+            homogeneity = []
+            completeness = []
+            vMeasure = []
+            rand = []
+            time = []
             
             metricDict = {}
             for _metric in metricList:
                 metricDict[_metric] = []
 
-            kfold = StratifiedKFold(n_splits=5)
-            for i, (train_index, test_index) in enumerate(kfold.split(_xx, Yhigher)):
-                print(f"Training {_xLabel} with {_featLabel} features and {_modelLabel} model\nOn {numDataPoints} abstracts across {numClasses} topics. Fold {i}...")
-                xtrain = _xx[train_index]
-                ytrain = Yhigher[train_index]
-                xtest = _xx[test_index]
-                ytest = Yhigher[test_index]
+            for i in numtopics:
+                print(f"Training {_xLabel} with {_featLabel} features and {_modelLabel} model\nOn {numDataPoints} abstracts across {numClasses} topics. {i} Topics...")
                 start = default_timer()
-                _model.train(xtrain, ytrain)
-                predy = _model.test(xtest)
+                preds, metrics = _model.train(_xx, nClasses=i, maxIter=maxIter, y=Yhigher)
                 _time = default_timer() - start
                 print(f"Training took: {_time:.3f}")
+                silhouette.append(metrics[0])
+                calinski.append(metrics[1])
+                davies.append(metrics[2])
+                homogeneity.append(metrics[3])
+                completeness.append(metrics[4])
+                vMeasure.append(metrics[5])
+                rand.append(metrics[6])
+                time.append(_time)
+                if VERBOSE: print(f"Completeness: {metrics[4]:.3f}\n")
 
-                _metrics = util.getClassificationMetrics(predy, ytest, probability=False, verbose=False)
-                _f1 = _metrics['f1']
-                if VERBOSE: print(f"F1 Score: {_f1:.3f}\n")
-                for _key in metricDict.keys():
-                    metricDict[_key].append(_metrics[_key])
-
+            metricDict = {}
+            metricDict["silhouette"] = silhouette
+            metricDict["calinski"] = calinski
+            metricDict["davies"] = davies
+            metricDict["homogeneity"] = homogeneity
+            metricDict["completeness"] = completeness
+            metricDict["vMeasure"] = vMeasure
+            metricDict["rand"] = rand
+            metricDict["time"] = time
             masterDict[_modelLabel] = metricDict
-
-
-               
-        # now do the neural network bc its different :)
-        numInput = _xx.shape[1]
-
-        metricDict = {}
-        for _metric in metricList:
-            metricDict[_metric] = []
-
-        kfold = StratifiedKFold(n_splits=5)
-        for i, (train_index, test_index) in enumerate(kfold.split(_xx, Yhigher)):
-            print(f"Training {_xLabel} with {_featLabel} features and Neural Network model\nOn {numDataPoints} abstracts across {numClasses} topics. Fold {i}...")
-            _model = neuralnetworkmodel.FFNN(numInput, numClasses, hidden_size_1=numHidden1, hidden_size_2=numHidden2, hidden_size_3=numHidden3, epochs=_epochs)
-            xtrain = _xx[train_index]
-            ytrain = Yhigher[train_index]
-            xtest = _xx[test_index]
-            ytest = Yhigher[test_index]
-            start = default_timer()
-            _model.train(xtrain, ytrain, verbose=VERBOSE)
-            predy = _model.test(xtest)
-            _time = default_timer() - start
-            print(f"Training took: {_time:.3f}")
-
-            predy = predy.cpu().data.numpy()
-
-            numOutput = len(set(ytest))
-            y_true = np.zeros((ytest.size, numOutput)) # https://stackoverflow.com/questions/29831489/convert-array-of-indices-to-one-hot-encoded-array-in-numpy
-            y_true[np.arange(ytest.size), ytest] = 1
-
-            _metrics = util.getClassificationMetrics(predy, y_true, probability=True, verbose=False)
-            _metrics["confusion matrix"] = [[0, 0, 0],[0, 0, 0],[0, 0, 0]]
-            _f1 = _metrics['f1']
-            if VERBOSE: print(f"F1 Score: {_f1:.3f}")
-            for _key in metricDict.keys():
-                metricDict[_key].append(_metrics[_key])
-
-        masterDict["neural network"] = metricDict
         
 
         for _modelLabel, metrics in masterDict.items():
             df = pd.DataFrame.from_dict(metrics)
-            df.to_csv(f"../visualizations/experiment 2 - 2023-03-22/Classification Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data - base labels.csv")
+            df.to_csv(f"../visualizations/experiment 3 - 2023-03-25/Clustering Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data - base labels.csv")
 
     

@@ -2,11 +2,11 @@
 
 import sys
 import inspect
-import torch
+# import torch
 import numpy as np
 from sklearn import metrics
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def raiseNotDefined():
