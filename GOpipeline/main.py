@@ -48,7 +48,7 @@ _baseLabelCol = "base categories"
 _baseLabel = "base category"
 
 numClasses = 3 # value is used later on
-numDataPoints = 30000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
+numDataPoints = 1000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
 VERBOSE=True
 #####################################################
 
@@ -162,6 +162,10 @@ KFOLD=5
 #####################################################
 
 
+# TODO:
+#  - abstract out the different LDA models
+#  - abstract out metrics for clustering and classification
+#  - extract metadata and evaluate
 
 
 ##############################################################################################

@@ -112,12 +112,13 @@ class gensimLDA(clusteringModel):
         id2word = dict([(i, s) for i, s in enumerate(vocab)])
         _dictTime = default_timer() - start
         if verbose: print(f"id2word dict creation: {_dictTime:.3f}")
-
+        self.vocab = vocab
+        self.nClasses = nClasses
         self.trainCorpus = matutils.Sparse2Corpus(x.T)
         _corpusTime = default_timer() - start - _dictTime
         if verbose: print(f"train corpus creation creation: {_corpusTime:.3f}")
         self.model = ldamulticore.LdaMulticore(self.trainCorpus, 
-                                               # id2word=id2word,
+                                               id2word=id2word,
                                                num_topics=nClasses, workers=workers, chunksize=batchSize, passes=maxIter)
         
         _trainTime = default_timer() - start - _dictTime - _corpusTime
@@ -128,16 +129,15 @@ class gensimLDA(clusteringModel):
 
         corpus = matutils.Sparse2Corpus(x.T)
         output = self.model.get_document_topics(corpus)
-        _out = matutils.corpus2csc(output)
-        _out = _out.T.toarray()
+        _out = matutils.corpus2dense(output, num_terms=self.nClasses)
 
-        pred = util.getTopPrediction(_out)
+        predT = util.getTopPrediction(_out.T)
 
-        _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(pred, x=xEmb, labels=y, supervised=y is not None, verbose=verbose)
+        _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(predT, x=xEmb, labels=y, supervised=y is not None, verbose=verbose)
         """        if (verbose):
             print(f"Perplexity: {lda.perplexity(x)}")
             print(f"Log-likelihood: {lda.score(x)}")"""
-        return pred, [_silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand]
+        return predT, [_silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand]
 
 
     def perplexity(self, x, y=None, vebose=False):
