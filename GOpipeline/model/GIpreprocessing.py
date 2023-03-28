@@ -10,7 +10,7 @@ import plotly.express as px
 
 # TODO
 #
-#  - consider making this into a class and adding as a custom component to a spacy pipeline.
+#  - object-ify to fit BasePreprocessor
 #  - runtime & memory optimization
 
 

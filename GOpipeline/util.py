@@ -22,6 +22,34 @@ def getTopPrediction(probs):
     return np.argmax(probs, axis=1)
 
 
+def getBaseCategory(str, type="AX"):
+    # TODO TODO TODO TODO TODO Abstract out datatype between : "AX", "PM", "WK", "GI"
+    # (for arXiv, PubMed, Wikipedia, and General Index sources, respectively)
+
+    if type=="AX":
+        return _getBaseCategoryAX(str)
+    
+    else: raise ValueError(f"Invalid type argument: {type}")
+
+def _getBaseCategoryAX(str):
+    if ("." in str):
+        base = str.split(".")[0]
+        if (base=="astro-ph" or base=="nlin" or base=="cond-mat"): return "physics"
+        else: return base
+    elif str=="q-alg" or str=="alg-geom" or str=="dg-ga" or str=="funct-an": return "math"
+    elif str=="q-bio": return "q-bio"
+    elif str=="cmp-lg": return "cs"
+    else: return "physics"
+
+
+def getBaseCategories(listStr, type="AX"):
+    baseList = [getBaseCategory(s, type) for s in listStr]
+    _baseList = list({s:0 for s in baseList}) # ordered set: https://stackoverflow.com/questions/51145707/using-ordered-dictionary-as-ordered-set
+    # return list(set(baseList)) # this is stochastic and does not preserve order of elements
+    return _baseList
+
+
+
 # https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/BERT/Fine_tuning_BERT_(and_friends)_for_multi_label_text_classification.ipynb#scrollTo=6XPL1Z_RegBF
 # source: https://jesusleal.io/2021/04/21/Longformer-multilabel-classification/
 def getClassificationMetrics(predictions, labels, probability=False, threshold=0.5, upperVal=1, lowerVal=0, verbose=True):

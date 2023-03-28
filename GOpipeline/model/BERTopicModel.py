@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from bertopic.vectorizers import ClassTfidfTransformer
 from bertopic import BERTopic
 
-import abstractmodel as model
+import basemodel as model
 
 
 class BERTopicModel(model.abstractModel()):

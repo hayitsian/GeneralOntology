@@ -3,11 +3,18 @@
 
 
 import util
+from sklearn.base import BaseEstimator
 
 
-class abstractModel():
+######################################################################
 
-    def train(self, x=None, y=None):
+
+class BaseModel(BaseEstimator):
+
+    def init(self):
+        super().__init__()
+
+    def fit(self, x, y=None):
         """
         Takes in and trains on the data `x` to predict desired features `y` if not None.\n
         Parameters:
@@ -16,7 +23,7 @@ class abstractModel():
         """
         util.raiseNotDefined()
 
-    def test(self, x=None):
+    def transform(self, x):
         """
         Tests the trained model on the input datapoints `x`.\n
         Parameters:
@@ -26,14 +33,7 @@ class abstractModel():
         """
         util.raiseNotDefined()
 
-    def evaluate(self):
-        """
-        Compute evaluation metrics for this model.\n        
-        Returns:
-            - metrics : dict : computed metrics for this model.
-        """
-        util.raiseNotDefined()
-
+    # TODO
     def save(self):
         """
         Saves this model and any associated experiments to a .txt file.\n
@@ -42,6 +42,7 @@ class abstractModel():
         """
         util.raiseNotDefined()
 
+    # TODO: for view
     def __repr__(self):
         """
         Represents this model as a string.\n
@@ -49,5 +50,3 @@ class abstractModel():
             - tostring : str : string representation of this model.
         """
         util.raiseNotDefined()
-
-    

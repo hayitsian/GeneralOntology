@@ -1,11 +1,9 @@
 # Ian Hay - 2023-02-25
 
 import util
-import model.abstractmodel as abstractmodel
+from model.basemodel import BaseModel
 
 from sklearn import ensemble
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.multioutput import MultiOutputClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 
@@ -13,22 +11,25 @@ import numpy as np
 
 
 
-### --- abstract class --- ###
+### --- base class --- ###
 
-class classifierModel(abstractmodel.abstractModel):
+class ClassifierModel(BaseModel):
 
-    def train(self, x, y):
+    def __init__(self):
+        super().__init__()
+
+    def fit(self, x, y):
         """
-        Takes in and trains on the data `x` to return desired features `y`.
+        Takes in and trains on the data `x` to return labels `y`.
         Parameters:
             - x : ndarray[float] : 2d array of datapoints n samples by d features
             - y : ndarray[int] : topic prediction of n samples by c classes
         """
         util.raiseNotDefined()
 
-    def test(self, x):
+    def predict(self, x):
         """
-        For lowercase ngrams, featurizes them based on the trained model.
+        Classifies documents to their topic label.
         Parameters:
             - x : ndarray[float] : list of datapoints n samples by d features
         Returns:
@@ -36,13 +37,31 @@ class classifierModel(abstractmodel.abstractModel):
         """
         util.raiseNotDefined()
 
+    # TODO
+    def save(self):
+        """
+        Saves this model and any associated experiments to a .txt file.\n
+        Returns:
+            - filename : str : the filename this model's .txt file was saved to
+        """
+        util.raiseNotDefined()
+
+    # TODO: for view
+    def __repr__(self):
+        """
+        Represents this model as a string.\n
+        Returns:
+            - tostring : str : string representation of this model.
+        """
+        util.raiseNotDefined()
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 
 
-class logisticRegression(classifierModel):
+class LogisticRegression(ClassifierModel):
 
     def __init__(self, maxIter=100, C=0.125, multiClass="multinomial", penalty="l2"):
+        super().__init__()
 
         params = {
             "penalty": penalty,
@@ -54,11 +73,11 @@ class logisticRegression(classifierModel):
         self.model = LogisticRegression(**params)
 
 
-    def train(self, x, y):
+    def fit(self, x, y):
         self.model.fit(x, y)
 
 
-    def test(self, x):
+    def predict(self, x):
         return self.model.predict(x)
     
 
@@ -66,22 +85,22 @@ class logisticRegression(classifierModel):
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 
 
-class NaiveBayes(classifierModel):
+class NaiveBayes(ClassifierModel):
 
     def __init__(self):
         self.model = GaussianNB()
 
-    def train(self, x, y):
+    def fit(self, x, y):
         self.model.fit(x, y)
 
-    def test(self, x):
+    def predict(self, x):
         return self.model.predict(x)
 
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 
 
-class RandomForestClassifier(classifierModel):
+class RandomForestClassifier(ClassifierModel):
 
     def __init__(self, nEstimators=10, criterion="entropy", maxDepth=5, minSamplesSplit=5, verbose=0):
 
@@ -96,8 +115,8 @@ class RandomForestClassifier(classifierModel):
         self.model = ensemble.RandomForestClassifier(**params)
 
 
-    def train(self, x, y):
+    def fit(self, x, y):
         self.model.fit(x, y)
 
-    def test(self, x):
+    def predict(self, x):
         return self.model.predict(x)
