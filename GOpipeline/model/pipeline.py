@@ -23,7 +23,7 @@ class AbstractPipeline():
     def __init__(self):
         super().__init__()
 
-    def compile(FeaturePipeline, ModelPipeline, EvaluationPipeline):
+    def compile(FeaturePipeline, ModelPipeline):
         '''
         compile() generates the pipeline object from the given components. 
         '''
@@ -54,17 +54,15 @@ class AbstractPipeline():
 
 class BasePipeline(AbstractPipeline):
 
-    def __init__(self, featurizer=BaseFeaturizer(), model=BaseModel(), evaluator=BaseEvaluator()):
+    def __init__(self, featurizer=BaseFeaturizer(), topicModel=BaseModel()):
+        super().__init__()
         self.featurizer=featurizer
-        self.model=model
-        self.evaluator=evaluator
-
+        self.topicModel=topicModel
 
     def compile(self):
         self.pipeline = Pipeline(steps=[
             ('featurizer', self.featurizer),
-            ('topic model', self.model), 
-            ('evaluator', self.evaluator)])
+            ('topic model', self.topicModel)])
 
     def fit(self, x, y):
         self.pipeline.fit(x, y)

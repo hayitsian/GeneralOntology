@@ -13,7 +13,7 @@ import copy
 
 nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
 
-from model.preprocessing import BaseImporter, BasePreprocessor
+from model.preprocessing.preprocessing import BaseImporter, BasePreprocessor
 
 
 class AXimporter(BaseImporter):
@@ -95,4 +95,7 @@ class AXpreprocessor(BasePreprocessor):
         super().fit(x, y)
 
     def transform(self, x):
-        return super().transform(x)
+        _x = super().transform(x)
+
+        _x = [_word.replace("\n", " ") for _word in _x]
+        return pd.Series(_x)

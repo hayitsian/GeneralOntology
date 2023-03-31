@@ -27,11 +27,13 @@ _path = os.path.abspath(__file__)
 sys.path.append(os.path.abspath("/home/ian/Documents/GitHub/General-Index-Visualization/GOpipeline"))
 
 import util # local file
-import model.AXpreprocessing as AXpreprocessing # local file
+import model.preprocessing.AXpreprocessing as AXpreprocessing # local file
 import model.featuremodel as featuremodel # local file
 import model.clusteringmodel as clusteringmodel # local file
 import model.classifiermodel as classifiermodel # local file
 import model.neuralnetworkmodel as neuralnetworkmodel # local file
+from model.evaluationmodel import ClusterEvaluator # local file
+from model.pipeline import BasePipeline # local file
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
@@ -49,14 +51,14 @@ _topBaseLabelCol = "top base category"
 
 numClasses = 8 # value is used later on
 numLowerClasses = 45 # value is used later on
-numDataPoints = 220000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
+numDataPoints = 2200 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
 VERBOSE=True
 #####################################################
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 # open the data file
-print("\n\nImporting data...\n\n")
+if VERBOSE: print("\n\nImporting data...\n\n")
 
 
             ##### I/O ######
@@ -72,23 +74,26 @@ df = importer.importData(_rawFilename,verbose=VERBOSE)
 df = importer.parseLabels(_labelCol, _topLabelCol, _baseLabelCol, _topBaseLabelCol, verbose=VERBOSE)
 
 categoryCounter = Counter(list(itertools.chain(*df[_labelCol].values)))
-print(f"\nTotal number of categories: {len(list(set(categoryCounter.keys())))}\n")
-print(categoryCounter)
+if VERBOSE: print(f"\nTotal number of categories: {len(list(set(categoryCounter.keys())))}\n")
+if VERBOSE: print(categoryCounter)
 
 topCategoryCounter = Counter(df[_topLabelCol].values)
-print(f"\nTotal number of top categories: {len(list(set(topCategoryCounter.keys())))}\n")
-print(topCategoryCounter)
+if VERBOSE: print(f"\nTotal number of top categories: {len(list(set(topCategoryCounter.keys())))}\n")
+if VERBOSE: print(topCategoryCounter)
 
 differentCats = {k:v for k,v in categoryCounter.items() if k not in topCategoryCounter}
-print(f"\nDifference of above categories:\n{differentCats}\n")
+if VERBOSE: print(f"\nDifference of above categories:\n{differentCats}\n")
 
 baseCategoryCounter = Counter(df[_topBaseLabelCol].values)
-print(f"\nTotal number of base categories: {len(list(set(baseCategoryCounter.keys())))}\n")
-print(baseCategoryCounter)
+if VERBOSE: print(f"\nTotal number of base categories: {len(list(set(baseCategoryCounter.keys())))}\n")
+if VERBOSE: print(baseCategoryCounter)
+
+
+# TODO: tokens per text, vocab lenth of texts, topic distrubtion and co-occurence (lower & higher)
 
 
 
-print("\n\nPreprocessing data...\n\n")
+if VERBOSE: print("\n\nPreprocessing data...\n\n")
 dfSubsetLowerLabels = importer.getSubsetFromNClasses(df, _topLabelCol, numLowerClasses, numDataPoints, verbose=VERBOSE)
 dfSubsetHigherLabels = importer.getSubsetFromNClasses(df, _topBaseLabelCol, numClasses, numDataPoints, verbose=VERBOSE)
 
@@ -108,27 +113,33 @@ Xhigher, Yhigher = importer.splitXY(dfSubsetHigherLabels, _dataCol, _topBaseLabe
 
 ####################
 _texts = Xhigher
-Y = Yhigher.values
 ####################
 
 
-# preprocess texts 
+# preprocess texts
+_abstractPrior = _texts.values[:3]
+if VERBOSE: print(f"\nAbstracts before preprocessing:\n{_abstractPrior}\n")
 _tokensPrior = list(itertools.chain(*[_txt.split() for _txt in _texts]))
 _vocabSizePrior = len(set(_tokensPrior))
-print(f"\nToken number before preprocessing: {len(_tokensPrior)}")
-print(f"Vocab size before preprocessing: {_vocabSizePrior}\n")
+if VERBOSE: print(f"\nToken number before preprocessing: {len(_tokensPrior)}")
+if VERBOSE: print(f"Vocab size before preprocessing: {_vocabSizePrior}\n")
 
-_preprocessedTexts = preprocessor.transform(_texts).values # multiprocessing
-_texts = _texts.values
+_preprocessedTexts = preprocessor.transform(_texts) # multiprocessing
 
 _tokensAfter = list(itertools.chain(*[_txt.split() for _txt in _preprocessedTexts]))
 _vocabSizeAfter = len(set(_tokensAfter))
-print(f"Token number after preprocessing: {len(_tokensAfter)}")
-print(f"Vocab size after preprocessing: {_vocabSizeAfter}\n")
+if VERBOSE: print(f"Token number after preprocessing: {len(_tokensAfter)}")
+if VERBOSE: print(f"Vocab size after preprocessing: {_vocabSizeAfter}\n")
+_abstractAfter = _preprocessedTexts.values[:3]
+if VERBOSE: print(f"\nAbstracts after preprocessing:\n{_abstractAfter}\n")
 
 #####################################################
 
-X = {"preprocessed texts": _preprocessedTexts, "raw texts": _texts}
+_preprocessedTexts = _preprocessedTexts.values
+_texts = _texts.values
+
+X = {"preprocessed texts": _preprocessedTexts , "raw texts": _texts }
+Y = Yhigher.values
 
 #####################################################
 
@@ -137,7 +148,7 @@ featurizers = {}
 
 # BoW
 _name = "Bag-of-words"
-_vectorizer = featuremodel.bowModel(minDF=20, maxDF=0.75) # want to test hyperparameters
+_vectorizer = featuremodel.bowModel(minDF=0.0001, maxDF=0.75) # want to test hyperparameters
 featurizers[_name] = _vectorizer
 
 """#TF-iDF
@@ -152,7 +163,7 @@ featurizers[_name] = _bertmodel"""
 
 # n-gram model (1-3 gram)
 _name = "n-grams"
-_ngramVectorizer = featuremodel.bowModel(ngram_range=(1,3), minDF=20, maxDF=0.75) # want to test hyperparameters
+_ngramVectorizer = featuremodel.bowModel(ngram_range=(1,3), minDF=0.0001, maxDF=0.75) # want to test hyperparameters
 # https://stackoverflow.com/questions/27697766/understanding-min-df-and-max-df-in-scikit-countvectorizer
 featurizers[_name] = _ngramVectorizer
 
@@ -163,6 +174,7 @@ featurizers[_name] = _ngramVectorizer
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # #  ---- topic modeling ---- # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 
 ####################### --- clustering + metadata extraction --- ##############################
 
@@ -175,11 +187,12 @@ KFOLD=5
 
 
 # TODO:
-#  - abstract out the different LDA models
-#  - abstract out metrics for clustering and classification
+#  - abstract out the different LDA models - mostly done
+#  - abstract out metrics for clustering and classification - mostly done
 #  - extract metadata and evaluate
 #  - assign topics and metadata to datapoints, output as DF/csv
 #  - guided (semi-supervised) LDA: https://github.com/vi3k6i5/guidedlda
+#  - ensemble LDA implementation
 
 
 ##############################################################################################
@@ -188,156 +201,127 @@ _x = _preprocessedTexts
 _y = Y
 
 _xLabel = "preprocessed texts"
+_featLabel = "n-grams"
 
 _bertmodel = featuremodel.bertModel()
 
 _xEmbed = _bertmodel.transform(_x) # multiprocessing ??
 
-for _featLabel, _featurizer in featurizers.items():
+# TODO this is bad, need to find way to get rid of
+_ngramVectorizer.fit(_x)
+_vocab = _ngramVectorizer.getVocab() # how to get vocab to pass along???
 
-    _xx = _featurizer.transform(_x)
-    # _xxArr = copy.deepcopy(_xx).toarray()
-    _vocab = _featurizer.getVocab()
 
-    masterSKLearnDict = {}
-    masterGensimDict = {}
+masterSKLearnDict = {}
+masterGensimDict = {}
 
-    for i in numtopics:
+for i in numtopics:
+
+    outDataFeatList = ["perplexity", "homogeneity", "completeness", "silhouette", "time", "topic words"]
+    plotDataFeatList = ["perplexity", "homogeneity", "completeness", "silhouette"]#, "coherence"]
+    sklearn_metricDict = {_metric: [] for _metric in outDataFeatList}
+    gensim_metricDict = {_metric: [] for _metric in outDataFeatList}
+
+    kfold = StratifiedKFold(n_splits=KFOLD)
+    for j, (train_index, test_index) in enumerate(kfold.split(_x, _y)): # base topic
+
+        yTrain = _y[train_index]
+        yTest = _y[test_index]
+
+        xTrain = _x[train_index]
+        xTest = _x[test_index]
+        xEmbTrain = _xEmbed[train_index]
+        xEmbTest = _xEmbed[test_index]
+
+
+        if VERBOSE: print(f"\nTraining SKLearn LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
+
+        featurizer = _ngramVectorizer
+        lda = clusteringmodel.SKLearnLDA(vocab=_vocab, nClasses=i, maxIter=maxIter, nJobs=14)
+        evaluator = ClusterEvaluator(yTrue=yTest, model=lda, xEmb=xEmbTest, vocab=_vocab)
+
+        pipeline = BasePipeline(featurizer, lda)
+        pipeline.compile()
+
+        start = default_timer()
+        pipeline.fit(xTrain, y=yTrain) # multiprocessing
+        _trainTime = default_timer() - start
+        if VERBOSE: print(f"Training took: {_trainTime:.3f}")
+
+        preds = pipeline.predict(xTest)
+        _testTime = default_timer() - start - _trainTime
+        if VERBOSE: print(f"Testing took: {_testTime:.3f}")
         
-        metricList = ["numClusters", "numTopics", "numAbstracts", "preprocessing?",  "perplexity", "coherence", "time", "train time", "test time", "evaluation time", "topic words"]
-        outDataFeatList = ["perplexity", "coherence", "homogeneity", "completeness", "silhouette", "time", "train time", "test time", "evaluation time", "topic words"]
-        plotDataFeatList = ["perplexity", "coherence", "homogeneity", "completeness", "silhouette", "time"]
-        # plotDataFeatList = ["perplexity", "homogeneity", "completeness", "silhouette", "time"]
-        sklearn_metricDict = {_metric: [] for _metric in outDataFeatList}
-        gensim_metricDict = {_metric: [] for _metric in outDataFeatList}
+        _topicWords = lda.print_topics(nTopWords=10, verbose=VERBOSE)
+        metrics = evaluator.predict(_ngramVectorizer.transform(xTest), preds)
+        _time = default_timer() - start
 
-        for _metric in metricList:
-            if _metric == "numClusters":
-                sklearn_metricDict["numClusters"] = i
-                gensim_metricDict["numClusters"] = i
-            elif _metric == "numTopics":
-                sklearn_metricDict["numTopics"] = numClasses
-                gensim_metricDict["numTopics"] = numClasses
-            elif _metric == "numAbstracts":
-                sklearn_metricDict["numAbstracts"] = numDataPoints
-                gensim_metricDict["numAbstracts"] = numDataPoints
-            elif _xLabel == "raw texts":
-                sklearn_metricDict["preprocessing?"] = False
-                gensim_metricDict["preprocessing?"] = False
-            elif _xLabel == "preprocessed texts":
-                sklearn_metricDict["preprocessing?"] = True
-                gensim_metricDict["preprocessing?"] = True
+        sklearn_metricDict["time"].append(_time)
+        sklearn_metricDict["topic words"].append(_topicWords)
 
-        kfold = StratifiedKFold(n_splits=KFOLD)
-        for j, (train_index, test_index) in enumerate(kfold.split(_xx, _y)): # base topic
+        for _metric in plotDataFeatList:
+            sklearn_metricDict[_metric].append(metrics[_metric])
 
-            yTrain = _y[train_index]
-            yTest = _y[test_index]
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
-            xTrainCSC = _xx[train_index]
-            xTestCSC = _xx[test_index]
-            xEmbTrain = _xEmbed[train_index]
-            xEmbTest = _xEmbed[test_index]
+        if VERBOSE: print(f"\nTraining Gensim LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
+
+        featurizer = featuremodel.gensimBowModel(ngram_range=(1,3))
+        lda = clusteringmodel.GensimLDA(vocab=_vocab, nClasses=i, maxIter=maxIter, nJobs=14)
+        evaluator = ClusterEvaluator(yTrue=yTest, model=lda, xEmb=xEmbTest, vocab=_vocab)
+
+        pipeline = BasePipeline(featurizer, lda)
+        pipeline.compile()
+
+        start = default_timer()
+        pipeline.fit(xTrain, y=yTrain) # multiprocessing
+        _trainTime = default_timer() - start
+        if VERBOSE: print(f"Training took: {_trainTime:.3f}")
+
+        preds = pipeline.predict(xTest)
+        _testTime = default_timer() - start - _trainTime
+        if VERBOSE: print(f"Testing took: {_testTime:.3f}")
+        
+        _topicWords = lda.print_topics(nTopWords=10, verbose=VERBOSE)
+        metrics = evaluator.predict(_ngramVectorizer.transform(xTest), preds)
+        _time = default_timer() - start
+
+        gensim_metricDict["time"].append(_time)
+        gensim_metricDict["topic words"].append(_topicWords)
+
+        for _metric in plotDataFeatList:
+            gensim_metricDict[_metric].append(metrics[_metric])
 
 
-            print(f"\nTraining SKLearn LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
+    masterSKLearnDict[i] = sklearn_metricDict
+    masterGensimDict[i] = gensim_metricDict
 
-            lda = clusteringmodel.SKLearnLDA()
+df_sk = pd.DataFrame.from_dict(masterSKLearnDict, orient='index')
+df_sk.to_csv(f"../visualizations/experiment 5 - 2023-03-28/Clustering Metrics for SKLearn LDA with {_featLabel} features on {_xLabel} data - base labels.csv")
 
-            start = default_timer()
-            lda.fit(xTrainCSC, vocab=_vocab, nClasses=i, maxIter=maxIter, y=yTrain) # multiprocessing
-            _trainTime = default_timer() - start
-            print(f"Training took: {_trainTime:.3f}")
-            preds, metrics = lda.transform(xTestCSC, y=yTest, xEmb=xEmbTest)
-            _testTime = default_timer() - start - _trainTime
-            print(f"Testing took: {_testTime:.3f}")
-            _silhouette = metrics[0]
-            _homogeneity = metrics[3]
-            _completeness = metrics[4]
-            _perp = lda.perplexity(xTestCSC)
-            _coherence = lda.coherence(_x, _vocab)
-            _topicWords = lda.print_topics(nTopWords=10, verbose=VERBOSE)
-            if VERBOSE: print(f"SKLearn LDA Perplexity: {_perp:.3f}")
-            _evalTime = default_timer() - start - _trainTime - _testTime
-            print(f"Evaluation took: {_evalTime:.3f}")
+df_gn = pd.DataFrame.from_dict(masterGensimDict, orient='index')
+df_gn.to_csv(f"../visualizations/experiment 5 - 2023-03-28/Clustering Metrics for Gensim LDA with {_featLabel} features on {_xLabel} data - base labels.csv")
 
-            # how to get topic keywords?
-            # how to get topic probabilities
+for _metric in plotDataFeatList:
+    skStrVal = df_sk[_metric].values
+    gnStrVal = df_gn[_metric].values
 
-            _time = default_timer() - start
-            sklearn_metricDict["time"].append(_time)
-            sklearn_metricDict["train time"].append(_trainTime)
-            sklearn_metricDict["test time"].append(_testTime)
-            sklearn_metricDict["evaluation time"].append(_evalTime)
-            sklearn_metricDict["perplexity"].append(_perp)
-            sklearn_metricDict["coherence"].append(_coherence)
-            sklearn_metricDict["homogeneity"].append(_homogeneity)
-            sklearn_metricDict["completeness"].append(_completeness)
-            sklearn_metricDict["silhouette"].append(_silhouette)
-            sklearn_metricDict["topic words"].append(_topicWords)
+    skMeanVals = [np.mean(vals) for vals in skStrVal] # plot the mean from k-fold cross validation
+    gnMeanVals = [np.mean(vals) for vals in gnStrVal] # TODO: add std dev or SEM bars
 
-            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    # TODO: concatenate more conditions to the same plot
+    plt.plot(numtopics, skMeanVals, label="SKlearn LDA")
+    plt.plot(numtopics, gnMeanVals, label="Gensim LDA")
+    plottitle = f"Comparison of {_metric} performance\nAcross models for {_featLabel} features\nOn {_xLabel} data."
+    plotname = f"../visualizations/experiment 5 - 2023-03-28/Comparison of {_metric} performance across models for {_featLabel} features on {_xLabel} data.png"
+    plt.title(plottitle)
+    plt.xlabel("Number of topics")
+    plt.ylabel(_metric)
+    plt.legend()
+    plt.savefig(plotname)
+    plt.close()
 
-            print(f"\nTraining gensim LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
 
-            ldagensim = clusteringmodel.GensimLDA()
-
-            start = default_timer()
-            ldagensim.fit(xTrainCSC, vocab=_vocab, nClasses=i, maxIter=maxIter, y=yTrain) # multiprocessing
-            _trainTime = default_timer() - start
-            print(f"Training took: {_trainTime:.3f}")
-            preds, metrics = ldagensim.transform(xTestCSC, y=yTest, xEmb=xEmbTest)
-            _testTime = default_timer() - start - _trainTime
-            print(f"Testing took: {_testTime:.3f}")
-            _silhouette = metrics[0]
-            _homogeneity = metrics[3]
-            _completeness = metrics[4]
-            _perp = ldagensim.perplexity(xTestCSC)
-            _coherence = ldagensim.coherence(xTestCSC)
-            _topicWords = ldagensim.print_topics(nTopWords=10, verbose=VERBOSE)
-            if VERBOSE: print(f"Gensim LDA Perplexity: {_perp:.3f}")
-            _evalTime = default_timer() - start - _trainTime - _testTime
-            print(f"Evaluation took: {_evalTime:.3f}")
-
-            _time = default_timer() - start
-            gensim_metricDict["time"].append(_time)
-            gensim_metricDict["train time"].append(_trainTime)
-            gensim_metricDict["test time"].append(_testTime)
-            gensim_metricDict["evaluation time"].append(_evalTime)
-            gensim_metricDict["perplexity"].append(_perp)
-            gensim_metricDict["coherence"].append(_coherence)
-            gensim_metricDict["homogeneity"].append(_homogeneity)
-            gensim_metricDict["completeness"].append(_completeness)
-            gensim_metricDict["silhouette"].append(_silhouette)
-            gensim_metricDict["topic words"].append(_topicWords)
-
-        masterSKLearnDict[i] = sklearn_metricDict
-        masterGensimDict[i] = gensim_metricDict
-
-    df_sk = pd.DataFrame.from_dict(masterSKLearnDict, orient='index')
-    df_sk.to_csv(f"../visualizations/experiment 4 - 2023-03-27/Clustering Metrics for SKLearn LDA with {_featLabel} features on {_xLabel} data - base labels.csv")
-
-    df_gn = pd.DataFrame.from_dict(masterGensimDict, orient='index')
-    df_gn.to_csv(f"../visualizations/experiment 4 - 2023-03-27/Clustering Metrics for Gensim LDA with {_featLabel} features on {_xLabel} data - base labels.csv")
-
-    for _metric in plotDataFeatList:
-        skStrVal = df_sk[_metric].values
-        gnStrVal = df_gn[_metric].values
-
-        skMeanVals = [np.mean(vals) for vals in skStrVal] # plot the mean from k-fold cross validation
-        gnMeanVals = [np.mean(vals) for vals in gnStrVal] # TODO: add std dev or SEM bars
-
-        # TODO: concatenate more conditions to the same plot
-        plt.plot(numtopics, skMeanVals, label="SKlearn LDA")
-        plt.plot(numtopics, gnMeanVals, label="Gensim LDA")
-        plottitle = f"Comparison of {_metric} performance\nAcross models for {_featLabel} features\nOn {_xLabel} data."
-        plotname = f"../visualizations/experiment 4 - 2023-03-27/Comparison of {_metric} performance across models for {_featLabel} features on {_xLabel} data.png"
-        plt.title(plottitle)
-        plt.xlabel("Number of topics")
-        plt.ylabel(_metric)
-        plt.legend()
-        plt.savefig(plotname)
-        plt.close()
 ##############################################################################################
 
 
@@ -349,5 +333,4 @@ for _featLabel, _featurizer in featurizers.items():
 print("\n\nEvaluating model...\n\n")
 
 
-
-# TODO : plot classification metrics 
+# TODO : plot evaluation (and any other) metrics 

@@ -43,6 +43,13 @@ class ClusteringModel(BaseModel, TransformerMixin):
         """
         util.raiseNotDefined()
 
+    def perplexity(self, x):
+        util.raiseNotDefined()
+
+    def coherence(self, x):
+        util.raiseNotDefined()
+
+
     # TODO
     def save(self):
         """
@@ -68,48 +75,50 @@ class ClusteringModel(BaseModel, TransformerMixin):
 
 class SKLearnLDA(ClusteringModel):
 
-    def __init__(self):
+    def __init__(self, nClasses, vocab, nJobs=14, batchSize=512, maxIter=10):
         super().__init__()
-        self.nClasses = 0
-
-
-    def fit(self, x, nClasses, vocab, nJobs=14, batchSize=512, maxIter=10, y=None, verbose=False):
         self.nClasses = nClasses
         self.vocab = vocab
-        self.model = lda(n_components=nClasses, batch_size=batchSize, max_iter=maxIter, n_jobs=nJobs)
-        self.model.fit(x)
+        self.nJobs = nJobs
+        self.batchSize = batchSize
+        self.maxIter = maxIter
 
-    def transform(self, x, xEmb, y=None, verbose=False):
+
+    def fit(self, x, y=None, verbose=False):
+        self.model = lda(n_components=self.nClasses, batch_size=self.batchSize, max_iter=self.maxIter, n_jobs=self.nJobs)
+        self.model.fit(x)
+        return self
+
+
+    def predict(self, x, y=None, verbose=False):
         output = self.model.transform(x)
         pred = util.getTopPrediction(output)
-        _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(pred, x=xEmb, labels=y, supervised=y is not None, verbose=verbose)
-        return pred, [_silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand]
-
+        return pred
+    
 
     def perplexity(self, x):
         return self.model.perplexity(x)
     
 
-    def coherence(self, x, vocab, nTop=10):
-        # takes in the raw documents - TODO should tokenize them with something better
+    def coherence(self, x, nTop=10):
+        # takes in the raw documents - TODO change this (make x's consistent)
+        # TODO make this less bad
 
         # https://stackoverflow.com/questions/60613532/how-do-i-calculate-the-coherence-score-of-an-sklearn-lda-model
         topics = self.model.components_
 
         n_top_words = nTop
-        id2word = dict([(i, s) for i, s in enumerate(vocab)])
+        # id2word = dict([(i, s) for i, s in enumerate(vocab)]) # do we need this?
         # corpus = matutils.Sparse2Corpus(x.T)
 
-        texts = [[word for word in doc.split()] for doc in x] # this is the problem child
-
-        _dict = corpora.dictionary.Dictionary(texts)
+        _dict = corpora.dictionary.Dictionary(x)
         featnames = [_dict[i] for i in range(len(_dict))]
-        corpus = [_dict.doc2bow(text) for text in texts]
+        corpus = [_dict.doc2bow(text) for text in x]
 
         topWords = []
         for _topic in topics:
             topWords.append([featnames[i] for i in _topic.argsort()[:-n_top_words - 1:-1]])
-        cm = CoherenceModel(topics=topWords, texts=texts, dictionary=_dict, topn=nTop, coherence='u_mass')
+        cm = CoherenceModel(topics=topWords, texts=x, dictionary=_dict, topn=nTop, coherence='u_mass')
         return cm.get_coherence()
     
 
@@ -134,34 +143,38 @@ class SKLearnLDA(ClusteringModel):
 
 
 class GensimLDA(ClusteringModel):
-    # this can potentially be done better using a Gensim pipeline
+    # TODO this can potentially be done better using a Gensim pipeline
     # instead of feeding in an SKLearn pipeline and converting on the fly
 
-    def __init__(self):
+    def __init__(self, nClasses, vocab, nJobs=14, batchSize=512, maxIter=10,):
         super().__init__()
+        self.nClasses = nClasses
+        self.vocab = vocab
+        self.nJobs = nJobs
+        self.batchSize = batchSize
+        self.maxIter = maxIter
 
-
-    def fit(self, x, nClasses, vocab, workers=14, batchSize=512, maxIter=10, y=None, verbose=False):
+    def fit(self, x, y=None, verbose=False):
         # needs a sparse array
 
         # https://gist.github.com/aronwc/8248457
         start = default_timer()
-        id2word = dict([(i, s) for i, s in enumerate(vocab)])
+        id2word = dict([(i, s) for i, s in enumerate(self.vocab)])
         _dictTime = default_timer() - start
         if verbose: print(f"id2word dict creation: {_dictTime:.3f}")
-        self.vocab = vocab
-        self.nClasses = nClasses
+
         self.trainCorpus = matutils.Sparse2Corpus(x.T)
         _corpusTime = default_timer() - start - _dictTime
         if verbose: print(f"train corpus creation creation: {_corpusTime:.3f}")
         self.model = ldamulticore.LdaMulticore(self.trainCorpus, 
                                                id2word=id2word,
-                                               num_topics=nClasses, workers=workers, chunksize=batchSize, passes=maxIter)
+                                               num_topics=self.nClasses, workers=self.nJobs, chunksize=self.batchSize, passes=self.maxIter)
         
         _trainTime = default_timer() - start - _dictTime - _corpusTime
         if verbose: print(f"model creation and training time: {_trainTime:.3f}")
+        return self
     
-    def transform(self, x, xEmb, y=None, verbose=False):
+    def predict(self, x, y=None, verbose=False):
         # needs a sparse array
 
         corpus = matutils.Sparse2Corpus(x.T)
@@ -170,11 +183,7 @@ class GensimLDA(ClusteringModel):
 
         predT = util.getTopPrediction(_out.T)
 
-        _silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand = util.getClusterMetrics(predT, x=xEmb, labels=y, supervised=y is not None, verbose=verbose)
-        """        if (verbose):
-            print(f"Perplexity: {lda.perplexity(x)}")
-            print(f"Log-likelihood: {lda.score(x)}")"""
-        return predT, [_silhouette, _calinskiHarabasz, _daviesBouldin, _homogeneity, _completeness, _vMeasure, _rand]
+        return predT
 
 
     def perplexity(self, x, y=None, vebose=False):
@@ -182,7 +191,7 @@ class GensimLDA(ClusteringModel):
         _perp = np.exp(-1. * self.model.log_perplexity(_corpus))
         return _perp
     
-    def coherence(self, x, nTop=10, y=None, verbose=False):
+    def coherence(self, x, nTop=10, y=None, verbose=False, vocab=None):
         corpus = matutils.Sparse2Corpus(x.T)
         cm = CoherenceModel(model=self.model, corpus=corpus, topn=nTop, coherence='u_mass')
         return cm.get_coherence()

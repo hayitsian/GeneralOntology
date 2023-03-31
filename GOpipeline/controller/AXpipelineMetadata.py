@@ -56,7 +56,7 @@ VERBOSE=True
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 # open the data file
-print("\n\nImporting data...\n\n")
+if VERBOSE: print("\n\nImporting data...\n\n")
 
 
             ##### I/O ######
@@ -64,40 +64,37 @@ print("\n\nImporting data...\n\n")
 _rawFilename = sys.argv[1] # file path
             ##### I/O ######
 
-###
 importer = AXpreprocessing.AXimporter()
 preprocessor = AXpreprocessing.AXpreprocessor(n_jobs=14, verbose=VERBOSE)
 
-###
+
 df = importer.importData(_rawFilename,verbose=VERBOSE)
 df = importer.parseLabels(_labelCol, _topLabelCol, _baseLabelCol, _topBaseLabelCol, verbose=VERBOSE)
-###
-
-
 
 categoryCounter = Counter(list(itertools.chain(*df[_labelCol].values)))
-print(f"\nTotal number of categories: {len(list(set(categoryCounter.keys())))}\n")
-print(categoryCounter)
+if VERBOSE: print(f"\nTotal number of categories: {len(list(set(categoryCounter.keys())))}\n")
+if VERBOSE: print(categoryCounter)
 
 topCategoryCounter = Counter(df[_topLabelCol].values)
-print(f"\nTotal number of top categories: {len(list(set(topCategoryCounter.keys())))}\n")
-print(topCategoryCounter)
+if VERBOSE: print(f"\nTotal number of top categories: {len(list(set(topCategoryCounter.keys())))}\n")
+if VERBOSE: print(topCategoryCounter)
 
 differentCats = {k:v for k,v in categoryCounter.items() if k not in topCategoryCounter}
-print(f"\nDifference of above categories:\n{differentCats}\n")
+if VERBOSE: print(f"\nDifference of above categories:\n{differentCats}\n")
 
 baseCategoryCounter = Counter(df[_topBaseLabelCol].values)
-print(f"\nTotal number of base categories: {len(list(set(baseCategoryCounter.keys())))}\n")
-print(baseCategoryCounter)
+if VERBOSE: print(f"\nTotal number of base categories: {len(list(set(baseCategoryCounter.keys())))}\n")
+if VERBOSE: print(baseCategoryCounter)
+
+
+# TODO: tokens per text, vocab lenth of texts, topic distrubtion and co-occurence (lower & higher)
 
 
 
-print("\n\nPreprocessing data...\n\n")
-
-###
+if VERBOSE: print("\n\nPreprocessing data...\n\n")
 dfSubsetLowerLabels = importer.getSubsetFromNClasses(df, _topLabelCol, numLowerClasses, numDataPoints, verbose=VERBOSE)
 dfSubsetHigherLabels = importer.getSubsetFromNClasses(df, _topBaseLabelCol, numClasses, numDataPoints, verbose=VERBOSE)
-###
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
@@ -108,10 +105,8 @@ dfSubsetHigherLabels = importer.getSubsetFromNClasses(df, _topBaseLabelCol, numC
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
-###
 Xlower, Ylower = importer.splitXY(dfSubsetLowerLabels, _dataCol, _topLabelCol)
 Xhigher, Yhigher = importer.splitXY(dfSubsetHigherLabels, _dataCol, _topBaseLabelCol)
-###
 
 
 ####################
@@ -123,18 +118,16 @@ Y = Yhigher.values
 # preprocess texts 
 _tokensPrior = list(itertools.chain(*[_txt.split() for _txt in _texts]))
 _vocabSizePrior = len(set(_tokensPrior))
-print(f"\nToken number before preprocessing: {len(_tokensPrior)}")
-print(f"Vocab size before preprocessing: {_vocabSizePrior}\n")
+if VERBOSE: print(f"\nToken number before preprocessing: {len(_tokensPrior)}")
+if VERBOSE: print(f"Vocab size before preprocessing: {_vocabSizePrior}\n")
 
-###
 _preprocessedTexts = preprocessor.transform(_texts).values # multiprocessing
 _texts = _texts.values
-###
 
 _tokensAfter = list(itertools.chain(*[_txt.split() for _txt in _preprocessedTexts]))
 _vocabSizeAfter = len(set(_tokensAfter))
-print(f"Token number after preprocessing: {len(_tokensAfter)}")
-print(f"Vocab size after preprocessing: {_vocabSizeAfter}\n")
+if VERBOSE: print(f"Token number after preprocessing: {len(_tokensAfter)}")
+if VERBOSE: print(f"Vocab size after preprocessing: {_vocabSizeAfter}\n")
 
 #####################################################
 
@@ -185,7 +178,7 @@ KFOLD=5
 
 
 # TODO:
-#  - abstract out the different LDA models
+#  - abstract out the different LDA models - mostly done
 #  - abstract out metrics for clustering and classification
 #  - extract metadata and evaluate
 #  - assign topics and metadata to datapoints, output as DF/csv
@@ -250,17 +243,17 @@ for _featLabel, _featurizer in featurizers.items():
             xEmbTest = _xEmbed[test_index]
 
 
-            print(f"\nTraining SKLearn LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
+            if VERBOSE: print(f"\nTraining SKLearn LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
 
             lda = clusteringmodel.SKLearnLDA()
 
             start = default_timer()
             lda.fit(xTrainCSC, vocab=_vocab, nClasses=i, maxIter=maxIter, y=yTrain) # multiprocessing
             _trainTime = default_timer() - start
-            print(f"Training took: {_trainTime:.3f}")
+            if VERBOSE: print(f"Training took: {_trainTime:.3f}")
             preds, metrics = lda.transform(xTestCSC, y=yTest, xEmb=xEmbTest)
             _testTime = default_timer() - start - _trainTime
-            print(f"Testing took: {_testTime:.3f}")
+            if VERBOSE: print(f"Testing took: {_testTime:.3f}")
             _silhouette = metrics[0]
             _homogeneity = metrics[3]
             _completeness = metrics[4]
@@ -269,10 +262,7 @@ for _featLabel, _featurizer in featurizers.items():
             _topicWords = lda.print_topics(nTopWords=10, verbose=VERBOSE)
             if VERBOSE: print(f"SKLearn LDA Perplexity: {_perp:.3f}")
             _evalTime = default_timer() - start - _trainTime - _testTime
-            print(f"Evaluation took: {_evalTime:.3f}")
-
-            # how to get topic keywords?
-            # how to get topic probabilities
+            if VERBOSE: print(f"Evaluation took: {_evalTime:.3f}")
 
             _time = default_timer() - start
             sklearn_metricDict["time"].append(_time)
@@ -288,17 +278,17 @@ for _featLabel, _featurizer in featurizers.items():
 
             # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
-            print(f"\nTraining gensim LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
+            if VERBOSE: print(f"\nTraining gensim LDA with {_xLabel} and {_featLabel} features \nOn {numDataPoints} abstracts across {numClasses} topics. {i} Clusters, fold {j}...")
 
             ldagensim = clusteringmodel.GensimLDA()
 
             start = default_timer()
             ldagensim.fit(xTrainCSC, vocab=_vocab, nClasses=i, maxIter=maxIter, y=yTrain) # multiprocessing
             _trainTime = default_timer() - start
-            print(f"Training took: {_trainTime:.3f}")
+            if VERBOSE: print(f"Training took: {_trainTime:.3f}")
             preds, metrics = ldagensim.transform(xTestCSC, y=yTest, xEmb=xEmbTest)
             _testTime = default_timer() - start - _trainTime
-            print(f"Testing took: {_testTime:.3f}")
+            if VERBOSE: print(f"Testing took: {_testTime:.3f}")
             _silhouette = metrics[0]
             _homogeneity = metrics[3]
             _completeness = metrics[4]
@@ -307,7 +297,7 @@ for _featLabel, _featurizer in featurizers.items():
             _topicWords = ldagensim.print_topics(nTopWords=10, verbose=VERBOSE)
             if VERBOSE: print(f"Gensim LDA Perplexity: {_perp:.3f}")
             _evalTime = default_timer() - start - _trainTime - _testTime
-            print(f"Evaluation took: {_evalTime:.3f}")
+            if VERBOSE: print(f"Evaluation took: {_evalTime:.3f}")
 
             _time = default_timer() - start
             gensim_metricDict["time"].append(_time)
@@ -348,6 +338,8 @@ for _featLabel, _featurizer in featurizers.items():
         plt.legend()
         plt.savefig(plotname)
         plt.close()
+
+
 ##############################################################################################
 
 
@@ -359,5 +351,4 @@ for _featLabel, _featurizer in featurizers.items():
 print("\n\nEvaluating model...\n\n")
 
 
-
-# TODO : plot classification metrics 
+# TODO : plot evaluation (and any other) metrics 

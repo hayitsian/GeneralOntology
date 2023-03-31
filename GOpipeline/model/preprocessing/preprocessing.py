@@ -49,7 +49,7 @@ class BaseImporter(BaseEstimator):
 
 
     def transform(self, x):
-        return [_text.split() for _text in x] # at the least, tokenizers on spaces
+        return [_text.split() for _text in x] # at the least, tokenizes on spaces
 
 
 ######################################################################
@@ -76,11 +76,10 @@ class BasePreprocessor(BaseEstimator):
     def fit(self, x, y=None):
         return self
 
-    def transform(self, x, _stopwordRemoval=True, _lemmatize=True, _puncRemoval=True, *_):
+    def transform(self, x, *_):
         """
-        
         """
-        X_copy = x.copy()
+        X_copy = x.copy() # is this necessary?
 
         partitions = 1
         cores = mp.cpu_count()
@@ -103,12 +102,12 @@ class BasePreprocessor(BaseEstimator):
     def _preprocess_part(self, part):
         return part.apply(self._preprocess_text)
 
-    def _preprocess_text(self, text, _stopwordRemoval=True, _lemmatize=True, _puncRemoval=True):
+    def _preprocess_text(self, text):
         doc = self.nlp(text)
-        if _puncRemoval: doc = self._remove_punct(doc)
-        if _stopwordRemoval: doc = self._remove_stop_words(doc)
-        if _lemmatize: doc = self._lemmatize(doc)
-        return doc
+        doc = self._remove_punct(doc)
+        doc = self._remove_stop_words(doc)
+        return self._lemmatize(doc)
+
 
     def _remove_punct(self, doc):
         return (t for t in doc if t.text not in string.punctuation)
