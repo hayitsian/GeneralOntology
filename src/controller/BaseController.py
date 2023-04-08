@@ -77,4 +77,11 @@ class BaseController():
             # pass to the view
             # collect output and pass to the user
 
+        _action = self.args.action
+        _type = self.args.type
+        _data = self.args.data
+        _model = self.args.model
+
+        _verbosity = self.args.verbose
+
         pass
