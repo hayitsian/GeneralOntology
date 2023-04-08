@@ -19,11 +19,11 @@ import numpy as np
 from timeit import default_timer
 import matplotlib.pyplot as plt
 
-import GOpipeline.model.AXpreprocessing as AXpreprocessing # local file
+import src.model.AXpreprocessing as AXpreprocessing # local file
 import classifiermodel # local file
 import neuralnetworkmodel as neuralnetworkmodel # local file
 import util # local file
-import GOpipeline.controller.optimizer as optimizer # local file
+import optimizer as optimizer # local file
 import clusteringmodel # local file
 import featuremodel # local file
 
@@ -72,7 +72,6 @@ def main():
    df = preprocessor.importData(_rawFilename, _labelCol, _yLabel, verbose=True, classify=False)
 
    _texts, Y = preprocessor.getStratifiedSubset(df, _yLabel, _dataCol, numClasses, numDataPoints)
-   Y = Y.values
 
    print("\n\nPreprocessing data...\n\n")
 
@@ -212,7 +211,7 @@ def main():
          for _modelLabel, metrics in masterDict.items():
             metrics["num topics"] = numtopics
             df = pd.DataFrame.from_dict(metrics)
-            df.to_csv(f"Clustering Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data.csv")
+            df.to_csv(f"Metrics for {_modelLabel} with {_featLabel} features on {_xLabel} data.csv")
 
 
    ### does not specify number of classes
@@ -267,17 +266,15 @@ def main():
                               verbose=True,
                               calculate_probabilities=True),
          "Top2Vec": Top2Vec(documents=_texts, embedding_model='universal-sentence-encoder') # this one has texts already passed in
-         
          # TODO: Neural Topic Modeling
-         # some neural network topic models: https://github.com/zll17/Neural_Topic_Models#NVDM-GSM
+            # some neural network topic models: https://github.com/zll17/Neural_Topic_Models#NVDM-GSM
       }
    """
 
 
    # TODO : plot top words for topics
+
    # TODO : metadata extraction and evaluation
-
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # # # # # # # # # # # # # # # # # # ---- evaluation ----# # # # # # # # # # # # # # # # # # # # 

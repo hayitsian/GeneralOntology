@@ -10,7 +10,7 @@ import os
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
 import plotly.express as px
 
-import GOpipeline.model.GIpreprocessing as GIpreprocessing
+import src.model.GIpreprocessing as GIpreprocessing
 import model.GIBERTopicModel as GIBERTopicModel
 
 

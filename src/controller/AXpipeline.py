@@ -18,11 +18,11 @@ import pandas as pd
 import numpy as np
 from timeit import default_timer
 
-import GOpipeline.model.AXpreprocessing as AXpreprocessing # local file
+import src.model.AXpreprocessing as AXpreprocessing # local file
 import classifiermodel # local file
 import neuralnetworkmodel as neuralnetworkmodel
 import util # local file
-import GOpipeline.controller.optimizer as optimizer # local file
+import optimizer as optimizer # local file
 import clusteringmodel # local file
 
 import torch
