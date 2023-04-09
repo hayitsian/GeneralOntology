@@ -2,20 +2,26 @@
 
 
 import pandas as pd
-import matplotlib.pyplot as plt
+from model.pipeline.AXpreprocessing import AXimporter
+
+_dataCol = "abstract"
+_labelCol = "categories"
+_topLabelCol = "top category"
+_baseLabelCol = "base categories"
+_topBaseLabelCol = "top base category"
+
+numClasses = 8 # value is used later on
+numDataPoints = 20000 # value is used later on - roughly 13,000 manuscripts per topic assuming even distribution
 
 
+_rawFilename = "../data/arXiv/arxiv-metadata-oai-snapshot.csv"
 
-df = pd.read_csv("../visualizations/experiment 3 - 2023-03-25/Classification Metrics for Gensim LDA with Bag-of-words features on raw texts data - base labels.csv", index_col=0)
-print(df.head())
+importer = AXimporter()
 
-print(df["perplexity"])
+df = importer.importData(_rawFilename,verbose=True)
+df = importer.parseLabels(_labelCol, _topLabelCol, _baseLabelCol, _topBaseLabelCol, verbose=True)
+dfSubsetHigherLabels = importer.getSubsetFromNClasses(df, _topBaseLabelCol, numClasses, numDataPoints, verbose=True)
 
-for _strVal in df["perplexity"].values:
-    print(_strVal)
-    _strValProc = _strVal.replace("[","").replace("]","").split(", ")
-    _val = [float(i) for i in _strValProc]
-    print(_val)
+print(dfSubsetHigherLabels.head())
 
-
-# print(pd.to_numeric(df.loc["perplexity"].str.replace("[","").str.replace("]","").str.split(", ")))
+dfSubsetHigherLabels.to_csv("../data/arXiv/arxiv-metadata-sample-8topics-20000abstracts.csv")

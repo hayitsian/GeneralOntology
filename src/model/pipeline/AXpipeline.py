@@ -1,6 +1,5 @@
-#
-#
 # Ian Hay - 2023-04-08
+# https://github.com/hayitsian/General-Index-Visualization
 
 
 from model.pipeline import BasePipeline

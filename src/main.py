@@ -32,6 +32,7 @@ def main():
                         action="store_true")
     parser.add_argument("-s", "--save", help="Whether to save the model and to what filename.")
     parser.add_argument("-l", "--load", help="Whether to load a pretrained model and the filename to load from.")
+    parser.add_argument("-p", "--preprocess", help="Whether to the data.")
     parser.add_argument("-o", "--output", help="The output for this program to make, default: JSON",
                         choices=["JSON", "CSV", "TXT"], default="JSON")
 
@@ -41,7 +42,7 @@ def main():
     # TODO: extend the controller and build based on input args
     args = parser.parse_args()
     cont = BaseController(args)
-    cont.run()
+    out = cont.run()
 
 
 main()

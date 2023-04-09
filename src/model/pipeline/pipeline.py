@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # Ian Hay - 2023-03-18
 # https://github.com/hayitsian/General-Index-Visualization
 
@@ -9,7 +8,6 @@ import util as util
 from model.basemodel import BaseModel
 from model.featuremodel import BaseFeaturizer
 from model.evaluationmodel import BaseEvaluator
-
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 

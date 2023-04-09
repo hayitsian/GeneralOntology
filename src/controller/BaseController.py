@@ -1,11 +1,13 @@
-#!/usr/bin/env python
-#
 # Ian Hay - 2023-04-07
 # https://github.com/hayitsian/General-Index-Visualization
 
 # external dependencies
 import sys
 
+from model.pipeline.AXpreprocessing import AXimporter, AXpreprocessor
+from model.pipeline.GIpreprocessing import GIimporter, GIpreprocessor
+from model.pipeline.AXpipeline import AXPipeline
+from model.pipeline.GIpipeline import GIPipeline
 
 # handle verbose commands all in the controller
 # handle all other visualizations with the view
@@ -23,11 +25,41 @@ class BaseController():
         pass
 
 
-    def importDatafile(self, _filename:str):
-        pass
+    # define the commands this program can take
+
+        # e.g., import data, import datastream, 
+        # connect to database, disconnect from database,
+        # train a model, load a pretrained model, 
+        # query a pretrained model, save a model, 
+        # close a model, output to JSON, 
+        # output to a CSV, output to a plotter
+    
+
+    def importDatafile(self, _filename:str, _modeltype:str, _preprocessing:bool):
+        if (_modeltype == "AX"):
+            importer = AXimporter()
+            if _preprocessing: preprocessor = AXpreprocessor()
+        elif (_modeltype == "GI"):
+            importer = GIimporter()
+            if _preprocessing: preprocessor = GIpreprocessor()
+        else: raise ValueError(f"Invalid model type: {_modeltype}")
+
+        _df = importer.importData(_filename)
+        _x, _y = importer.splitXY(_df)
+        if _preprocessing: _x = preprocessor.transform(_x)
+        else: _x = importer.transform(_x)
+        
+        self.X = _x
+        self.Y = _y
 
     def buildModel(self, _modeltype:str):
-        pass
+
+        if (_modeltype == "AX"):
+            self.model = AXPipeline()
+        elif (_modeltype == "GI"):
+            self.model = GIPipeline()
+        else: raise ValueError(f"Invalid model type: {_modeltype}")
+        self.model.compile()
     
     def loadModel(self, _modelname:str):
         pass
@@ -57,18 +89,7 @@ class BaseController():
 
 
 
-    # define the commands this program can take
-
-        # e.g., import data, import datastream, 
-        # connect to database, disconnect from database,
-        # train a model, load a pretrained model, 
-        # query a pretrained model, save a model, 
-        # close a model, output to JSON, 
-        # output to a CSV, output to a plotter
-    
     def run(self):
-
-        # call handleCommandLine to build out appropriate pipeline
 
         # run the pipeline:
             # connect to the data source
@@ -77,11 +98,17 @@ class BaseController():
             # pass to the view
             # collect output and pass to the user
 
+        # required args
         _action = self.args.action
         _type = self.args.type
         _data = self.args.data
         _model = self.args.model
 
+        # optional args
         _verbosity = self.args.verbose
+        _save = self.args.save
+        _load = self.args.load
+        _preprocessing = self.args.preprocess
+        _output = self.args.output
 
         pass
