@@ -110,13 +110,12 @@ class AXimporter(preprocessing.BaseImporter):
 class AXpreprocessor(preprocessing.BasePreprocessor):
 
     def __init__(self, nlp=nlp, n_jobs=1, verbose=False):
-        super().__init__(nlp=nlp, n_jobs=1, verbose=False)
+        super().__init__(nlp=nlp, n_jobs=n_jobs, verbose=False)
 
     def fit(self, x, y=None):
         super().fit(x, y)
 
     def transform(self, x):
         _x = super().transform(x)
-
         _x = [_word.replace("\n", " ") for _word in _x]
         return pd.Series(_x)

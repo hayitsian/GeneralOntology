@@ -46,7 +46,7 @@ class BaseEvaluator(BaseModel, TransformerMixin):
         util.raiseNotDefined()
 
     # TODO: for view
-    def __repr__(self):
+    def __dict__(self):
         """
         Represents this model as a string.\n
         Returns:

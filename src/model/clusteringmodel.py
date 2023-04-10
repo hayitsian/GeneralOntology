@@ -60,7 +60,7 @@ class ClusteringModel(BaseModel, TransformerMixin):
         util.raiseNotDefined()
 
     # TODO: for view
-    def __repr__(self):
+    def __dict__(self):
         """
         Represents this model as a string.\n
         Returns:
@@ -75,10 +75,9 @@ class ClusteringModel(BaseModel, TransformerMixin):
 
 class SKLearnLDA(ClusteringModel):
 
-    def __init__(self, nClasses, vocab, nJobs=14, batchSize=512, maxIter=10):
+    def __init__(self, nClasses, nJobs=14, batchSize=512, maxIter=10):
         super().__init__()
         self.nClasses = nClasses
-        self.vocab = vocab
         self.nJobs = nJobs
         self.batchSize = batchSize
         self.maxIter = maxIter
@@ -122,7 +121,7 @@ class SKLearnLDA(ClusteringModel):
         return cm.get_coherence()
     
 
-    def print_topics(self, nTopics=None, nTopWords=10, verbose=True):
+    def print_topics(self, vocab, nTopics=None, nTopWords=10, verbose=True):
         # https://stackoverflow.com/questions/44208501/getting-topic-word-distribution-from-lda-in-scikit-learn
         if (nTopics is None):
             nTopics = self.nClasses
@@ -131,7 +130,7 @@ class SKLearnLDA(ClusteringModel):
         topicWords = {}
         for topic, comp in enumerate(self.model.components_):
             wordIdx = np.argsort(comp)[::-1][:nTopWords]
-            topicWords[topic] = [self.vocab[i] for i in wordIdx]
+            topicWords[topic] = [vocab[i] for i in wordIdx]
         if verbose:
             for topic, words in topicWords.items():
                 print('Topic: %d' % topic)

@@ -47,13 +47,14 @@ class ClassifierModel(BaseModel):
         util.raiseNotDefined()
 
     # TODO: for view
-    def __repr__(self):
+    def __dict__(self):
         """
         Represents this model as a string.\n
         Returns:
             - tostring : str : string representation of this model.
         """
         util.raiseNotDefined()
+
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 
@@ -80,7 +81,6 @@ class LogisticRegression(ClassifierModel):
     def predict(self, x):
         return self.model.predict(x)
     
-
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ###
 

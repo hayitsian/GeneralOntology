@@ -19,14 +19,15 @@ class BaseImporter(BaseEstimator):
         super().__init__(**kwds)
         self._df = None
 
-    def importData(self, _filepath, _colNames=None, _delimiter=",", verbose=False):
+    def importData(self, _filepath, _colNames=None, _delimiter=",", _indexCol=None, verbose=False):
         """
         Imports data using Pandas.read_csv() function.
         """
         if verbose: print(f"Loading data into Pandas from {_filepath}...\n")
-        self._df = pd.read_csv(_filepath, 
+        self._df = pd.read_csv(_filepath,
                             sep=_delimiter,
                             names=_colNames,
+                            index_col=_indexCol,
                             low_memory=False)
         if verbose: print("done")
         if verbose: print(self._df.head())

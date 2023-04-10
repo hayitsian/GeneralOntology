@@ -33,7 +33,7 @@ class BaseFeaturizer(BaseModel):
     def save(self):
         util.raiseNotDefined()
 
-    def __repr__(self):
+    def __dict__(self):
         util.raiseNotDefined()
 
 

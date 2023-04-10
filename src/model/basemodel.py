@@ -36,17 +36,17 @@ class BaseModel(BaseEstimator):
     # TODO
     def save(self):
         """
-        Saves this model and any associated experiments to a .txt file.\n
+        Saves this model and any associated experiments to a file.\n
         Returns:
-            - filename : str : the filename this model's .txt file was saved to
+            - filename : str : the filename this model's file was saved to
         """
         util.raiseNotDefined()
 
     # TODO: for view
-    def __repr__(self):
+    def __dict__(self):
         """
-        Represents this model as a string.\n
+        Represents this model as a dictionary.\n
         Returns:
-            - tostring : str : string representation of this model.
+            - _vars : dict : dictionary representation of this model.
         """
         util.raiseNotDefined()

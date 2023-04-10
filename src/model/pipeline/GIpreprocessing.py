@@ -3,66 +3,72 @@
 
 import ssl
 import pandas as pd
-import nltk
-from nltk.corpus import stopwords
-import plotly.express as px
 
+import spacy 
+
+nlp = spacy.load("en_core_web_sm", disable=['parser', 'ner'])
+
+
+import preprocessing
 
 # TODO
 #
 #  - object-ify to fit BasePreprocessor
 #  - runtime & memory optimization
 
+class GIimporter(preprocessing.BaseImporter):
+
+    def __init__(self, **kwds):
+        super().__init__(**kwds)
+        self.indexCol = "hash"
+        self.dataCol = "ngram_lc"
 
 
-# This function takes in raw ngram data and preprocesses it.
-#
-# Pipeline:
-#  - load in ngrams by filename (parameter)
-#  - group ngrams by index column (parameter)
-#  - removes stopwords from NLTK's English stopwords (library)
+    def importData(self, _filepath, _colNames=None, _delimiter=",", verbose=False):
+        super().importData(_filepath, _colNames, _delimiter, _indexCol=0, verbose=verbose)
+        self.parseNgrams()
+        return self._df
+    
+    def splitXY(self, _df, _dataCol, _labelCol=None):
+        return super().splitXY(_df, _dataCol, _labelCol)
 
-def preprocessNgrams(_filepath, _colNames, _indexCol, _dataCol, _delimiter, _uselessLabel):
+    def fit(self, x):
+        super().fit(x)
 
-    # load some libraries
-    try:
-        _create_unverified_https_context = ssl._create_unverified_context
-    except AttributeError:
-        pass
-    else:
-        ssl._create_default_https_context = _create_unverified_https_context
-
-    nltk.download('stopwords')
-    _stopWords = stopwords.words("english")
+    def transform(self, x):
+        super().transform(x)
 
 
-    # load text data
-    print("Loading into Pandas...\n")
-    _df = pd.read_csv(_filepath, 
-                         header=None, 
-                         sep=_delimiter,
-                         index_col=0,
-                         names=_colNames,
-                         low_memory=False)
-    print("done")
-    _df[_dataCol] = _df[_dataCol].astype(str) # some numbers are causing errors and being treated as floats
-    _df = _df.drop(columns = [_uselessLabel]) # data_added column is useless and holds mostly \N characters
-    print(_df.head())
-    print(_df.shape)
+    # This function takes in raw ngram data and preprocesses it.
+    #
+    # Pipeline:
+    #  - group ngrams by index column (parameter)
+    def parseNgrams(self):
+        _df[self.dataCol] = _df[self.dataCol].astype(str) # some numbers are causing errors and being treated as floats
+
+        # group the data
+        print("Grouping manuscripts...\n")
+        _df = _df.groupby(self.indexCol).agg(list)
+        _df["num_ngrams"] = _df[self.dataCol].apply(lambda x: len(x))
+
+        print(_df["num_ngrams"].describe())
+        print(_df[self.dataCol].shape)
 
 
-    # group the data & remove NLTK stopwords
-    print("Grouping manuscripts...\n")
-    _df = _df.groupby(_indexCol).agg(list)
-    _df["num_ngrams"] = _df[_dataCol].apply(lambda x: len(x))
-    print("Removing stopwords...\n")
-    _df[_dataCol] = _df[_dataCol].apply(lambda x: ". ".join([word for word in x if word not in (list(_stopWords))]))
-    print(_df["num_ngrams"].describe())
-    print(_df[_dataCol].shape)
+        # return imported data
+        return _df[self.dataCol]
+    
 
+class GIpreprocessor(preprocessing.BasePreprocessor):
 
-    fig = px.histogram(_df["num_ngrams"])
-    fig.write_html(_filepath + "_ngrams_per_manuscript.html")
+    def __init__(self, nlp=nlp, n_jobs=1, verbose=False):
+        super().__init__(nlp=nlp, n_jobs=n_jobs, verbose=False)
 
-    # return imported data
-    return _df[_dataCol]
+    def fit(self, x, y=None):
+        super().fit(x, y)
+
+    def transform(self, x):
+        _x = super().transform(x)
+        # TODO v
+        _x = [_word.replace("\n", " ") for _word in _x] # is this enough? does this mess with anything?
+        return pd.Series(_x)

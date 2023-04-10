@@ -6,24 +6,23 @@ import sys
 
 from model.pipeline.AXpreprocessing import AXimporter, AXpreprocessor
 from model.pipeline.GIpreprocessing import GIimporter, GIpreprocessor
-from model.pipeline.AXpipeline import AXPipeline
-from model.pipeline.GIpipeline import GIPipeline
+from model.pipeline.skLDApipeline import skLDAPipeline
+from src.model.pipeline.gnLDApipeline import gnLDAPipeline
 
 # handle verbose commands all in the controller
 # handle all other visualizations with the view
-
 class BaseController():
 
     # controller to take command line input
     def __init__(self, args):
         self.args = args
 
-
+    """
     # controller to take text file input
     def __init__(self, _filename: str):
          # TODO: do something
         pass
-
+    """
 
     # define the commands this program can take
 
@@ -33,16 +32,14 @@ class BaseController():
         # query a pretrained model, save a model, 
         # close a model, output to JSON, 
         # output to a CSV, output to a plotter
-    
-
-    def importDatafile(self, _filename:str, _modeltype:str, _preprocessing:bool):
-        if (_modeltype == "AX"):
+    def importDatafile(self, _filename:str, _dataType:str, _preprocessing:bool):
+        if (_dataType == "AX"):
             importer = AXimporter()
             if _preprocessing: preprocessor = AXpreprocessor()
-        elif (_modeltype == "GI"):
+        elif (_dataType == "GI"):
             importer = GIimporter()
             if _preprocessing: preprocessor = GIpreprocessor()
-        else: raise ValueError(f"Invalid model type: {_modeltype}")
+        else: raise ValueError(f"Invalid data type: {_dataType}")
 
         _df = importer.importData(_filename)
         _x, _y = importer.splitXY(_df)
@@ -52,21 +49,22 @@ class BaseController():
         self.X = _x
         self.Y = _y
 
-    def buildModel(self, _modeltype:str):
 
-        if (_modeltype == "AX"):
-            self.model = AXPipeline()
-        elif (_modeltype == "GI"):
-            self.model = GIPipeline()
+    def buildModel(self, _modeltype:str, _numTopics:int):
+
+        if (_modeltype == "skLDA"):
+            self.model = skLDAPipeline(_numTopics)
+        elif (_modeltype == "gnLDA"):
+            self.model = gnLDAPipeline(_numTopics)
         else: raise ValueError(f"Invalid model type: {_modeltype}")
         self.model.compile()
-    
+
+
     def loadModel(self, _modelname:str):
         pass
 
-
     def trainModel(self):
-        pass
+        self.model.fit(self.X, self.Y)
 
     def queryModel(self):
         pass
@@ -76,6 +74,7 @@ class BaseController():
 
     def saveModel(self):
         pass
+
 
 
     def outputJSON(self):
@@ -104,11 +103,20 @@ class BaseController():
         _data = self.args.data
         _model = self.args.model
 
+        _nTopics = self.args.nTopics
+
         # optional args
         _verbosity = self.args.verbose
-        _save = self.args.save
+        _save = self.args.save 
         _load = self.args.load
         _preprocessing = self.args.preprocess
         _output = self.args.output
+
+        self.importDatafile(_data, _type, _preprocessing)
+
+        if _action == "train": 
+            self.buildModel(_model, _nTopics)
+            self.trainModel()
+
 
         pass
