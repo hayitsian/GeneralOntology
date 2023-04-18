@@ -3,6 +3,7 @@
 
 # external dependencies
 import sys
+import pickle
 
 from model.pipeline.AXpreprocessing import AXimporter, AXpreprocessor
 from model.pipeline.GIpreprocessing import GIimporter, GIpreprocessor
@@ -39,6 +40,9 @@ class BaseController():
         elif (_dataType == "GI"):
             importer = GIimporter()
             if _preprocessing: preprocessor = GIpreprocessor()
+        elif (_dataType == "PM"):
+            # TODO
+            pass
         else: raise ValueError(f"Invalid data type: {_dataType}")
 
         _df = importer.importData(_filename)
@@ -48,6 +52,10 @@ class BaseController():
         
         self.X = _x
         self.Y = _y
+
+    def streamDatasource(self, _path:str, _datatype:str, _preprocessing:bool):
+        # TODO
+        pass
 
 
     def buildModel(self, _modeltype:str, _numTopics:int):
@@ -59,20 +67,26 @@ class BaseController():
         else: raise ValueError(f"Invalid model type: {_modeltype}")
         self.model.compile()
 
+    def loadModel(self, _filename:str):
+        _f = open(_filename)
+        self.model = pickle.load(_f)
+        _f.close()
 
-    def loadModel(self, _modelname:str):
-        pass
+    def saveModel(self, _filename:str):
+        _f = open(_filename)
+        pickle.dump(self.model, _f)
+        _f.close()
+
 
     def trainModel(self):
+        # split into test & train
         self.model.fit(self.X, self.Y)
+        # query with test
 
     def queryModel(self):
-        pass
+        self.model.predict(self.X, self.Y)
 
     def updateModel(self):
-        pass
-
-    def saveModel(self):
         pass
 
 
@@ -117,6 +131,19 @@ class BaseController():
         if _action == "train": 
             self.buildModel(_model, _nTopics)
             self.trainModel()
+        elif _action == "update":
+            self.loadModel(_load)
+            self.trainModel()
+        elif _action == "query":
+            self.loadModel(_load)
+            self.queryModel()
 
-
-        pass
+        if _save is not None:
+            self.saveModel(_save)
+        
+        if _output == "JSON":
+            self.outputJSON()
+        elif _output == "CSV":
+            self.outputCSV()
+        elif _output == "TXT":
+            self.outputTXT()
